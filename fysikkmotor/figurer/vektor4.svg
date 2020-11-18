@@ -10,9 +10,9 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
    sodipodi:docname="vektor4.svg"
-   width="2.8280773in"
-   height="2.0435584in"
-   viewBox="0 0 71.833168 51.906384"
+   width="2.0280771in"
+   height="1.2435583in"
+   viewBox="0 0 51.513162 31.586382"
    version="1.1"
    id="svg8">
   <sodipodi:namedview
@@ -21,8 +21,8 @@
      borderlayer="false"
      inkscape:showpageshadow="false"
      inkscape:current-layer="svg8"
-     inkscape:cy="178.72335"
-     inkscape:cx="-1.8145615"
+     inkscape:cy="140.32335"
+     inkscape:cx="-40.214562"
      inkscape:zoom="1.1232686"
      showgrid="false"
      id="namedview846"
@@ -37,10 +37,10 @@
      bordercolor="#666666"
      pagecolor="#ffffff"
      inkscape:document-rotation="0"
-     fit-margin-top="0.4"
-     fit-margin-left="0.4"
-     fit-margin-right="0.4"
-     fit-margin-bottom="0.4"
+     fit-margin-top="2.7755576e-17"
+     fit-margin-left="2.7755576e-17"
+     fit-margin-right="2.7755576e-17"
+     fit-margin-bottom="2.7755576e-17"
      lock-margins="true" />
   <defs
      id="defs2">
@@ -377,15 +377,15 @@
   </metadata>
   <g
      id="layer1"
-     transform="translate(-123.14544,-115.24723)" />
+     transform="translate(-133.30544,-125.40723)" />
   <path
      style="font-variation-settings:normal;vector-effect:none;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.467942;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#TriangleOutL);paint-order:fill markers stroke;stop-color:#000000"
-     d="M 10.294412,36.182315 36.395467,17.863218"
+     d="M 0.13441159,26.022315 26.235467,7.7032178"
      id="path838"
      sodipodi:nodetypes="cc" />
   <g
      inkscape:label=""
-     transform="translate(-74.823442,-56.341074)"
+     transform="translate(-84.983442,-66.501074)"
      id="g1414">
     <g
        id="g8613">
@@ -415,12 +415,12 @@
   </g>
   <path
      style="font-variation-settings:normal;vector-effect:none;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.467942;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#TriangleOutL-1);paint-order:fill markers stroke;stop-color:#000000"
-     d="M 61.459895,41.650159 48.345699,12.583472"
+     d="M 51.299895,31.490159 38.185699,2.4234718"
      id="path838-9"
      sodipodi:nodetypes="cc" />
   <g
      inkscape:label=""
-     transform="translate(-46.481204,-51.47016)"
+     transform="translate(-56.641204,-61.63016)"
      id="g2868">
     <g
        id="g3641">

@@ -10,9 +10,9 @@
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    inkscape:version="1.0.1 (3bc2e813f5, 2020-09-07)"
    sodipodi:docname="vektor6.svg"
-   width="2.2934563in"
-   height="1.9588289in"
-   viewBox="0 0 58.253794 49.754257"
+   width="1.4934562in"
+   height="1.158829in"
+   viewBox="0 0 37.933791 29.434257"
    version="1.1"
    id="svg8">
   <sodipodi:namedview
@@ -21,8 +21,8 @@
      borderlayer="false"
      inkscape:showpageshadow="false"
      inkscape:current-layer="g2946"
-     inkscape:cy="86.523159"
-     inkscape:cx="116.36338"
+     inkscape:cy="48.123158"
+     inkscape:cx="77.963381"
      inkscape:zoom="3.1770833"
      showgrid="false"
      id="namedview846"
@@ -37,10 +37,10 @@
      bordercolor="#666666"
      pagecolor="#ffffff"
      inkscape:document-rotation="0"
-     fit-margin-top="0.4"
-     fit-margin-left="0.4"
-     fit-margin-right="0.4"
-     fit-margin-bottom="0.4"
+     fit-margin-top="2.7755576e-17"
+     fit-margin-left="2.7755576e-17"
+     fit-margin-right="2.7755576e-17"
+     fit-margin-bottom="2.7755576e-17"
      lock-margins="true" />
   <defs
      id="defs2">
@@ -584,10 +584,10 @@
   </metadata>
   <g
      id="layer1"
-     transform="translate(-122.45431,-102.49035)" />
+     transform="translate(-132.61431,-112.65035)" />
   <g
      id="g2946"
-     transform="translate(-28.049088,20.030514)">
+     transform="translate(-38.209088,9.8705133)">
     <path
        style="font-variation-settings:normal;opacity:1;vector-effect:none;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.467942;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker-end:url(#marker3394);paint-order:fill markers stroke;stop-color:#000000;stop-opacity:1"
        d="M 47.372396,10.44066 73.473451,-7.8784368"
