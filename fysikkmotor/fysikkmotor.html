@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="nb" xml:lang="nb">
 <head>
-<!-- 2020-11-18 Wed 13:26 -->
+<!-- 2020-11-18 Wed 14:15 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Fysikkmotor</title>
@@ -63,31 +63,31 @@ Gjennom dette oppgavearket skal vi lage en fysikkmotor ved å bruke Python og Py
 </p>
 
 <dl class="org-dl">
-<dt><a href="#orgf177f04">Vektorer</a></dt><dd>Hvordan kan vi representerere vektorer i et python-program?</dd>
-<dt><a href="#org1b7ee88">Partikler</a></dt><dd>Kan vi samle flere egenskaper enn bare tall til i én verdi?</dd>
-<dt><a href="#orge3c4734">Simulering</a></dt><dd>Trinnvis framover i Pygame</dd>
-<dt><a href="#org93df763">Kollisjoner</a></dt><dd>Kan partiklene våre kollidere med hverandre?</dd>
-<dt><a href="#org113e6a6">Bugfikser</a></dt><dd>Utbedringer kommer til å være nødvendig.</dd>
-<dt><a href="#orgc2466dd">Utforsking</a></dt><dd>Hvilke andre modeller kan vi bruke partiklene våre til?</dd>
+<dt><a href="#orgca294e3">Vektorer</a></dt><dd>Hvordan kan vi representerere vektorer i et python-program?</dd>
+<dt><a href="fysikkmotor.html#ID-0b6d9763-24d2-4b31-9abc-3bf52bb81e94">Partikler</a></dt><dd>Kan vi samle flere egenskaper enn bare tall til i én verdi?</dd>
+<dt><a href="fysikkmotor.html#ID-9a55573e-44bf-4921-acf1-c5d66ede7d5d">Simulering</a></dt><dd>Trinnvis framover i Pygame</dd>
+<dt><a href="fysikkmotor.html#ID-050ff933-d1a8-4d9b-8be9-ef5dc351ef1b">Kollisjoner</a></dt><dd>Kan partiklene våre kollidere med hverandre?</dd>
+<dt><a href="fysikkmotor.html#ID-f55222e8-5b25-4fce-aad3-f66217831d2c">Bugfikser</a></dt><dd>Utbedringer kommer til å være nødvendig.</dd>
+<dt><a href="fysikkmotor.html#ID-fd134f56-3103-448a-ae32-4e7679b7e50e">Utforsking</a></dt><dd>Hvilke andre modeller kan vi bruke partiklene våre til?</dd>
 </dl>
 
-<div id="outline-container-orgf177f04" class="outline-2">
-<h2 id="orgf177f04">Vektorer</h2>
-<div class="outline-text-2" id="text-orgf177f04">
+<div id="outline-container-orgca294e3" class="outline-2">
+<h2 id="orgca294e3">Vektorer</h2>
+<div class="outline-text-2" id="text-orgca294e3">
 <p>
 
 </p>
 </div>
 
-<div id="outline-container-orgb4d0ce9" class="outline-3">
-<h3 id="orgb4d0ce9">Introduksjon</h3>
-<div class="outline-text-3" id="text-orgb4d0ce9">
+<div id="outline-container-org1304eb3" class="outline-3">
+<h3 id="org1304eb3">Introduksjon</h3>
+<div class="outline-text-3" id="text-org1304eb3">
 <p>
 Fra matematikken kjenner vi en vektor som noe med størrelse og retning. Ofte illustrerer vi dette med en pil. Under vises vektoren \(\vec{v}\) tegnet som en pil i planet.
 </p>
 
 
-<div id="orgea9eacc" class="figure">
+<div id="org478f1ca" class="figure">
 <p><object type="image/svg+xml" data="figurer/vektor1.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -99,7 +99,7 @@ En vektor avhenger ikke av hvor vi tegner den, kun av dens størrelse og retning
 </p>
 
 
-<div id="org41984b7" class="figure">
+<div id="org89154f6" class="figure">
 <p><object type="image/svg+xml" data="figurer/vektor2.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -115,7 +115,7 @@ Før vi kan representere en vektor i et dataprogram, må vi bestemme oss for hvo
 </p>
 
 
-<div id="org0b915e8" class="figure">
+<div id="org652bd4f" class="figure">
 <p><object type="image/svg+xml" data="figurer/vektor3.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -135,7 +135,7 @@ Om vi så ønsker å representere dette i et python-program, kan vi for eksempel
 Dette byr på en serie problemer, blant annet at vi nå har to variabler for å holde styr på det som strengt tatt bare er én matematisk størrelse, vektoren \(\vec{v}\).
 </p>
 
-<div class="task" id="org404ac06">
+<div class="task" id="orgcc6bae0">
 <p>
 Om du allerede kjenner til vektorer, stopp opp her og tenk på hvordan du ville representert dem i kode.
 </p>
@@ -144,9 +144,9 @@ Om du allerede kjenner til vektorer, stopp opp her og tenk på hvordan du ville 
 </div>
 </div>
 
-<div id="outline-container-org082a4bc" class="outline-3">
-<h3 id="org082a4bc">Addisjon</h3>
-<div class="outline-text-3" id="text-org082a4bc">
+<div id="outline-container-org26d841d" class="outline-3">
+<h3 id="org26d841d">Addisjon</h3>
+<div class="outline-text-3" id="text-org26d841d">
 <p>
 Vi er vant til at \(\text{tall} + \text{tall} = \text{tall}\) og at \(\text{tall} \cdot \text{tall} = \text{tall}\).
 </p>
@@ -156,7 +156,7 @@ For vektorer er addisjon som forventet, \(\text{vektor} + \text{vektor} = \text{
 </p>
 
 
-<div id="org65c90c1" class="figure">
+<div id="orgb789649" class="figure">
 <p><object type="image/svg+xml" data="figurer/vektor4.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -168,7 +168,7 @@ For å legge disse sammen visuelt, kan vi sette de etter hverandre, slik at \(\v
 </p>
 
 
-<div id="orgd3b3afd" class="figure">
+<div id="org4f4ce7d" class="figure">
 <p><object type="image/svg+xml" data="figurer/vektor5.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -179,7 +179,7 @@ Sorry, your browser does not support SVG.</object>
 Essensen her er at summen av to vektorer er en ny vektor.
 </p>
 
-<div class="task" id="org5c85f62">
+<div class="task" id="orgb639d5b">
 <p>
 Om vi har to vektorer representert som to lengder og to vinkler, à la det beskrevet tidligere. Hvordan kan vi gå fram for å finne vektorsummen av disse?
 </p>
@@ -188,15 +188,15 @@ Om vi har to vektorer representert som to lengder og to vinkler, à la det beskr
 </div>
 </div>
 
-<div id="outline-container-org7cfe56d" class="outline-3">
-<h3 id="org7cfe56d">Dekomponering</h3>
-<div class="outline-text-3" id="text-org7cfe56d">
+<div id="outline-container-org3331a20" class="outline-3">
+<h3 id="org3331a20">Dekomponering</h3>
+<div class="outline-text-3" id="text-org3331a20">
 <p>
 Vi <i>dekomponerer</i> en vektor ved å skrive den som en sum av vektorer, vi finner dens <i>komponenter</i>. Det vanligste er å la hver av disse komponentene ligge langs en koordinatakse. Under har vi dekomponert \(\vec{v}\) til en vektor i \(x\)-retning, \(\vec{v}_x\) og en vektor i \(y\)-retning, \(\vec{v}_y\).
 </p>
 
 
-<div id="orgecf0596" class="figure">
+<div id="org7fa8786" class="figure">
 <p><object type="image/svg+xml" data="figurer/vektor6.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -204,7 +204,7 @@ Sorry, your browser does not support SVG.</object>
 </div>
 
 <p>
-Merk at de to vektorene \(\vec{v}_x\) og \(\vec{v}_y\) er de <i>eneste</i> to vektorene i $x$- og $y$-retning hvor summen gir \(\vec{v}\), altså er \(\vec{v}\) <i>entydig</i> bestemt av de to vektorene. Om vi da skriver \(|\vec{v}_x| = v_x\) og \(|\vec{v}_y| = v_y\), kan vi samle det hele til \[\vec{v} = \left[v_x, v_y\right].\]
+Merk at de to vektorene \(\vec{v}_x\) og \(\vec{v}_y\) er de <i>eneste</i> to vektorene i \(x\)- og \(y\)-retning hvor summen gir \(\vec{v}\), altså er \(\vec{v}\) <i>entydig</i> bestemt av de to vektorene. Om vi da skriver \(|\vec{v}_x| = v_x\) og \(|\vec{v}_y| = v_y\), kan vi samle det hele til \[\vec{v} = \left[v_x, v_y\right].\]
 </p>
 
 <p>
@@ -218,7 +218,7 @@ Vi sier at vi nå har skrevet \(\vec{v}\) på <i>koordinatform</i>. For eksempel
         &= \left[\tfrac{3\sqrt{3}}{2}, \tfrac{3}{2} \right].
 \end{aligned}
 
-<div class="task" id="org8c98668">
+<div class="task" id="orgd22c553">
 <p>
 Hvordan kan vi representerer vektorer på koordinatform i et program?
 </p>
@@ -227,9 +227,9 @@ Hvordan kan vi representerer vektorer på koordinatform i et program?
 </div>
 </div>
 
-<div id="outline-container-org2789d76" class="outline-3">
-<h3 id="org2789d76">Omforming</h3>
-<div class="outline-text-3" id="text-org2789d76">
+<div id="outline-container-org1fadc29" class="outline-3">
+<h3 id="org1fadc29">Omforming</h3>
+<div class="outline-text-3" id="text-org1fadc29">
 <p>
 Vektorer på koordinatform har en annen fin egenskap, summen av to vektorer er den komponentvise summen av leddene. Altså er
 </p>
@@ -253,7 +253,7 @@ Naivt kunne vi tenkt at vi skulle representert vektoren på en form à la
 </pre>
 </div>
 
-<div class="task" id="orgba3a850">
+<div class="task" id="org4ef38c3">
 <p>
 Lag et program som tar inn en vektor med lengde og vinkel, og returnerer en vektor på koordinatform. Du kan for eksempel lage det som en funksjon på formen
 </p>
@@ -271,7 +271,7 @@ Legg merke til her at vi har valgt å representere vektoren på koordinatform so
 
 </div>
 
-<div class="task" id="org1714bb0">
+<div class="task" id="org9f45180">
 <p>
 Skriv et program som regner ut summen av de to vektorene under. Kall svaret ditt <code>w</code>.
 </p>
@@ -284,7 +284,7 @@ Skriv et program som regner ut summen av de to vektorene under. Kall svaret ditt
 
 </div>
 
-<div class="task" id="org15e11df">
+<div class="task" id="orgdc42b30">
 <p>
 Skriv en funksjon som tar inn en vektor på koordinatform, da som en liste av to verdier, og returnerer en liste med vektorens <code>lengde</code> og <code>vinkel</code>. Du kan kalle funksjonen <code>koordinat_til_polar</code>.
 </p>
@@ -293,9 +293,9 @@ Skriv en funksjon som tar inn en vektor på koordinatform, da som en liste av to
 </div>
 </div>
 
-<div id="outline-container-org2e46bd4" class="outline-3">
-<h3 id="org2e46bd4">Representasjonsform</h3>
-<div class="outline-text-3" id="text-org2e46bd4">
+<div id="outline-container-org0e49344" class="outline-3">
+<h3 id="org0e49344">Representasjonsform</h3>
+<div class="outline-text-3" id="text-org0e49344">
 <p>
 Vi har nå sett at det matematisk finnes ulike ekvivalente måter å representere en vektor på, som et sett av lengde og vinkel, som \(x\)- og \(y\)-koordinater, og vi kunne tenkt oss mange flere (de fleste av dem uhensiktsmessige i de fleste tilfeller, som et sett av lengde og en \(x\)-koordinat).
 </p>
@@ -315,7 +315,7 @@ Under oppgaven med vektoraddisjon, så vi dog at listerepresentasjonen, om enn d
 </pre>
 </div>
 
-<div class="task" id="org7fb3e0c">
+<div class="task" id="org879c9d6">
 <p>
 Forsøk å se hvordan addisjon av vektorer fungerer nå. Start med en vektor <code>u</code> og en vektor <code>v</code>, hver representert som et numpy-array, og test ut addisjon ved å bruke et vanlig <code>+</code>-tegn.
 </p>
@@ -336,9 +336,9 @@ Kommenter.
 </div>
 </div>
 
-<div id="outline-container-org9728145" class="outline-3">
-<h3 id="org9728145">Skalarproduktet</h3>
-<div class="outline-text-3" id="text-org9728145">
+<div id="outline-container-orgc6a1bd0" class="outline-3">
+<h3 id="orgc6a1bd0">Skalarproduktet</h3>
+<div class="outline-text-3" id="text-orgc6a1bd0">
 <p>
 Vi har sett at addisjon fungerer som vi forventer mellom vektorer, en sum av to vektorer er en ny vektor. Hva med multiplikasjon?
 </p>
@@ -364,63 +364,97 @@ Vi kan vise denne vektormultiplikasjonen som under.
 </p>
 
 
-<div id="org9100632" class="figure">
+<div id="orgeff3403" class="figure">
 <p><object type="image/svg+xml" data="figurer/vektor7.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
 <p><span class="figure-number">Illustrasjon 7 </span>\(\vec{v}\) <i>projisert</i> på \(\vec{u}\)</p>
 </div>
-</div>
-</div>
 
-<div id="outline-container-orgec9ef91" class="outline-3">
-<h3 id="orgec9ef91">Skalering</h3>
-</div>
-</div>
-
-
-<div id="outline-container-org1b7ee88" class="outline-2">
-<h2 id="org1b7ee88">Partikler</h2>
-<div class="outline-text-2" id="text-org1b7ee88">
+<div class="task" id="org4de5ba0">
 <p>
-
+Lag et program som tar inn to vektorer, \(u\) og \(v\) (du kan bruke de samme som i eksempelet over). Regn ut \(\vec{u}\cdot\vec{v}\) ved å bruke at \[\vec{u}\cdot\vec{v} = |\vec{u}||\vec{v}|\cos \theta,\] hvor \(\theta\) er vinkelen mellom \(\vec{u}\) og \(\vec{v}\).
 </p>
-</div>
+
 </div>
 
-<div id="outline-container-orge3c4734" class="outline-2">
-<h2 id="orge3c4734">Simulering</h2>
-<div class="outline-text-2" id="text-orge3c4734">
 <p>
-
+Om vi har vektorene representert på koordinatform, er det en enkel sak å regne ut skalarproduktet. Vi kan da bruke at 
 </p>
-</div>
-</div>
 
-<div id="outline-container-org93df763" class="outline-2">
-<h2 id="org93df763">Kollisjoner</h2>
-<div class="outline-text-2" id="text-org93df763">
+\begin{aligned}
+\vec{u}\cdot\vec{v} &= \left[u_x, u_y\right]\cdot\left[v_x, v_y\right] \\
+                    &= u_x v_x + u_y v_y
+\end{aligned}
+
+<div class="task" id="org22d78bc">
 <p>
-
+Lag et program som tar inn to vektorer på koordinatform i lister. Regn ut vektorenes skalarprodukt ved å bruke definisjonen over.
 </p>
-</div>
-</div>
 
-<div id="outline-container-org113e6a6" class="outline-2">
-<h2 id="org113e6a6">Bugfikser</h2>
-<div class="outline-text-2" id="text-org113e6a6">
 <p>
-
+Du kan for eksempel ta utgangspunkt i følgende:
 </p>
-</div>
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-variable-name">u</span> = [-5, 8]
+<span class="org-variable-name">v</span> = [-3, 1]
+</pre>
 </div>
 
-<div id="outline-container-orgc2466dd" class="outline-2">
-<h2 id="orgc2466dd">Utforsking</h2>
-<div class="outline-text-2" id="text-orgc2466dd">
+</div>
+
 <p>
-
+Skalarproduktet oppstår i mange områder av matematikken. I <code>numpy</code> har vi det innebygd som <code>dot</code>-funksjonen. For eksempel vil <code>np.dot(a, b)</code> regne ut skalarproduktet (eller «prikkproduktet» eller «dotproduktet») til de to vektorene <code>a</code> og <code>b</code>.
 </p>
+
+<div class="task" id="org4cf6f36">
+<p>
+Lag et program som tar inn to vektorer på koordinatform i numpy-arrayer. Regn ut vektorenes skalarprodukt ved å bruke <code>np.dot</code>.
+</p>
+
+<p>
+Du kan for eksempel ta utgangspunkt i følgende:
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-variable-name">u</span> = np.array([-5, 8])
+<span class="org-variable-name">v</span> = np.array([-3, 1])
+</pre>
+</div>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org0546bbb" class="outline-3">
+<h3 id="org0546bbb">Skalering eller skalarmultiplikasjon</h3>
+<div class="outline-text-3" id="text-org0546bbb">
+<p>
+Ordet «skalar» brukes ofte om tall i vektorsammenheng. Bakgrunnen for dette navnet er nettopp at et tall multiplisert med en vektor gir en <i>skalert</i> vektor. Vi kan bruke ordene «skalar» og «tall» om hverandre.
+</p>
+
+<p>
+En vektor \(\vec{v}\) skalert med et tall \(t\) er en ny vektor med samme retning som \(\vec{v}\) og lengde \(t|\vec{v}|\).
+</p>
+
+
+<div id="org19300c7" class="figure">
+<p><object type="image/svg+xml" data="figurer/vektor8.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
+</p>
+<p><span class="figure-number">Illustrasjon 8 </span>Skalerte vektorer</p>
+</div>
+
+<p>
+Her er \(0 < a < 1\), \(b > 1\) og \(c < 0\). Vi ser altså at en negativ skalering av en vektor gir en vektor med motsatt retning. For eksemplene i figuren over, er \(|b| = |c|\).
+</p>
+
+<div class="task" id="org2718161">
+<p>
+Undersøk om <code>np.dot(t, v)</code> fungerer som forventet dersom <code>t</code> er et tall og <code>v</code> er en vektor i form av et numpy-array.
+</p>
+
+</div>
+</div>
 </div>
 </div>
 </div>
