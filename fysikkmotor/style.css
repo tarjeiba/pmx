@@ -35,6 +35,13 @@ body {
     background-color: #ffffff;
 }
 
+.figure {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
 span.figure-number {
     font-weight: bold;
 }
@@ -89,7 +96,7 @@ table {
 }
 
 #content {
-    width: 70em;
+    max-width: 70em;
     margin-left: auto;
     margin-right: auto;
     padding: 8px;
@@ -102,24 +109,16 @@ table {
     overflow: auto;
 }
 
-/* #main { */
-div.outline-2 {
-    width: 70em;
-    float: right;
-    /* The lines below are useful if the "main" div isn't available and
-	   div.outline-2 has to be used. */
-    position: relative;
-}
 
 #postamble {
     clear: both;
     text-align: center;
 }
 
+#postamble p {
+    margin: 0px;
+}
 
-/* @end */
-
-/* @group Header */
 
 h1.title {
     margin-top: 10px;
@@ -130,35 +129,16 @@ h1.title {
     margin-bottom: 0.2em;
 }
 
-
-
-.NOTES {
-    border: 1px solid #ccc;
-    box-shadow: 3px 3px 3px #eee;
-    padding: 8pt;
-    overflow: auto;
-    /* margin: 1.2em; */
-    margin: auto;
-    align: center;
-    display: inline-block;
-}
-
 .task {
     border-left: 6px solid #aaa;
     padding-left: 10pt;
     padding-bottom: 0pt;
-    width: 100%;
     overflow: inherit;
     text-align: left;
     display: inline-block;
     margin-top: 10pt;
     margin-bottom: 10pt;
 }
-
-
-/* @end */
-
-/* @group Table of Contents */
 
 #table-of-contents h2 {
     letter-spacing: -0.1em;
@@ -169,36 +149,9 @@ h1.title {
     padding-left: 1em;
 }
 
-/* @end */
-
-/* @group Outline Level 2 */
-
-.outline-2 h2 {
-    /* background: #6699ff; */
-    border-bottom: 1px solid #ccc;
-}
-
-.outline-2 h2, .outline-2 h3 {
-    letter-spacing: -0.05em;
-}
-
-.outline-2 {
-    padding: 0px;
-    margin-top: 10px;
-    /* margin-bottom: 10px; */
-    /* border-top: 1px solid #ccc; */
-}
-
-/* @end */
-
 td {
     border: 1px solid #ccc;
-}p
-
-.org-right {
-    text-align: right;
-} 
-
+}
 
 h1 span, h2 span, h3 span, h4 span, h5 span, h6 span {
     background-color: #eee;
@@ -217,9 +170,5 @@ a {
 
 a:hover {
     border-bottom: 1px dotted #57d;
-}
-
-#postamble p {
-    margin: 0px;
 }
 
