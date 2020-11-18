@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="nb" xml:lang="nb">
+<head>
+<!-- 2020-11-18 Wed 10:25 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Fysikkmotor</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Tarjei Bærland" />
+<link rel="stylesheet" type="text/css" href="./style.css" />
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Fysikkmotor</h1>
+<p>
+Gjennom dette oppgavearket skal vi lage en fysikkmotor ved å bruke Python og Pygame. Vi kommer omtrentlig til å ha en gjennomgang som følger
+</p>
+
+<dl class="org-dl">
+<dt><a href="#orgb0deeba">Vektorer</a></dt><dd>Hvordan kan vi representerere vektorer i et python-program?</dd>
+<dt><a href="#orgddde56a">Partikler</a></dt><dd>Kan vi samle flere egenskaper enn bare tall til i én verdi?</dd>
+<dt><a href="#org10345b0">Simulering</a></dt><dd>Trinnvis framover i Pygame</dd>
+<dt><a href="#orgdbf80de">Kollisjoner</a></dt><dd>Kan partiklene våre kollidere med hverandre?</dd>
+<dt><a href="#orgddb862c">Bugfikser</a></dt><dd>Utbedringer kommer til å være nødvendig.</dd>
+<dt><a href="#org62ab94c">Utforsking</a></dt><dd>Hvilke andre modeller kan vi bruke partiklene våre til?</dd>
+</dl>
+
+<div id="outline-container-orgb0deeba" class="outline-2">
+<h2 id="orgb0deeba">Vektorer</h2>
+<div class="outline-text-2" id="text-orgb0deeba">
+<p>
+
+</p>
+</div>
+
+<div id="outline-container-org372191d" class="outline-3">
+<h3 id="org372191d">Introduksjon</h3>
+<div class="outline-text-3" id="text-org372191d">
+<p>
+Fra matematikken kjenner vi en vektor som noe med størrelse og retning. Ofte illustrerer vi dette med en pil. Under vises vektoren \(\vec{v}\) tegnet som en pil i planet.
+</p>
+
+
+<div id="org238aa6a" class="figure">
+<p><object type="image/svg+xml" data="figurer/vektor1.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
+</p>
+<p><span class="figure-number">Illustrasjon 1 </span>En vektor illustrert som en pil</p>
+</div>
+
+<p>
+En vektor avhenger ikke av hvor vi tegner den, kun av dens størrelse og retning, altså vil disse to vektorene være den samme, til tross for at de er «ved siden av hverandre».
+</p>
+
+
+<div id="org70475d0" class="figure">
+<p><object type="image/svg+xml" data="figurer/vektor2.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
+</p>
+<p><span class="figure-number">Illustrasjon 2 </span>To like vektorer, altså to av den samme vektoren</p>
+</div>
+
+<p>
+Dette er altså tilsvarende at tallet 3 er tallet 3, uavhengig av hvor vi møter det.
+</p>
+
+<p>
+Før vi kan representere en vektor i et dataprogram, må vi bestemme oss for hvordan vi ønsker å <i>representere</i> vektoren. Vi kan for eksempel se for oss vektoren \(\vec{v}\) som en pil, hvor lengden til \(\vec{v}\), den såkalte <i>absoluttverdien</i>, er \(|\vec{v}| = 3\) og vinkelen mellom \(\vec{v}\) og en horisontalakse er \(\theta = 30^{\circ}\).
+</p>
+
+
+<div id="orga930174" class="figure">
+<p><object type="image/svg+xml" data="figurer/vektor3.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
+</p>
+<p><span class="figure-number">Illustrasjon 3 </span>En vektor, dens størrelse og dens retning</p>
+</div>
+
+<p>
+Om vi så ønsker å representere dette i et python-program, kan vi for eksempel skrive
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-variable-name">absoluttverdi</span> = 3
+<span class="org-variable-name">vinkel</span> = 30
+</pre>
+</div>
+
+<p>
+Dette byr på en serie problemer, blant annet at vi nå har to variabler for å holde styr på det som strengt tatt bare er én matematisk størrelse, vektoren \(\vec{v}\).
+</p>
+
+<div class="task" id="orgb0b3dd3">
+<p>
+Om du allerede kjenner til vektorer, stopp opp her og tenk på hvordan du ville representert dem i kode.
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org677aaf5" class="outline-3">
+<h3 id="org677aaf5">Addisjon</h3>
+<div class="outline-text-3" id="text-org677aaf5">
+<p>
+Vi er vant til at \(\text{tall} + \text{tall} = \text{tall}\) og at \(\text{tall} \cdot \text{tall} = \text{tall}\).
+</p>
+
+<p>
+For vektorer er addisjon som forventet, \(\text{vektor} + \text{vektor} = \text{vektor}\). For å visualisere en vektorsumm, kan vi sette de to vektorleddene etter hverandre. Under vises \(\vec{u}\) og \(\vec{v}\).
+</p>
+
+
+<div id="org9d14969" class="figure">
+<p><object type="image/svg+xml" data="figurer/vektor4.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
+</p>
+<p><span class="figure-number">Illustrasjon 4 </span>To vektorer</p>
+</div>
+
+<p>
+For å legge disse sammen visuelt, kan vi sette de etter hverandre, slik at \(\vec{v}\) starter der \(\vec{u}\) slutter. Summen \(\vec{u} + \vec{v}\) er da en <i>ny vektor</i> som starter der \(\vec{u}\) starter og slutter der \(\vec{v}\) slutter.
+</p>
+
+
+<div id="org3ea7844" class="figure">
+<p><object type="image/svg+xml" data="figurer/vektor5.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
+</p>
+<p><span class="figure-number">Illustrasjon 5 </span>Vektorsum</p>
+</div>
+
+<p>
+Essensen her er at summen av to vektorer er en ny vektor.
+</p>
+
+<div class="task" id="orgb1a6c97">
+<p>
+Om vi har to vektorer representert som to lengder og to vinkler, à la det beskrevet tidligere. Hvordan kan vi gå fram for å finne vektorsummen av disse?
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7dc1110" class="outline-3">
+<h3 id="org7dc1110">Dekomponering</h3>
+<div class="outline-text-3" id="text-org7dc1110">
+<p>
+Vi <i>dekomponerer</i> en vektor ved å skrive den som en sum av vektorer, vi finner dens <i>komponenter</i>. Det vanligste er å la hver av disse komponentene ligge langs en koordinatakse. Under har vi dekomponert \(\vec{v}\) til en vektor i \(x\)-retning, \(\vec{v}_x\) og en vektor i \(y\)-retning, \(\vec{v}_y\).
+</p>
+
+
+<div id="org53ce675" class="figure">
+<p><object type="image/svg+xml" data="figurer/vektor6.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
+</p>
+<p><span class="figure-number">Illustrasjon 6 </span>Dekomponering</p>
+</div>
+
+<p>
+Merk at de to vektorene \(\vec{v}_x\) og \(\vec{v}_y\) er de <i>eneste</i> to vektorene i $x$- og $y$-retning hvor summen gir \(\vec{v}\), altså er \(\vec{v}\) <i>entydig</i> bestemt av de to vektorene. Om vi da skriver \(|\vec{v}_x| = v_x\) og \(|\vec{v}_y| = v_y\), kan vi samle det hele til \[\vec{v} = \left[v_x, v_y\right].\]
+</p>
+
+<p>
+Vi sier at vi nå har skrevet \(\vec{v}\) på <i>koordinatform</i>. For eksempel, dersom vi har \(\vec{v}\) som definert over, vil vi få
+</p>
+
+\begin{aligned}
+\vec{v} &= \left[|\vec{v}_x|, |\vec{v}_y|\right] \\
+        &= \left[|\vec{v}| \cos 30^{\circ}, |\vec{v}| \sin 30^{\circ} \right] \\
+        &= \left[3\cdot \tfrac{\sqrt{3}}{2}, 3\cdot\tfrac{1}{2} \right] \\
+        &= \left[\tfrac{3\sqrt{3}}{2}, \tfrac{3}{2} \right].
+\end{aligned}
+
+<div class="task" id="org870f39d">
+<p>
+Hvordan kan vi representerer vektorer på koordinatform i et program?
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgf329787" class="outline-3">
+<h3 id="orgf329787">Omforming</h3>
+<div class="outline-text-3" id="text-orgf329787">
+<p>
+Vektorer på koordinatform har en annen fin egenskap, summen av to vektorer er den komponentvise summen av leddene. Altså er
+</p>
+
+\begin{aligned}
+\vec{u} + \vec{v} &= \left[u_x, u_y\right] + \left[v_x, v_y\right] \\
+                  &= \left[u_x + v_x, u_y + v_y\right].
+\end{aligned}
+
+<p>
+Merk at også når vi ønsker å representere vektorer på koordinatform med tall, trenger vi to tall om vektoren er i to dimensjoner (i planet). Det ser ut som at uansett hvordan vi representerer vektorer med tall, trenger vi like mange tall som vi har dimensjoner for vektoren.
+</p>
+
+<p>
+Naivt kunne vi tenkt at vi skulle representert vektoren på en form à la
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-variable-name">x_koordinat</span> = 2.598  <span class="org-comment-delimiter"># </span><span class="org-comment">3 * cos(30 grader)</span>
+<span class="org-variable-name">y_koordinat</span> = 1.500  <span class="org-comment-delimiter"># </span><span class="org-comment">3 * sin(30 grader)</span>
+</pre>
+</div>
+
+<div class="task" id="orgc1e399a">
+<p>
+Lag et program som tar inn en vektor med lengde og vinkel, og returnerer en vektor på koordinatform. Du kan for eksempel lage det som en funksjon på formen
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">polar_til_koordinat</span>(lengde, vinkel):
+    <span class="org-comment-delimiter"># </span><span class="org-comment">dine utregninger</span>
+    <span class="org-keyword">return</span> [x_koordinat, y_koordinat]
+</pre>
+</div>
+
+<p>
+Legg merke til her at vi har valgt å representere vektoren på koordinatform som en liste. Dette er fordi vi ikke kan ha en funksjon i python som returerner to uavhengige verdier uten at disse pakkes sammen på et vis.
+</p>
+
+</div>
+
+<div class="task" id="org4d995d4">
+<p>
+Skriv et program som regner ut summen av de to vektorene under. Kall svaret ditt <code>w</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-variable-name">u</span> = [1, 3]
+<span class="org-variable-name">v</span> = [4, 5]
+</pre>
+</div>
+
+</div>
+
+<div class="task" id="orga78c360">
+<p>
+Skriv en funksjon som tar inn en vektor på koordinatform, da som en liste av to verdier, og returnerer en liste med vektorens <code>lengde</code> og <code>vinkel</code>. Du kan kalle funksjonen <code>koordinat_til_polar</code>.
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org7c28219" class="outline-3">
+<h3 id="org7c28219">Representasjonsform</h3>
+<div class="outline-text-3" id="text-org7c28219">
+<p>
+Vi har nå sett at det matematisk finnes ulike ekvivalente måter å representere en vektor på, som et sett av lengde og vinkel, som \(x\)- og \(y\)-koordinater, og vi kunne tenkt oss mange flere (de fleste av dem uhensiktsmessige i de fleste tilfeller, som et sett av lengde og en \(x\)-koordinat).
+</p>
+
+<p>
+Vi begynner også å ane konturene av at det er uendelig mange måter å representere vektorer i dataprogrammer, som enkeltvariabler, som en liste, og som andre «sammensatte datatyper».
+</p>
+
+<p>
+Under oppgaven med vektoraddisjon, så vi dog at listerepresentasjonen, om enn den samler vektoren til ett format, ikke er hensiktsmessig for addisjon. Et bedre alternativ da er å bruke et <code>numpy-array</code>. Vi får dette ved å skrive for eksempel
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">import</span> numpy <span class="org-keyword">as</span> np
+
+<span class="org-variable-name">u</span> = np.array([2.598, 1.500])  <span class="org-comment-delimiter"># </span><span class="org-comment">3 * sin(30 grader)</span>
+</pre>
+</div>
+
+<div class="task" id="org0c3e0dc">
+<p>
+Forsøk å se hvordan addisjon av vektorer fungerer nå. Start med en vektor <code>u</code> og en vektor <code>v</code>, hver representert som et numpy-array, og test ut addisjon ved å bruke et vanlig <code>+</code>-tegn.
+</p>
+
+<p>
+Hva observerer du?
+</p>
+
+<p>
+Test det samme om de to vektorene hadde vært vanlige lister.
+</p>
+
+<p>
+Kommenter.
+</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-orgddde56a" class="outline-2">
+<h2 id="orgddde56a">Partikler</h2>
+<div class="outline-text-2" id="text-orgddde56a">
+<p>
+
+</p>
+</div>
+</div>
+
+<div id="outline-container-org10345b0" class="outline-2">
+<h2 id="org10345b0">Simulering</h2>
+<div class="outline-text-2" id="text-org10345b0">
+<p>
+
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgdbf80de" class="outline-2">
+<h2 id="orgdbf80de">Kollisjoner</h2>
+<div class="outline-text-2" id="text-orgdbf80de">
+<p>
+
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgddb862c" class="outline-2">
+<h2 id="orgddb862c">Bugfikser</h2>
+<div class="outline-text-2" id="text-orgddb862c">
+<p>
+
+</p>
+</div>
+</div>
+
+<div id="outline-container-org62ab94c" class="outline-2">
+<h2 id="org62ab94c">Utforsking</h2>
+<div class="outline-text-2" id="text-org62ab94c">
+<p>
+
+</p>
+</div>
+</div>
+</div>
+</body>
+</html>
