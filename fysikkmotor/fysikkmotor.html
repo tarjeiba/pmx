@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="nb" xml:lang="nb">
 <head>
-<!-- 2020-11-18 Wed 14:23 -->
+<!-- 2020-11-25 Wed 15:05 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Fysikkmotor</title>
@@ -61,15 +61,18 @@
 <p>
 Gjennom dette oppgavearket skal vi lage en fysikkmotor ved å bruke Python og Pygame. Vi kommer omtrentlig til å ha en gjennomgang som følger
 </p>
-
 <dl class="org-dl">
 <dt><a href="#vektorer">Vektorer</a></dt><dd>Hvordan kan vi representerere vektorer i et python-program?</dd>
-<dt><a href="fysikkmotor.html#ID-0b6d9763-24d2-4b31-9abc-3bf52bb81e94">Partikler</a></dt><dd>Kan vi samle flere egenskaper enn bare tall til i én verdi?</dd>
+<dt><a href="#partikler">Partikler</a></dt><dd>Kan vi samle flere egenskaper enn bare tall til i én verdi?</dd>
 <dt><a href="fysikkmotor.html#ID-9a55573e-44bf-4921-acf1-c5d66ede7d5d">Simulering</a></dt><dd>Trinnvis framover i Pygame</dd>
 <dt><a href="fysikkmotor.html#ID-050ff933-d1a8-4d9b-8be9-ef5dc351ef1b">Kollisjoner</a></dt><dd>Kan partiklene våre kollidere med hverandre?</dd>
 <dt><a href="fysikkmotor.html#ID-f55222e8-5b25-4fce-aad3-f66217831d2c">Bugfikser</a></dt><dd>Utbedringer kommer til å være nødvendig.</dd>
 <dt><a href="fysikkmotor.html#ID-fd134f56-3103-448a-ae32-4e7679b7e50e">Utforsking</a></dt><dd>Hvilke andre modeller kan vi bruke partiklene våre til?</dd>
 </dl>
+
+<p>
+Motoren kommer til å ta form av en virtuell kasse som det spretter partikler rundt inni. Denne kan vi forhåpentligvis bruke til å gjennomføre ulike modelleringsforsøk.
+</p>
 
 <div id="outline-container-vektorer" class="outline-2">
 <h2 id="vektorer">Vektorer</h2>
@@ -79,15 +82,15 @@ Gjennom dette oppgavearket skal vi lage en fysikkmotor ved å bruke Python og Py
 </p>
 </div>
 
-<div id="outline-container-org17253b1" class="outline-3">
-<h3 id="org17253b1">Introduksjon</h3>
-<div class="outline-text-3" id="text-org17253b1">
+<div id="outline-container-org3931afc" class="outline-3">
+<h3 id="org3931afc">Introduksjon</h3>
+<div class="outline-text-3" id="text-org3931afc">
 <p>
 Fra matematikken kjenner vi en vektor som noe med størrelse og retning. Ofte illustrerer vi dette med en pil. Under vises vektoren \(\vec{v}\) tegnet som en pil i planet.
 </p>
 
 
-<div id="orgf07f11f" class="figure">
+<div id="org317f9b0" class="figure">
 <p><object type="image/svg+xml" data="figurer/vektor1.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -99,7 +102,7 @@ En vektor avhenger ikke av hvor vi tegner den, kun av dens størrelse og retning
 </p>
 
 
-<div id="orga127772" class="figure">
+<div id="org51ea688" class="figure">
 <p><object type="image/svg+xml" data="figurer/vektor2.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -115,7 +118,7 @@ Før vi kan representere en vektor i et dataprogram, må vi bestemme oss for hvo
 </p>
 
 
-<div id="orgb55faf6" class="figure">
+<div id="orgb0dd7d3" class="figure">
 <p><object type="image/svg+xml" data="figurer/vektor3.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -135,7 +138,7 @@ Om vi så ønsker å representere dette i et python-program, kan vi for eksempel
 Dette byr på en serie problemer, blant annet at vi nå har to variabler for å holde styr på det som strengt tatt bare er én matematisk størrelse, vektoren \(\vec{v}\).
 </p>
 
-<div class="task" id="orgc928d72">
+<div class="task" id="org0be03e5">
 <p>
 Om du allerede kjenner til vektorer, stopp opp her og tenk på hvordan du ville representert dem i kode.
 </p>
@@ -144,9 +147,9 @@ Om du allerede kjenner til vektorer, stopp opp her og tenk på hvordan du ville 
 </div>
 </div>
 
-<div id="outline-container-org0f09147" class="outline-3">
-<h3 id="org0f09147">Addisjon</h3>
-<div class="outline-text-3" id="text-org0f09147">
+<div id="outline-container-orgf8611f2" class="outline-3">
+<h3 id="orgf8611f2">Addisjon</h3>
+<div class="outline-text-3" id="text-orgf8611f2">
 <p>
 Vi er vant til at \(\text{tall} + \text{tall} = \text{tall}\) og at \(\text{tall} \cdot \text{tall} = \text{tall}\).
 </p>
@@ -156,7 +159,7 @@ For vektorer er addisjon som forventet, \(\text{vektor} + \text{vektor} = \text{
 </p>
 
 
-<div id="org14cdb45" class="figure">
+<div id="orgac08817" class="figure">
 <p><object type="image/svg+xml" data="figurer/vektor4.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -168,7 +171,7 @@ For å legge disse sammen visuelt, kan vi sette de etter hverandre, slik at \(\v
 </p>
 
 
-<div id="org197e1de" class="figure">
+<div id="org24721d9" class="figure">
 <p><object type="image/svg+xml" data="figurer/vektor5.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -179,7 +182,7 @@ Sorry, your browser does not support SVG.</object>
 Essensen her er at summen av to vektorer er en ny vektor.
 </p>
 
-<div class="task" id="orgdb8950b">
+<div class="task" id="orgeeed966">
 <p>
 Om vi har to vektorer representert som to lengder og to vinkler, à la det beskrevet tidligere. Hvordan kan vi gå fram for å finne vektorsummen av disse?
 </p>
@@ -188,15 +191,15 @@ Om vi har to vektorer representert som to lengder og to vinkler, à la det beskr
 </div>
 </div>
 
-<div id="outline-container-orgd8b0234" class="outline-3">
-<h3 id="orgd8b0234">Dekomponering</h3>
-<div class="outline-text-3" id="text-orgd8b0234">
+<div id="outline-container-orgabb533f" class="outline-3">
+<h3 id="orgabb533f">Dekomponering</h3>
+<div class="outline-text-3" id="text-orgabb533f">
 <p>
 Vi <i>dekomponerer</i> en vektor ved å skrive den som en sum av vektorer, vi finner dens <i>komponenter</i>. Det vanligste er å la hver av disse komponentene ligge langs en koordinatakse. Under har vi dekomponert \(\vec{v}\) til en vektor i \(x\)-retning, \(\vec{v}_x\) og en vektor i \(y\)-retning, \(\vec{v}_y\).
 </p>
 
 
-<div id="org133bd9f" class="figure">
+<div id="orgd4f27a0" class="figure">
 <p><object type="image/svg+xml" data="figurer/vektor6.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -218,7 +221,7 @@ Vi sier at vi nå har skrevet \(\vec{v}\) på <i>koordinatform</i>. For eksempel
         &= \left[\tfrac{3\sqrt{3}}{2}, \tfrac{3}{2} \right].
 \end{aligned}
 
-<div class="task" id="org7edd69c">
+<div class="task" id="orgcd48a01">
 <p>
 Hvordan kan vi representerer vektorer på koordinatform i et program?
 </p>
@@ -227,9 +230,9 @@ Hvordan kan vi representerer vektorer på koordinatform i et program?
 </div>
 </div>
 
-<div id="outline-container-org9ffbb87" class="outline-3">
-<h3 id="org9ffbb87">Omforming</h3>
-<div class="outline-text-3" id="text-org9ffbb87">
+<div id="outline-container-org0d52735" class="outline-3">
+<h3 id="org0d52735">Omforming</h3>
+<div class="outline-text-3" id="text-org0d52735">
 <p>
 Vektorer på koordinatform har en annen fin egenskap, summen av to vektorer er den komponentvise summen av leddene. Altså er
 </p>
@@ -253,7 +256,7 @@ Naivt kunne vi tenkt at vi skulle representert vektoren på en form à la
 </pre>
 </div>
 
-<div class="task" id="orgb491396">
+<div class="task" id="org68aabbb">
 <p>
 Lag et program som tar inn en vektor med lengde og vinkel, og returnerer en vektor på koordinatform. Du kan for eksempel lage det som en funksjon på formen
 </p>
@@ -271,7 +274,7 @@ Legg merke til her at vi har valgt å representere vektoren på koordinatform so
 
 </div>
 
-<div class="task" id="org5ad0a33">
+<div class="task" id="orgfdbc6ea">
 <p>
 Skriv et program som regner ut summen av de to vektorene under. Kall svaret ditt <code>w</code>.
 </p>
@@ -284,7 +287,7 @@ Skriv et program som regner ut summen av de to vektorene under. Kall svaret ditt
 
 </div>
 
-<div class="task" id="org87c5309">
+<div class="task" id="orga6f40d3">
 <p>
 Skriv en funksjon som tar inn en vektor på koordinatform, da som en liste av to verdier, og returnerer en liste med vektorens <code>lengde</code> og <code>vinkel</code>. Du kan kalle funksjonen <code>koordinat_til_polar</code>.
 </p>
@@ -293,9 +296,9 @@ Skriv en funksjon som tar inn en vektor på koordinatform, da som en liste av to
 </div>
 </div>
 
-<div id="outline-container-orgbaf5c5a" class="outline-3">
-<h3 id="orgbaf5c5a">Representasjonsform</h3>
-<div class="outline-text-3" id="text-orgbaf5c5a">
+<div id="outline-container-orgd86b924" class="outline-3">
+<h3 id="orgd86b924">Representasjonsform</h3>
+<div class="outline-text-3" id="text-orgd86b924">
 <p>
 Vi har nå sett at det matematisk finnes ulike ekvivalente måter å representere en vektor på, som et sett av lengde og vinkel, som \(x\)- og \(y\)-koordinater, og vi kunne tenkt oss mange flere (de fleste av dem uhensiktsmessige i de fleste tilfeller, som et sett av lengde og en \(x\)-koordinat).
 </p>
@@ -315,7 +318,7 @@ Under oppgaven med vektoraddisjon, så vi dog at listerepresentasjonen, om enn d
 </pre>
 </div>
 
-<div class="task" id="orga4e7799">
+<div class="task" id="orgecc64b0">
 <p>
 Forsøk å se hvordan addisjon av vektorer fungerer nå. Start med en vektor <code>u</code> og en vektor <code>v</code>, hver representert som et numpy-array, og test ut addisjon ved å bruke et vanlig <code>+</code>-tegn.
 </p>
@@ -325,26 +328,26 @@ Hva observerer du?
 </p>
 
 <p>
-Test det samme om de to vektorene hadde vært vanlige lister.
+Test det samme om de to vektorene hadde vært lister.
 </p>
 
 <p>
-Kommenter.
+Kommenter svarene dine.
 </p>
 
 </div>
 </div>
 </div>
 
-<div id="outline-container-org6f82046" class="outline-3">
-<h3 id="org6f82046">Skalarproduktet</h3>
-<div class="outline-text-3" id="text-org6f82046">
+<div id="outline-container-org42df196" class="outline-3">
+<h3 id="org42df196">Skalarproduktet</h3>
+<div class="outline-text-3" id="text-org42df196">
 <p>
 Vi har sett at addisjon fungerer som vi forventer mellom vektorer, en sum av to vektorer er en ny vektor. Hva med multiplikasjon?
 </p>
 
 <p>
-Vel. For vekterorer operer vi gjerne med <i>to</i> typer multiplikasjon, et såkalt <i>skalarprodukt</i> og et <i>vektorprodukt</i>. Vi noterer det som \(\vec{u}\cdot\vec{v}\) for skalarproduktet og \(\vec{u}\times\vec{v}\). Det overraskende her er at <i>skalarproduktet</i> tar inn to vektorer og gir ut et tall (en skalar), mens vektorproduktet tar inn to vektorer og gir ut en vektor.
+Vel. For vektorer operer vi gjerne med <i>to</i> typer multiplikasjon, et såkalt <i>skalarprodukt</i> og et <i>vektorprodukt</i>. Vi noterer det som \(\vec{u}\cdot\vec{v}\) for skalarproduktet og \(\vec{u}\times\vec{v}\). Det overraskende her er at <i>skalarproduktet</i> tar inn to vektorer og gir ut et tall (en skalar), mens vektorproduktet tar inn to vektorer og gir ut en vektor.
 </p>
 
 <p>
@@ -352,26 +355,46 @@ Inntil videre er det kun skalarproduktet vi skal ta hensyn til.
 </p>
 
 <p>
-På samme måte som at det finnes ulike måter å tenke på vektorer, finnes det ulike måter å tenke på skalarproduktet. En av disse er å si at « \(\vec{u}\cdot\vec{v}\) er lengden av \(\vec{u}\) ganget med lengden av den delen til \(\vec{v}\) som ligger langs \(\vec{u}\)».
+På samme måte som at det finnes ulike måter å tenke på vektorer, finnes det ulike måter å tenke på skalarproduktet. En av disse er å si at « \(\vec{u}\cdot\vec{v}\) er lengden av \(\vec{u}\) ganget med lengden av den delen av \(\vec{v}\) som ligger langs \(\vec{u}\)».
 </p>
 
 <p>
-Dette er muligens ikke helt opplagt, for da virker det for eksempel som at \(\vec{u}\cdot\vec{v}\) er noe annet enn \(\vec{v}\cdot\vec{y}\), men det skal være det samme.
-</p>
-
-<p>
-Vi kan vise denne vektormultiplikasjonen som under.
+«Den delen av \(\vec{v}\) som ligger langs \(\vec{u}\)» er illustert under. Om vi lar \(\vec{u}\) og \(\vec{v}\) starte i samme punkt, og trekker enden av \(\vec{v}\) «loddrett ned på \(\vec{u}\)» får vi delen av \(\vec{v}\) som ligger langs \(\vec{u}\) som \(\vec{v}_u\). Dette er vist under.
 </p>
 
 
-<div id="orgad24678" class="figure">
-<p><object type="image/svg+xml" data="figurer/vektor7.svg" class="org-svg">
+<div id="orgbb8ca21" class="figure">
+<p><object type="image/svg+xml" data="figurer/vektor7a.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
-<p><span class="figure-number">Illustrasjon 7 </span>\(\vec{v}\) <i>projisert</i> på \(\vec{u}\)</p>
+<p><span class="figure-number">Illustrasjon 7 </span>\(\vec{v}_u\) er delen av \(\vec{v}\) som ligger langs \(\vec{u}\)</p>
 </div>
 
-<div class="task" id="orgc3f9fb6">
+<p>
+Lengden av \(\vec{v}_u\) da skrives \(|\vec{v}|\cos\theta\), som enklere vises om vi orienterer oss slik at \(\vec{u}\) ligger langs horisontalaksen.
+</p>
+
+
+<div id="orgd06f68a" class="figure">
+<p><object type="image/svg+xml" data="figurer/vektor7a1.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
+</p>
+<p><span class="figure-number">Illustrasjon 8 </span>Lengden av \(\vec{v}_u\)</p>
+</div>
+
+<p>
+Vi sier at vi har funnet <i>projeksjonen</i> av \(\vec{v}\) på \(\vec{u}\), \(\vec{v}_u\).
+</p>
+
+<p>
+Kan vi med dette få en intuisjon av hva \(\vec{u}\cdot\vec{v}\) er?
+</p>
+
+<p>
+Ja, \(\vec{u}\cdot\vec{v}\) er «lengden av \vec{u} ganget med lengden av \(\vec{v}_u\)». Altså har vi at \(\vec{u}\cdot\vec{v} = |\vec{u}||\vec{v}_u|\).
+</p>
+
+<div class="task" id="orge3e6865">
 <p>
 Lag et program som tar inn to vektorer, \(u\) og \(v\) (du kan bruke de samme som i eksempelet over). Regn ut \(\vec{u}\cdot\vec{v}\) ved å bruke at \[\vec{u}\cdot\vec{v} = |\vec{u}||\vec{v}|\cos \theta,\] hvor \(\theta\) er vinkelen mellom \(\vec{u}\) og \(\vec{v}\).
 </p>
@@ -387,7 +410,7 @@ Om vi har vektorene representert på koordinatform, er det en enkel sak å regne
                     &= u_x v_x + u_y v_y
 \end{aligned}
 
-<div class="task" id="org29be937">
+<div class="task" id="org326599e">
 <p>
 Lag et program som tar inn to vektorer på koordinatform i lister. Regn ut vektorenes skalarprodukt ved å bruke definisjonen over.
 </p>
@@ -407,7 +430,7 @@ Du kan for eksempel ta utgangspunkt i følgende:
 Skalarproduktet oppstår i mange områder av matematikken. I <code>numpy</code> har vi det innebygd som <code>dot</code>-funksjonen. For eksempel vil <code>np.dot(a, b)</code> regne ut skalarproduktet (eller «prikkproduktet» eller «dotproduktet») til de to vektorene <code>a</code> og <code>b</code>.
 </p>
 
-<div class="task" id="org63ab528">
+<div class="task" id="orgfb54d31">
 <p>
 Lag et program som tar inn to vektorer på koordinatform i numpy-arrayer. Regn ut vektorenes skalarprodukt ved å bruke <code>np.dot</code>.
 </p>
@@ -425,9 +448,9 @@ Du kan for eksempel ta utgangspunkt i følgende:
 </div>
 </div>
 
-<div id="outline-container-org5114e03" class="outline-3">
-<h3 id="org5114e03">Skalering eller skalarmultiplikasjon</h3>
-<div class="outline-text-3" id="text-org5114e03">
+<div id="outline-container-org35bede0" class="outline-3">
+<h3 id="org35bede0">Skalering eller skalarmultiplikasjon</h3>
+<div class="outline-text-3" id="text-org35bede0">
 <p>
 Ordet «skalar» brukes ofte om tall i vektorsammenheng. Bakgrunnen for dette navnet er nettopp at et tall multiplisert med en vektor gir en <i>skalert</i> vektor. Vi kan bruke ordene «skalar» og «tall» om hverandre.
 </p>
@@ -437,22 +460,326 @@ En vektor \(\vec{v}\) skalert med et tall \(t\) er en ny vektor med samme retnin
 </p>
 
 
-<div id="org7595237" class="figure">
+<div id="org0875bba" class="figure">
 <p><object type="image/svg+xml" data="figurer/vektor8.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
-<p><span class="figure-number">Illustrasjon 8 </span>Skalerte vektorer</p>
+<p><span class="figure-number">Illustrasjon 9 </span>Skalerte vektorer</p>
 </div>
 
 <p>
 Her er \(0 < a < 1\), \(b > 1\) og \(c < 0\). Vi ser altså at en negativ skalering av en vektor gir en vektor med motsatt retning. For eksemplene i figuren over, er \(|b| = |c|\).
 </p>
 
-<div class="task" id="org8529005">
+<div class="task" id="org33e7e5a">
 <p>
 Undersøk om <code>np.dot(t, v)</code> fungerer som forventet dersom <code>t</code> er et tall og <code>v</code> er en vektor i form av et numpy-array.
 </p>
 
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-partikler" class="outline-2">
+<h2 id="partikler">Partikler</h2>
+<div class="outline-text-2" id="text-partikler">
+<p>
+
+</p>
+</div>
+
+<div id="outline-container-orgf2ec62d" class="outline-3">
+<h3 id="orgf2ec62d">Introduksjon</h3>
+<div class="outline-text-3" id="text-orgf2ec62d">
+<p>
+Vi skal ha partikler sprettende rundt på en skjerm. Vi bør da kunne ha en måte i programmet vårt for å si «dette er en bestemt partikkel». Ideelt sett kunne for eksempel <code>partikkel_1</code> vist til en partikkel med en posisjon, fart, størrelse, og <code>partikkel_2</code> det samme.
+</p>
+
+
+<div id="org59b5fb3" class="figure">
+<p><object type="image/svg+xml" data="figurer/partikkel1.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
+</p>
+<p><span class="figure-number">Illustrasjon 10 </span>To ulike partikler, <code>partikkel_1</code> og <code>partikkel_2</code></p>
+</div>
+
+<p>
+Her ser vi at det som skiller <code>partikkel_1</code> og <code>partikkel_2</code> er deres <i>posisjon</i>, <i>mønster</i>, og <i>størrelse</i>. Vi må altså nok en gang gjøre et valg for hvordan vi skal representere partiklene i kode.
+</p>
+
+<p>
+La oss si vi velger å ha <i>posisjon</i> som en liste med \(x\)- og \(y\)-verdier, <i>mønster</i> som en tekststreng (for eksempel <code>"stripete"</code> og <code>"prikkete"</code> og størrelse som et tall. Vi kunne da bestemt oss for at de to partiklene over var definert som
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-variable-name">partikkel_1</span> = [[38.6, 8.6], <span class="org-string">"stripete"</span>, 13.5]
+<span class="org-variable-name">partikkel_2</span> = [[87.3, -12.9], <span class="org-string">"prikkete"</span>, 8.3]
+</pre>
+</div>
+
+<p>
+Vi kan da fortelle de som skal bruke programmet at «en partikkel er en liste med tre verdier, den første verdien er en liste med koordinater, den andre en tekststreng som setter mønsteret, den tredje et tall for radiusen».
+</p>
+
+<div class="task" id="org0e79544">
+<p>
+Lag en <code>partikkel_3</code>, med radius 15.3, senter i origo og rutete mønster.
+</p>
+
+</div>
+
+<p>
+Python har en annen god datatype for å samle slike egenskaper, såkalte <i>dictionaries</i> eller ordbøker. Dette er en samling med nøkkelord og verdier. Om vi skulle oppgitt partiklene over som ordbøker, ville vi skrevet
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-variable-name">partikkel_1</span> = {<span class="org-string">"posisjon"</span>: [38.6, 8.6],
+               <span class="org-string">"m&#248;nster"</span>: <span class="org-string">"stripete"</span>,
+               <span class="org-string">"radius"</span>: 13.5}
+</pre>
+</div>
+
+<p>
+Vi skriver altså <code>{}</code> med en samling av <code>nøkkelord: verdi,</code> mellom. Vi kan da hente ut verdier ved å skrive for eksempel <code>partikkel_1["radius"]</code> eller legge til nye verdier ved å skrive <code>partikkel_1["masse"] = 14</code>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">print</span>(partikkel_1[<span class="org-string">"radius"</span>])
+<span class="org-variable-name">partikkel_1</span>[<span class="org-string">"masse"</span>] = 14
+<span class="org-keyword">print</span>(partikkel_1)
+</pre>
+</div>
+
+<pre class="example" id="org81c9fd7">
+13.5
+{'posisjon': [38.6, 8.6], 'mønster': 'stripete', 'radius': 13.5, 'masse': 14}
+</pre>
+
+<div class="task" id="org8ff9c3f">
+<p>
+Lag <code>partikkel_1</code> og <code>partikkel_2</code> som over, men gjør posisjonen til et numpy-array, istedenfor lista vi bruker over.
+</p>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-org66b7d6f" class="outline-3">
+<h3 id="org66b7d6f">Tegne partikkel</h3>
+<div class="outline-text-3" id="text-org66b7d6f">
+<p>
+Dette avsnittet forutsetter at du har lagt inn biblioteket <code>pygame</code>. Dette kan du gjøre ved å åpne programmet «Anaconda prompt» og kjøre kommandoen <code>pip install pygame</code>.
+</p>
+
+<p>
+Pygame er et bibliotek som egentlig er ment for spill, men vi kan med hell bruke det for å visualisere fysikkmotoren vår òg.
+</p>
+
+<p>
+De fleste spill følger en løkke som ser omtrent slikt ut:
+</p>
+<ol class="org-ol">
+<li>Vi prosesserer data fra brukeren (tastetrykk, musebevegelser, stenge vinduet, osv.)</li>
+<li>Spillmotoren oppdaterer spillet (partikler flyttes, lyder gjøres klare til å spilles av, osv.)</li>
+<li>Et nytt bilde tegnes på skjermen (nye partikkelposisjoner, for eksempel.)</li>
+</ol>
+
+<p>
+Før dette må vi initialisere hele «spillet».
+</p>
+
+
+<div id="orgcada47b" class="figure">
+<p><object type="image/svg+xml" data="figurer/flytskjema1.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
+</p>
+<p><span class="figure-number">Illustrasjon 11 </span>Flytskjema for hele «spillet» vårt</p>
+</div>
+</div>
+
+<div id="outline-container-orgc9d1530" class="outline-4">
+<h4 id="orgc9d1530">«Init» og oppsett</h4>
+<div class="outline-text-4" id="text-orgc9d1530">
+<p>
+Her skal vi gjøre <code>pygame</code> klart.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">import</span> pygame
+
+pygame.init()
+<span class="org-variable-name">flate</span> = pygame.display.set_mode((800, 600))
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">Her kommer vi til &#229; skrive &#248;vrige funksjonsdefinisjoner</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">og lage variabler til programmet v&#229;rt</span>
+</pre>
+</div>
+
+<p>
+Vi har nå gjort pygame klart til å bruke et vindu som er 800 piksler bredt, og 600 piksler høyt. Det er dette vinduet vi skal tegne partiklene våre i.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb8f2132" class="outline-4">
+<h4 id="orgb8f2132">Hovedløkke og prosessere inndata</h4>
+<div class="outline-text-4" id="text-orgb8f2132">
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-variable-name">kjoerer</span> = <span class="org-constant">True</span>
+<span class="org-keyword">while</span> kjoerer:
+    <span class="org-keyword">for</span> event <span class="org-keyword">in</span> pygame.event.get():
+        <span class="org-keyword">if</span> event.<span class="org-builtin">type</span> == pygame.QUIT:
+            <span class="org-variable-name">kjoerer</span> = <span class="org-constant">False</span>
+    <span class="org-comment-delimiter"># </span><span class="org-comment">Her kommer &#171;mainloopen&#187; v&#229;r</span>
+
+<span class="org-keyword">print</span>(<span class="org-string">"Simuleringen er ferdig."</span>)
+pygame.<span class="org-constant">quit</span>()
+</pre>
+</div>
+
+<pre class="example">
+Simuleringen er ferdig.
+</pre>
+
+
+<p>
+Denne snutten gjør klar en hovedløkke, og vi setter opp et trinn for å prosessere inndata. Pygame håndterer handlinger fra brukeren ved å samle dem som =event=s.
+</p>
+
+<p>
+Vi får tak i alle disse hendelsene («event») ved å kalle funksjonen <code>pygame.EVENT.get</code>. Dette gir oss en liste med hendelser. Vi kan så løpe gjennom hver av disse hendelsene (det kan for eksempel være flyttinga av musepekeren, trykking av knapper, osv.).
+</p>
+
+<p>
+Dersom du har forsøkt å lukke pygame-vinduet, har en av hendelsene vært av typen <code>pygame.QUIT</code>. Vi sier da at dersom en av hendelsen var <code>pygame.QUIT</code> skal vi ut av hovedløkka, som vi her har valgt å gjøre ved å sette <code>kjoerer</code> til <code>False</code>.
+</p>
+
+<p>
+Når vi da har kommet oss helt ut av hovedløkka vår (<code>while kjoerer</code>-blokka), stenger vi pygame ved å kalle <code>quit</code>-funksjonen.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org653bd80" class="outline-4">
+<h4 id="org653bd80">Oppdatere spilldata</h4>
+<div class="outline-text-4" id="text-org653bd80">
+<p>
+Det har ikke skjedd så mye med partiklene våre ennå.
+</p>
+
+<p>
+Om vi lager en partikkel som over, med
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-variable-name">partikkel</span> = {<span class="org-string">"posisjon"</span>: [38.6, 8.6],
+             <span class="org-string">"farge"</span>: (0, 14, 200),
+             <span class="org-string">"radius"</span>: 14}
+</pre>
+</div>
+
+<p>
+kan vi nå late som at vi gjør noe med partikkelens posisjon hver gang gjennom løkka ved for eksempel å skrive
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">import</span> pygame
+
+pygame.init()
+<span class="org-variable-name">flate</span> = pygame.display.set_mode((800, 600))
+
+<span class="org-variable-name">partikkel</span> = {<span class="org-string">"posisjon"</span>: [38.6, 8.6],
+             <span class="org-string">"farge"</span>: (0, 14, 200),
+             <span class="org-string">"radius"</span>: 14}
+
+
+<span class="org-variable-name">kjoerer</span> = <span class="org-constant">True</span>
+<span class="org-keyword">while</span> kjoerer:
+    <span class="org-keyword">for</span> event <span class="org-keyword">in</span> pygame.event.get():
+        <span class="org-keyword">if</span> event.<span class="org-builtin">type</span> == pygame.QUIT:
+            <span class="org-variable-name">kjoerer</span> = <span class="org-constant">False</span>
+
+    <span class="org-variable-name">partikkel</span>[<span class="org-string">"posisjon"</span>] = [38.6, 8.6]   <span class="org-comment-delimiter"># </span><span class="org-comment">Obs! Denne gj&#248;r ikke noe</span>
+    <span class="org-comment-delimiter"># </span><span class="org-comment">!</span>
+    <span class="org-comment-delimiter"># </span><span class="org-comment">!</span>
+    <span class="org-comment-delimiter"># </span><span class="org-comment">! Se under</span>
+    flate.fill((0, 0, 0))
+    pygame.draw.circle(flate, (0, 14, 200), [38.6, 8.6], 14)
+    pygame.display.flip()
+
+<span class="org-keyword">print</span>(<span class="org-string">"Simuleringen er ferdig."</span>)
+pygame.<span class="org-constant">quit</span>()
+</pre>
+</div>
+
+<pre class="example">
+Simuleringen er ferdig.
+</pre>
+
+
+<p>
+Vi har dog fremdeles ikke en partikkel på skjermen. Dette kan vi fikse ved først å tegne en bakgrunn, for så å tegne en sirkel.
+</p>
+
+<p>
+Om du erstatter de tre linjene med <code># !</code> med de følgende tre linjene, skal du nå få en partikkel opp på skjermen.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python">flate.fill((0, 0, 0))  <span class="org-comment-delimiter"># </span><span class="org-comment">bakgrunn</span>
+pygame.draw.circle(flate, (0, 14, 200), [38.6, 8.6], 14) <span class="org-comment-delimiter"># </span><span class="org-comment">partikkel</span>
+pygame.display.flip()  <span class="org-comment-delimiter"># </span><span class="org-comment">sender alt til flaten</span>
+</pre>
+</div>
+
+<p>
+Vi kjører koden og får følgende:
+</p>
+
+
+<div id="org69b586b" class="figure">
+<p><img src="figurer/partikkel_pygame.png" alt="partikkel_pygame.png" />
+</p>
+<p><span class="figure-number">Illustrasjon 12 </span>Vår første partikkel</p>
+</div>
+
+<p>
+Vi merker oss at posisjonen var i et annet hjørne enn forventet, men lar det være med det inntil videre.
+</p>
+
+<div class="task" id="org3478c0f">
+<p>
+Du har lagt merke til at vi har vært uelegente med hvordan vi henter ut data fra partikkelen vår. Når vi tegner den, skriver vi for eksempel <code>(0, 14, 200)</code> for fargen, istedenfor <code>partikkel["farge"]</code>.
+</p>
+
+<p>
+Fiks opp i dette slik at de ulike tallene kun står en gang i programmet.
+</p>
+
+</div>
+
+<div class="task" id="org311bb60">
+<p>
+For å sette farge på partikkelen, har vi gitt fargen som en samling av r(ød)-, g(rønn)-, og b(lå)-verdier.
+</p>
+
+<p>
+Du kan bruke <a href="https://htmlcolorcodes.com/color-picker/">denne</a> siden til å finne noen farger du liker. Velg ulike farger for partikkelen og bakgrunnen.
+</p>
+
+</div>
+
+<div class="task" id="org147d6fb">
+<p>
+Bruk <code>randint</code>-funksjonen fra <code>random</code>-biblioteket til å gi partikkelen tilfeldig posisjon, farge og radius.
+</p>
+
+<p>
+Hvordan kan du forsikre deg om at <i>hele</i> partikkelen alltid vises?
+</p>
+
+</div>
 </div>
 </div>
 </div>
