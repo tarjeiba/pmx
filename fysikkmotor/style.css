@@ -25,6 +25,22 @@ pre  {
     text-align: left;
 }
 
+pre .org-variable-name {
+    font-weight: 600;
+
+}
+
+pre .org-keyword {
+    font-weight: 600;
+}
+
+pre .org-comment {
+    font-weight: lighter;
+}
+pre .org-comment-delimiter {
+    font-weight: lighter;
+}
+
 body {
     font-size: 14px;
     line-height: 1.5em;

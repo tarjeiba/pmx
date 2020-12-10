@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="nb" xml:lang="nb">
 <head>
-<!-- 2020-12-03 Thu 15:48 -->
+<!-- 2020-12-10 Thu 15:19 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Fysikkmotor</title>
@@ -64,9 +64,8 @@ Gjennom dette oppgavearket skal vi lage en fysikkmotor ved å bruke Python og Py
 <dl class="org-dl">
 <dt><a href="#vektorer">Vektorer</a></dt><dd>Hvordan kan vi representerere vektorer i et python-program?</dd>
 <dt><a href="#partikler">Partikler</a></dt><dd>Kan vi samle flere egenskaper enn bare tall til i én verdi?</dd>
-<dt><a href="#org21d3cdd">Simulering</a></dt><dd>Trinnvis framover i Pygame</dd>
-<dt><a href="fysikkmotor.html#ID-050ff933-d1a8-4d9b-8be9-ef5dc351ef1b">Kollisjoner</a></dt><dd>Kan partiklene våre kollidere med hverandre?</dd>
-<dt><a href="fysikkmotor.html#ID-f55222e8-5b25-4fce-aad3-f66217831d2c">Bugfikser</a></dt><dd>Utbedringer kommer til å være nødvendig.</dd>
+<dt><a href="#orgdeb0395">Simulering</a></dt><dd>Trinnvis framover i Pygame</dd>
+<dt><a href="#org6249f93">Kollisjoner</a></dt><dd>Kan partiklene våre kollidere med hverandre?</dd>
 <dt><a href="fysikkmotor.html#ID-fd134f56-3103-448a-ae32-4e7679b7e50e">Utforsking</a></dt><dd>Hvilke andre modeller kan vi bruke partiklene våre til?</dd>
 </dl>
 
@@ -82,15 +81,15 @@ Motoren kommer til å ta form av en virtuell kasse som det spretter partikler ru
 </p>
 </div>
 
-<div id="outline-container-orgdcc3f33" class="outline-3">
-<h3 id="orgdcc3f33">Introduksjon</h3>
-<div class="outline-text-3" id="text-orgdcc3f33">
+<div id="outline-container-orga24a1ca" class="outline-3">
+<h3 id="orga24a1ca">Introduksjon</h3>
+<div class="outline-text-3" id="text-orga24a1ca">
 <p>
 Fra matematikken kjenner vi en vektor som noe med størrelse og retning. Ofte illustrerer vi dette med en pil. Under vises vektoren \(\vec{v}\) tegnet som en pil i planet.
 </p>
 
 
-<div id="org4d10921" class="figure">
+<div id="org3e36160" class="figure">
 <p><object type="image/svg+xml" data="figurer/vektor1.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -102,7 +101,7 @@ En vektor avhenger ikke av hvor vi tegner den, kun av dens størrelse og retning
 </p>
 
 
-<div id="org8bac353" class="figure">
+<div id="orge1fd5ee" class="figure">
 <p><object type="image/svg+xml" data="figurer/vektor2.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -118,7 +117,7 @@ Før vi kan representere en vektor i et dataprogram, må vi bestemme oss for hvo
 </p>
 
 
-<div id="orgdc1d530" class="figure">
+<div id="org90be5e9" class="figure">
 <p><object type="image/svg+xml" data="figurer/vektor3.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -138,7 +137,7 @@ Om vi så ønsker å representere dette i et python-program, kan vi for eksempel
 Dette byr på en serie problemer, blant annet at vi nå har to variabler for å holde styr på det som strengt tatt bare er én matematisk størrelse, vektoren \(\vec{v}\).
 </p>
 
-<div class="task" id="org839ac44">
+<div class="task" id="orgf6fc243">
 <p>
 Om du allerede kjenner til vektorer, stopp opp her og tenk på hvordan du ville representert dem i kode.
 </p>
@@ -147,9 +146,9 @@ Om du allerede kjenner til vektorer, stopp opp her og tenk på hvordan du ville 
 </div>
 </div>
 
-<div id="outline-container-org185889a" class="outline-3">
-<h3 id="org185889a">Addisjon</h3>
-<div class="outline-text-3" id="text-org185889a">
+<div id="outline-container-org854bce0" class="outline-3">
+<h3 id="org854bce0">Addisjon</h3>
+<div class="outline-text-3" id="text-org854bce0">
 <p>
 Vi er vant til at \(\text{tall} + \text{tall} = \text{tall}\) og at \(\text{tall} \cdot \text{tall} = \text{tall}\).
 </p>
@@ -159,7 +158,7 @@ For vektorer er addisjon som forventet, \(\text{vektor} + \text{vektor} = \text{
 </p>
 
 
-<div id="orge3c4199" class="figure">
+<div id="org3f6ffd6" class="figure">
 <p><object type="image/svg+xml" data="figurer/vektor4.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -171,7 +170,7 @@ For å legge disse sammen visuelt, kan vi sette de etter hverandre, slik at \(\v
 </p>
 
 
-<div id="orgd0ad63a" class="figure">
+<div id="org5532b64" class="figure">
 <p><object type="image/svg+xml" data="figurer/vektor5.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -182,7 +181,7 @@ Sorry, your browser does not support SVG.</object>
 Essensen her er at summen av to vektorer er en ny vektor.
 </p>
 
-<div class="task" id="orga957d2a">
+<div class="task" id="orge355d22">
 <p>
 Om vi har to vektorer representert som to lengder og to vinkler, à la det beskrevet tidligere. Hvordan kan vi gå fram for å finne vektorsummen av disse?
 </p>
@@ -191,15 +190,15 @@ Om vi har to vektorer representert som to lengder og to vinkler, à la det beskr
 </div>
 </div>
 
-<div id="outline-container-org52dbae2" class="outline-3">
-<h3 id="org52dbae2">Dekomponering</h3>
-<div class="outline-text-3" id="text-org52dbae2">
+<div id="outline-container-org46342ee" class="outline-3">
+<h3 id="org46342ee">Dekomponering</h3>
+<div class="outline-text-3" id="text-org46342ee">
 <p>
 Vi <i>dekomponerer</i> en vektor ved å skrive den som en sum av vektorer, vi finner dens <i>komponenter</i>. Det vanligste er å la hver av disse komponentene ligge langs en koordinatakse. Under har vi dekomponert \(\vec{v}\) til en vektor i \(x\)-retning, \(\vec{v}_x\) og en vektor i \(y\)-retning, \(\vec{v}_y\).
 </p>
 
 
-<div id="org6389874" class="figure">
+<div id="org50618bd" class="figure">
 <p><object type="image/svg+xml" data="figurer/vektor6.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -221,7 +220,7 @@ Vi sier at vi nå har skrevet \(\vec{v}\) på <i>koordinatform</i>. For eksempel
         &= \left[\tfrac{3\sqrt{3}}{2}, \tfrac{3}{2} \right].
 \end{aligned}
 
-<div class="task" id="orgda04cc8">
+<div class="task" id="org51cf6b2">
 <p>
 Hvordan kan vi representerer vektorer på koordinatform i et program?
 </p>
@@ -230,9 +229,9 @@ Hvordan kan vi representerer vektorer på koordinatform i et program?
 </div>
 </div>
 
-<div id="outline-container-org1c76af6" class="outline-3">
-<h3 id="org1c76af6">Omforming</h3>
-<div class="outline-text-3" id="text-org1c76af6">
+<div id="outline-container-org5a56b53" class="outline-3">
+<h3 id="org5a56b53">Omforming</h3>
+<div class="outline-text-3" id="text-org5a56b53">
 <p>
 Vektorer på koordinatform har en annen fin egenskap, summen av to vektorer er den komponentvise summen av leddene. Altså er
 </p>
@@ -256,7 +255,7 @@ Naivt kunne vi tenkt at vi skulle representert vektoren på en form à la
 </pre>
 </div>
 
-<div class="task" id="org9e7ab9d">
+<div class="task" id="org92efa48">
 <p>
 Lag et program som tar inn en vektor med lengde og vinkel, og returnerer en vektor på koordinatform. Du kan for eksempel lage det som en funksjon på formen
 </p>
@@ -274,7 +273,7 @@ Legg merke til her at vi har valgt å representere vektoren på koordinatform so
 
 </div>
 
-<div class="task" id="org1c5d7d6">
+<div class="task" id="orgf9ffb75">
 <p>
 Skriv et program som regner ut summen av de to vektorene under. Kall svaret ditt <code>w</code>.
 </p>
@@ -287,7 +286,7 @@ Skriv et program som regner ut summen av de to vektorene under. Kall svaret ditt
 
 </div>
 
-<div class="task" id="org7e5703b">
+<div class="task" id="org8cdcdef">
 <p>
 Skriv en funksjon som tar inn en vektor på koordinatform, da som en liste av to verdier, og returnerer en liste med vektorens <code>lengde</code> og <code>vinkel</code>. Du kan kalle funksjonen <code>koordinat_til_polar</code>.
 </p>
@@ -296,9 +295,9 @@ Skriv en funksjon som tar inn en vektor på koordinatform, da som en liste av to
 </div>
 </div>
 
-<div id="outline-container-org0c77630" class="outline-3">
-<h3 id="org0c77630">Representasjonsform</h3>
-<div class="outline-text-3" id="text-org0c77630">
+<div id="outline-container-org2056d2f" class="outline-3">
+<h3 id="org2056d2f">Representasjonsform</h3>
+<div class="outline-text-3" id="text-org2056d2f">
 <p>
 Vi har nå sett at det matematisk finnes ulike ekvivalente måter å representere en vektor på, som et sett av lengde og vinkel, som \(x\)- og \(y\)-koordinater, og vi kunne tenkt oss mange flere (de fleste av dem uhensiktsmessige i de fleste tilfeller, som et sett av lengde og en \(x\)-koordinat).
 </p>
@@ -318,7 +317,7 @@ Under oppgaven med vektoraddisjon, så vi dog at listerepresentasjonen, om enn d
 </pre>
 </div>
 
-<div class="task" id="org81965c1">
+<div class="task" id="org3f21b44">
 <p>
 Forsøk å se hvordan addisjon av vektorer fungerer nå. Start med en vektor <code>u</code> og en vektor <code>v</code>, hver representert som et numpy-array, og test ut addisjon ved å bruke et vanlig <code>+</code>-tegn.
 </p>
@@ -339,9 +338,9 @@ Kommenter svarene dine.
 </div>
 </div>
 
-<div id="outline-container-orgdeb9c93" class="outline-3">
-<h3 id="orgdeb9c93">Skalarproduktet</h3>
-<div class="outline-text-3" id="text-orgdeb9c93">
+<div id="outline-container-orgcc0e669" class="outline-3">
+<h3 id="orgcc0e669">Skalarproduktet</h3>
+<div class="outline-text-3" id="text-orgcc0e669">
 <p>
 Vi har sett at addisjon fungerer som vi forventer mellom vektorer, en sum av to vektorer er en ny vektor. Hva med multiplikasjon?
 </p>
@@ -363,7 +362,7 @@ På samme måte som at det finnes ulike måter å tenke på vektorer, finnes det
 </p>
 
 
-<div id="org3c9155b" class="figure">
+<div id="orgc04464c" class="figure">
 <p><object type="image/svg+xml" data="figurer/vektor7a.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -375,7 +374,7 @@ Lengden av \(\vec{v}_u\) da skrives \(|\vec{v}|\cos\theta\), som enklere vises o
 </p>
 
 
-<div id="org7917b17" class="figure">
+<div id="org573ba03" class="figure">
 <p><object type="image/svg+xml" data="figurer/vektor7a1.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -394,7 +393,7 @@ Kan vi med dette få en intuisjon av hva \(\vec{u}\cdot\vec{v}\) er?
 Ja, \(\vec{u}\cdot\vec{v}\) er «lengden av \vec{u} ganget med lengden av \(\vec{v}_u\)». Altså har vi at \(\vec{u}\cdot\vec{v} = |\vec{u}||\vec{v}_u|\).
 </p>
 
-<div class="task" id="org7a68df5">
+<div class="task" id="orgee7cfe6">
 <p>
 Lag et program som tar inn to vektorer, \(u\) og \(v\) (du kan bruke de samme som i eksempelet over). Regn ut \(\vec{u}\cdot\vec{v}\) ved å bruke at \[\vec{u}\cdot\vec{v} = |\vec{u}||\vec{v}|\cos \theta,\] hvor \(\theta\) er vinkelen mellom \(\vec{u}\) og \(\vec{v}\).
 </p>
@@ -410,7 +409,7 @@ Om vi har vektorene representert på koordinatform, er det en enkel sak å regne
                     &= u_x v_x + u_y v_y
 \end{aligned}
 
-<div class="task" id="org70c3c2e">
+<div class="task" id="orgd9d03bd">
 <p>
 Lag et program som tar inn to vektorer på koordinatform i lister. Regn ut vektorenes skalarprodukt ved å bruke definisjonen over.
 </p>
@@ -430,7 +429,7 @@ Du kan for eksempel ta utgangspunkt i følgende:
 Skalarproduktet oppstår i mange områder av matematikken. I <code>numpy</code> har vi det innebygd som <code>dot</code>-funksjonen. For eksempel vil <code>np.dot(a, b)</code> regne ut skalarproduktet (eller «prikkproduktet» eller «dotproduktet») til de to vektorene <code>a</code> og <code>b</code>.
 </p>
 
-<div class="task" id="org845d222">
+<div class="task" id="orgb675c0c">
 <p>
 Lag et program som tar inn to vektorer på koordinatform i numpy-arrayer. Regn ut vektorenes skalarprodukt ved å bruke <code>np.dot</code>.
 </p>
@@ -448,9 +447,9 @@ Du kan for eksempel ta utgangspunkt i følgende:
 </div>
 </div>
 
-<div id="outline-container-orgdbaedde" class="outline-3">
-<h3 id="orgdbaedde">Skalering eller skalarmultiplikasjon</h3>
-<div class="outline-text-3" id="text-orgdbaedde">
+<div id="outline-container-orgf741de7" class="outline-3">
+<h3 id="orgf741de7">Skalering eller skalarmultiplikasjon</h3>
+<div class="outline-text-3" id="text-orgf741de7">
 <p>
 Ordet «skalar» brukes ofte om tall i vektorsammenheng. Bakgrunnen for dette navnet er nettopp at et tall multiplisert med en vektor gir en <i>skalert</i> vektor. Vi kan bruke ordene «skalar» og «tall» om hverandre.
 </p>
@@ -460,7 +459,7 @@ En vektor \(\vec{v}\) skalert med et tall \(t\) er en ny vektor med samme retnin
 </p>
 
 
-<div id="orgb79f89d" class="figure">
+<div id="org6392931" class="figure">
 <p><object type="image/svg+xml" data="figurer/vektor8.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -471,7 +470,7 @@ Sorry, your browser does not support SVG.</object>
 Her er \(0 < a < 1\), \(b > 1\) og \(c < 0\). Vi ser altså at en negativ skalering av en vektor gir en vektor med motsatt retning. For eksemplene i figuren over, er \(|b| = |c|\).
 </p>
 
-<div class="task" id="org4db95a4">
+<div class="task" id="org0d4a459">
 <p>
 Undersøk om <code>np.dot(t, v)</code> fungerer som forventet dersom <code>t</code> er et tall og <code>v</code> er en vektor i form av et numpy-array.
 </p>
@@ -489,15 +488,15 @@ Undersøk om <code>np.dot(t, v)</code> fungerer som forventet dersom <code>t</co
 </p>
 </div>
 
-<div id="outline-container-org042a1b6" class="outline-3">
-<h3 id="org042a1b6">Introduksjon</h3>
-<div class="outline-text-3" id="text-org042a1b6">
+<div id="outline-container-org480d558" class="outline-3">
+<h3 id="org480d558">Introduksjon</h3>
+<div class="outline-text-3" id="text-org480d558">
 <p>
 Vi skal ha partikler sprettende rundt på en skjerm. Vi bør da kunne ha en måte i programmet vårt for å si «dette er en bestemt partikkel». Ideelt sett kunne for eksempel <code>partikkel_1</code> vist til en partikkel med en posisjon, fart, størrelse, og <code>partikkel_2</code> det samme.
 </p>
 
 
-<div id="org8f5793e" class="figure">
+<div id="org2c97bbe" class="figure">
 <p><object type="image/svg+xml" data="figurer/partikkel1.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -522,7 +521,7 @@ La oss si vi velger å ha <i>posisjon</i> som en liste med \(x\)- og \(y\)-verdi
 Vi kan da fortelle de som skal bruke programmet at «en partikkel er en liste med tre verdier, den første verdien er en liste med koordinater, den andre en tekststreng som setter mønsteret, den tredje et tall for radiusen».
 </p>
 
-<div class="task" id="org6c9dd89">
+<div class="task" id="orgd5b1acd">
 <p>
 Lag en <code>partikkel_3</code>, med radius 15.3, senter i origo og rutete mønster.
 </p>
@@ -551,12 +550,12 @@ Vi skriver altså <code>{}</code> med en samling av <code>nøkkelord: verdi,</co
 </pre>
 </div>
 
-<pre class="example" id="org29972af">
+<pre class="example" id="orgac226e2">
 13.5
 {'posisjon': [38.6, 8.6], 'mønster': 'stripete', 'radius': 13.5, 'masse': 14}
 </pre>
 
-<div class="task" id="orga0b69ab">
+<div class="task" id="orgb4cc06d">
 <p>
 Lag <code>partikkel_1</code> og <code>partikkel_2</code> som over, men gjør posisjonen til et numpy-array, istedenfor lista vi bruker over.
 </p>
@@ -565,9 +564,9 @@ Lag <code>partikkel_1</code> og <code>partikkel_2</code> som over, men gjør pos
 </div>
 </div>
 
-<div id="outline-container-orgcda6319" class="outline-3">
-<h3 id="orgcda6319">Tegne partikkel</h3>
-<div class="outline-text-3" id="text-orgcda6319">
+<div id="outline-container-org9a24dee" class="outline-3">
+<h3 id="org9a24dee">Tegne partikkel</h3>
+<div class="outline-text-3" id="text-org9a24dee">
 <p>
 Dette avsnittet forutsetter at du har lagt inn biblioteket <code>pygame</code>. Dette kan du gjøre ved å åpne programmet «Anaconda prompt» og kjøre kommandoen <code>pip install pygame</code>.
 </p>
@@ -590,7 +589,7 @@ Før dette må vi initialisere hele «spillet».
 </p>
 
 
-<div id="orgc451947" class="figure">
+<div id="org1a78462" class="figure">
 <p><object type="image/svg+xml" data="figurer/flytskjema1.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -598,9 +597,9 @@ Sorry, your browser does not support SVG.</object>
 </div>
 </div>
 
-<div id="outline-container-org9a53b0b" class="outline-4">
-<h4 id="org9a53b0b">«Init» og oppsett</h4>
-<div class="outline-text-4" id="text-org9a53b0b">
+<div id="outline-container-org66fa0a5" class="outline-4">
+<h4 id="org66fa0a5">«Init» og oppsett</h4>
+<div class="outline-text-4" id="text-org66fa0a5">
 <p>
 Her skal vi gjøre <code>pygame</code> klart.
 </p>
@@ -622,9 +621,9 @@ Vi har nå gjort pygame klart til å bruke et vindu som er 800 piksler bredt, og
 </div>
 </div>
 
-<div id="outline-container-org6b10684" class="outline-4">
-<h4 id="org6b10684">Hovedløkke og prosessere inndata</h4>
-<div class="outline-text-4" id="text-org6b10684">
+<div id="outline-container-org2d09331" class="outline-4">
+<h4 id="org2d09331">Hovedløkke og prosessere inndata</h4>
+<div class="outline-text-4" id="text-org2d09331">
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-variable-name">kjoerer</span> = <span class="org-constant">True</span>
 <span class="org-keyword">while</span> kjoerer:
@@ -644,7 +643,7 @@ Simuleringen er ferdig.
 
 
 <p>
-Denne snutten gjør klar en hovedløkke, og vi setter opp et trinn for å prosessere inndata. Pygame håndterer handlinger fra brukeren ved å samle dem som =event=s.
+Denne snutten gjør klar en hovedløkke, og vi setter opp et trinn for å prosessere inndata. Pygame håndterer handlinger fra brukeren ved å samle dem som <code>event</code> s.
 </p>
 
 <p>
@@ -661,9 +660,9 @@ Når vi da har kommet oss helt ut av hovedløkka vår (<code>while kjoerer</code
 </div>
 </div>
 
-<div id="outline-container-org2944d68" class="outline-4">
-<h4 id="org2944d68">Oppdatere spilldata</h4>
-<div class="outline-text-4" id="text-org2944d68">
+<div id="outline-container-orgdcf98a3" class="outline-4">
+<h4 id="orgdcf98a3">Oppdatere spilldata</h4>
+<div class="outline-text-4" id="text-orgdcf98a3">
 <p>
 Det har ikke skjedd så mye med partiklene våre ennå.
 </p>
@@ -738,7 +737,7 @@ Vi kjører koden og får følgende:
 </p>
 
 
-<div id="org470feec" class="figure">
+<div id="org011b63f" class="figure">
 <p><img src="figurer/partikkel_pygame.png" alt="partikkel_pygame.png" />
 </p>
 <p><span class="figure-number">Illustrasjon 12 </span>Vår første partikkel</p>
@@ -748,7 +747,7 @@ Vi kjører koden og får følgende:
 Vi merker oss at posisjonen var i et annet hjørne enn forventet, men lar det være med det inntil videre.
 </p>
 
-<div class="task" id="orgdfd2ce2">
+<div class="task" id="org0f3e68c">
 <p>
 Du har lagt merke til at vi har vært uelegente med hvordan vi henter ut data fra partikkelen vår. Når vi tegner den, skriver vi for eksempel <code>(0, 14, 200)</code> for fargen, istedenfor <code>partikkel["farge"]</code>.
 </p>
@@ -759,7 +758,7 @@ Fiks opp i dette slik at de ulike tallene kun står en gang i programmet.
 
 </div>
 
-<div class="task" id="orgb3ec892">
+<div class="task" id="orgdd6bd6d">
 <p>
 For å sette farge på partikkelen, har vi gitt fargen som en samling av r(ød)-, g(rønn)-, og b(lå)-verdier.
 </p>
@@ -770,7 +769,7 @@ Du kan bruke <a href="https://htmlcolorcodes.com/color-picker/">denne</a> siden 
 
 </div>
 
-<div class="task" id="orgd7c7a6e">
+<div class="task" id="orgf6bba32">
 <p>
 Bruk <code>randint</code>-funksjonen fra <code>random</code>-biblioteket til å gi partikkelen tilfeldig posisjon, farge og radius.
 </p>
@@ -785,17 +784,17 @@ Hvordan kan du forsikre deg om at <i>hele</i> partikkelen alltid vises?
 </div>
 </div>
 
-<div id="outline-container-org21d3cdd" class="outline-2">
-<h2 id="org21d3cdd">Simulering</h2>
-<div class="outline-text-2" id="text-org21d3cdd">
+<div id="outline-container-orgdeb0395" class="outline-2">
+<h2 id="orgdeb0395">Simulering</h2>
+<div class="outline-text-2" id="text-orgdeb0395">
 <p>
 
 </p>
 </div>
 
-<div id="outline-container-orga5add2c" class="outline-3">
-<h3 id="orga5add2c">Introduksjon</h3>
-<div class="outline-text-3" id="text-orga5add2c">
+<div id="outline-container-org0b5106e" class="outline-3">
+<h3 id="org0b5106e">Introduksjon</h3>
+<div class="outline-text-3" id="text-org0b5106e">
 <p>
 Vi skal nå begynne å flytte rundt på partikkelen vår, samtidig som vi ønsker å se endringen på skjermen.
 </p>
@@ -805,7 +804,7 @@ Figuren under viser hvordan partikkelen <code>pt1</code> har flyttet seg fra en 
 </p>
 
 
-<div id="orgbe8ad61" class="figure">
+<div id="orgc71d9d2" class="figure">
 <p><object type="image/svg+xml" data="figurer/simulering1.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -814,9 +813,9 @@ Sorry, your browser does not support SVG.</object>
 </div>
 </div>
 
-<div id="outline-container-orgda084b8" class="outline-3">
-<h3 id="orgda084b8">Klokka</h3>
-<div class="outline-text-3" id="text-orgda084b8">
+<div id="outline-container-orgff25927" class="outline-3">
+<h3 id="orgff25927">Klokka</h3>
+<div class="outline-text-3" id="text-orgff25927">
 <p>
 I Pygame løser vi dette med en klokke. Under initialiseringa, kan vi opprette en klokke ved å skrive for eksempel <code>klokke = pygame.time.Clock()</code>. Dette er altså en linje hvor vi går inn i <i>modulen</i> <code>time</code> og lager oss en <code>Clock</code>. I resten av programmet vårt har vi nå muligheten til å gjøre ting med variabelen <code>klokke</code>.
 </p>
@@ -833,7 +832,7 @@ Det viktigste vi kommer til å gjøre med klokka er å klikke den framover ved �
 </pre>
 </div>
 
-<pre class="example" id="org005fa82">
+<pre class="example" id="orgbc12b24">
 pygame 2.0.0 (SDL 2.0.12, python 3.8.6)
 Hello from the pygame community. https://www.pygame.org/contribute.html
 Help on built-in function tick:
@@ -847,7 +846,7 @@ tick(...) method of builtins.Clock instance
 <code>tick</code> er altså en funksjon som oppdaterer klokka vår og returnerer et antall millisekunder. Antallet millisekunder er hvor lang tid det er siden sist <code>tick</code> blei brukt.
 </p>
 
-<div class="task" id="orgfbb96cd">
+<div class="task" id="orgcccd034">
 <p>
 Kjør følgende kode. Hvilken verdi har <code>dt</code> etter du har kjørt koden?
 </p>
@@ -860,12 +859,13 @@ klokke.tick()    <span class="org-comment-delimiter"># </span><span class="org-c
 <span class="org-comment-delimiter"># </span><span class="org-comment">La oss gj&#248;re en utregning</span>
 <span class="org-variable-name">trekanttall_nr_million</span> = <span class="org-builtin">sum</span>(<span class="org-builtin">range</span>(1_000_001))
 <span class="org-variable-name">dt</span> = klokke.tick()
+<span class="org-keyword">print</span>(dt)
 </pre>
 </div>
 
 </div>
 
-<div class="task" id="org589162c">
+<div class="task" id="org7028b1b">
 <p>
 Funksjonen <code>sum(sekvens)</code> brukt over summerer en sekvens, og funksjonen <code>range(n)</code> gir en sekvens \((0, 1, \ldots, n)\).
 </p>
@@ -921,7 +921,7 @@ pygame.<span class="org-constant">quit</span>()
 Legg merke til at vi nå har gjort posisjonen om til et numpy-array og at vi bruker partikkelen <code>pt</code> direkte i tegningen av sirkelen vår.
 </p>
 
-<div class="task" id="org49c7e6b">
+<div class="task" id="org62a0dfc">
 <p>
 Skriv av koden over og kontroller at du får samme figur som tidligere.
 </p>
@@ -930,9 +930,9 @@ Skriv av koden over og kontroller at du får samme figur som tidligere.
 </div>
 </div>
 
-<div id="outline-container-org437d37f" class="outline-3">
-<h3 id="org437d37f">Dynamikk</h3>
-<div class="outline-text-3" id="text-org437d37f">
+<div id="outline-container-org9643659" class="outline-3">
+<h3 id="org9643659">Dynamikk</h3>
+<div class="outline-text-3" id="text-org9643659">
 <p>
 I koden under har vi lagt til tre variabler for oppsettet vårt, som vi viser at vi ikke tenker å endre ved å skrive dem med bare store bokstaver, <code>BREDDE</code>, <code>HØYDE</code>, og <code>BAKGRUNNSFARGE</code>.
 </p>
@@ -979,7 +979,7 @@ Når vi kjører koden får vi et vindu som ser omtrent slik ut, om enn litt stø
 </p>
 
 
-<div id="orgc439dd8" class="figure">
+<div id="orga034c90" class="figure">
 <p><img src="figurer/simulering_anim1.gif" alt="simulering_anim1.gif" />
 </p>
 <p><span class="figure-number">Illustrasjon 14 </span>En partikkel som beveger seg</p>
@@ -989,14 +989,14 @@ Når vi kjører koden får vi et vindu som ser omtrent slik ut, om enn litt stø
 Her flytter vi altså partikkelen litt mellom hvert trykk på klokka. Vi gir partikkelen <code>pt</code> en ny posisjon, ved å bruke at vektorer kan legges sammen som numpy arrayer. Vi får da linja <code>pt["posisjon"] = pt["posisjon"] + np.array([1, 0])</code>. Vi øker altså partikkelens \(x\)-verdi med \(1\) hver gang gjennom hovedløkka.
 </p>
 
-<div class="task" id="org25d28fc">
+<div class="task" id="org72b4374">
 <p>
 Forsøk å bruke denne koden med andre verdier for endringen av posisjon, altså ikke <code>np.array([1, 0])</code>.
 </p>
 
 </div>
 
-<div class="task" id="orgf6be9c2">
+<div class="task" id="org9c57f53">
 <p>
 Klarer du å bruke <code>BREDDE</code> og å snu posisjonsendringen dersom partikkelen er på vei ut av skjermen?
 </p>
@@ -1005,11 +1005,11 @@ Klarer du å bruke <code>BREDDE</code> og å snu posisjonsendringen dersom parti
 </div>
 </div>
 
-<div id="outline-container-org1895383" class="outline-3">
-<h3 id="org1895383">Fart</h3>
-<div class="outline-text-3" id="text-org1895383">
+<div id="outline-container-orgb854a7a" class="outline-3">
+<h3 id="orgb854a7a">Fart</h3>
+<div class="outline-text-3" id="text-orgb854a7a">
 <p>
-Vi skal nå gi partiklene våre en ny egenskap, <code>"fart"</code>. I samme sleng lager vi også en funksjon som skal hjelpe oss på opprette nye partikler.
+Vi skal nå gi partiklene våre en ny egenskap, <code>"hastighet"</code>. I samme sleng lager vi også en funksjon som skal hjelpe oss på opprette nye partikler.
 </p>
 
 <p>
@@ -1017,7 +1017,7 @@ Først, farten kommer til å være en ny vektor, som vi så skal skalere med en 
 </p>
 
 
-<div id="orgca153c5" class="figure">
+<div id="org264e7c2" class="figure">
 <p><object type="image/svg+xml" data="figurer/simulering2.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -1029,7 +1029,7 @@ For enklere å kunne lage flere partikler, lager vi så en funksjon <code>lag_pa
 </p>
 
 
-<div id="org5cfc639" class="figure">
+<div id="org681556f" class="figure">
 <p><object type="image/svg+xml" data="figurer/simulering3.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -1041,21 +1041,21 @@ Dersom vi da skriver <code>pt = lag_partikkel(np.array(50, 50), np.array(10, -10
 </p>
 
 
-<div id="orgc819ddd" class="figure">
+<div id="orge86fd2f" class="figure">
 <p><object type="image/svg+xml" data="figurer/simulering4.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
 <p><span class="figure-number">Illustrasjon 17 </span>En partikkel fra spesifikasjonen over</p>
 </div>
 
-<div class="task" id="org416a92d">
+<div class="task" id="orgd630318">
 <p>
 Forsøk å skrive en funksjon som oppfyller spesifikasjonen over.
 </p>
 
 </div>
 
-<div class="task" id="orga06bc53">
+<div class="task" id="orgc82878b">
 <p>
 Undersøk hva som skjer om du oppdaterer denne nye partikkelens posisjon med farten, ikke <code>np.array([1, 0])</code>, som vi gjorde tidligere.
 </p>
@@ -1082,7 +1082,7 @@ For å bedre på dette, kan vi tenke på hva slags enheter vi ønsker at skjerme
 La oss sette inn en «hardkodet» tidsendring, \(\Delta t\), som vi gjør liten nok til at hvert skritt framover i simuleringa vår ikke er større enn at vi får en fin animasjon på skjermen.
 </p>
 
-<div class="task" id="org9c7aec5">
+<div class="task" id="orga4ac03f">
 <p>
 Ta utgangspunkt i koden under, og endre <code>dt</code> til du er fornøyd med hvordan det ser ut.
 </p>
@@ -1103,7 +1103,7 @@ pygame.init()
 
 <span class="org-keyword">def</span> <span class="org-function-name">lag_partikkel</span>(p0, v0, farge, radius):
     <span class="org-keyword">return</span> {<span class="org-string">"posisjon"</span>: p0,
-            <span class="org-string">"fart"</span>: v0,
+            <span class="org-string">"hastighet"</span>: v0,
             <span class="org-string">"farge"</span>: farge,
             <span class="org-string">"radius"</span>: radius}
 
@@ -1120,7 +1120,7 @@ pygame.init()
         <span class="org-keyword">if</span> event.<span class="org-builtin">type</span> == pygame.QUIT:
             <span class="org-variable-name">kjoerer</span> = <span class="org-constant">False</span>
 
-    <span class="org-variable-name">pt</span>[<span class="org-string">"posisjon"</span>] = pt[<span class="org-string">"posisjon"</span>] + dt * pt[<span class="org-string">"fart"</span>]
+    <span class="org-variable-name">pt</span>[<span class="org-string">"posisjon"</span>] = pt[<span class="org-string">"posisjon"</span>] + dt * pt[<span class="org-string">"hastighet"</span>]
     FLATE.fill(BAKGRUNNSFARGE)
     tegn_partikkel(pt)    <span class="org-comment-delimiter"># </span><span class="org-comment">&lt;- Obs!</span>
     pygame.display.flip()
@@ -1136,7 +1136,7 @@ Med utgangspunktet over, får vi noe omtrent som figuren under.
 </p>
 
 
-<div id="org0753c7c" class="figure">
+<div id="orge89447a" class="figure">
 <p><img src="figurer/simulering_anim2.gif" alt="simulering_anim2.gif" />
 </p>
 <p><span class="figure-number">Illustrasjon 18 </span>En treig partikkel</p>
@@ -1148,9 +1148,9 @@ Merk, linja med <code># &lt;- Obs!</code> bruker en <code>tegn_partikkel</code>-
 </div>
 </div>
 
-<div id="outline-container-org9c6ca10" class="outline-3">
-<h3 id="org9c6ca10">En forbedret tegning</h3>
-<div class="outline-text-3" id="text-org9c6ca10">
+<div id="outline-container-org5002d54" class="outline-3">
+<h3 id="org5002d54">En forbedret tegning</h3>
+<div class="outline-text-3" id="text-org5002d54">
 <p>
 Akkurat nå ser partiklene våre litt grovkornede ut. Dette kommer av hvordan pygames <code>draw.circle</code>-funksjon fungerer. Vi kan tegne penere partikler ved å bruke undermodulen <code>pygame.gfxdraw</code>. Under <code>import pygame</code> kan du skrive <code>import pygame.gfxdraw</code>, så skal vi nå endre <code>tegn_partikkel</code>-funksjonen vår.
 </p>
@@ -1184,7 +1184,7 @@ Dette gir oss en partikkel med litt mindre ru overflate.
 </p>
 
 
-<div id="org8728bef" class="figure">
+<div id="orgd9e6d3c" class="figure">
 <p><img src="figurer/simulering_anim3.gif" alt="simulering_anim3.gif" />
 </p>
 </div>
@@ -1193,7 +1193,7 @@ Dette gir oss en partikkel med litt mindre ru overflate.
 Legg merke til at <code>gfxdraw.aacircle</code> og <code>filled_circle</code> brukes på en litt annen måte en <code>draw.circle</code>, ved at de tar inn heltallige \(x\)- og \(y\)-posisjoner. Den første delen av koden i funksjonen over kan du gjerne pynte en del på, for eksempel ved å hente ut \(x\)- og \(y\)-verdier samtidig som du bruker <code>int</code> for å gjøre dem til heltall.
 </p>
 
-<div class="task" id="org509a071">
+<div class="task" id="orgf3c640f">
 <p>
 Forsøk å gi partikkelen din en tilfeldig posisjon og fart ved å bruke <code>random.randint</code>.
 </p>
@@ -1206,9 +1206,9 @@ Vi kommer ikke til å endre mer på <code>tegn_partikkel</code> nå. Om du er fo
 </div>
 </div>
 
-<div id="outline-container-orgbf5ad9d" class="outline-3">
-<h3 id="orgbf5ad9d">Partikkel og partikler</h3>
-<div class="outline-text-3" id="text-orgbf5ad9d">
+<div id="outline-container-org3e13c39" class="outline-3">
+<h3 id="org3e13c39">Partikkel og partikler</h3>
+<div class="outline-text-3" id="text-org3e13c39">
 <p>
 Nå lager vi bare én partikkel, med linja <code>pt = lag_partikkel...</code>. Vi ønsker oss en kasse med mange partikler i. Her må vi igjen tenke på hvordan vi skal representere dette i programmet vårt. Det virker uhensiktsmessig å skulle skrive det linje for linje.
 </p>
@@ -1262,7 +1262,7 @@ pygame.init()
 
 <span class="org-keyword">def</span> <span class="org-function-name">lag_partikkel</span>(p0, v0, farge, radius):
     <span class="org-keyword">return</span> {<span class="org-string">"posisjon"</span>: p0,
-            <span class="org-string">"fart"</span>: v0,
+            <span class="org-string">"hastighet"</span>: v0,
             <span class="org-string">"farge"</span>: farge,
             <span class="org-string">"radius"</span>: radius}
 
@@ -1299,7 +1299,7 @@ pygame.init()
             <span class="org-variable-name">kjoerer</span> = <span class="org-constant">False</span>
 
     <span class="org-keyword">for</span> pt <span class="org-keyword">in</span> partikler:
-        <span class="org-variable-name">pt</span>[<span class="org-string">"posisjon"</span>] = pt[<span class="org-string">"posisjon"</span>] + dt * pt[<span class="org-string">"fart"</span>]
+        <span class="org-variable-name">pt</span>[<span class="org-string">"posisjon"</span>] = pt[<span class="org-string">"posisjon"</span>] + dt * pt[<span class="org-string">"hastighet"</span>]
 
     FLATE.fill(BAKGRUNNSFARGE)
 
@@ -1318,20 +1318,382 @@ pygame.<span class="org-constant">quit</span>()
 Merk deg at vi nå løper gjennom en liste med partikler både når vi vil tegne partiklene, og når vi vil oppdatere partiklenes posisjon.
 </p>
 
-<div class="task" id="org519d27d">
+<div class="task" id="org122f521">
 <p>
 Fiks programmet slik at ikke alle partiklene beveger seg nedover mot høyre.
 </p>
 
 </div>
 
-<div class="task" id="org4a39968">
+<div class="task" id="orgee5032f">
 <p>
 Hvis vi ønsker oss at \(y\)-aksen skal være positiv <i>oppover</i>, istedenfor <i>nedover</i> som det er nå, kan vi, om vi ønsker, fikse det i <code>tegn_partikkel</code>-funksjonen vår.
 </p>
 
 <p>
 Har du et forslag til hvordan vi kan gjøre det?
+</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org6249f93" class="outline-2">
+<h2 id="org6249f93">Kollisjoner</h2>
+<div class="outline-text-2" id="text-org6249f93">
+<p>
+
+</p>
+</div>
+<div id="outline-container-org6fd3f2a" class="outline-3">
+<h3 id="org6fd3f2a">Introduksjon</h3>
+<div class="outline-text-3" id="text-org6fd3f2a">
+<p>
+I koden under lages to partikler, <code>pt1</code> og <code>pt2</code>, med fart rett mot hverandre. (At farten her settes til <code>RADIUS</code> og <code>-RADIUS</code> betyr i praksis at farten er én radius per sekund.)
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">import</span> pygame
+<span class="org-keyword">import</span> pygame.gfxdraw
+
+<span class="org-keyword">import</span> numpy <span class="org-keyword">as</span> np
+
+<span class="org-variable-name">BREDDE</span> = 800
+<span class="org-variable-name">H&#216;YDE</span> = 200
+<span class="org-variable-name">RADIUS</span> = 70
+<span class="org-variable-name">FART</span> = RADIUS
+
+<span class="org-variable-name">BAKGRUNNSFARGE</span> = pygame.Color(<span class="org-string">"#FFFFFF"</span>)
+<span class="org-comment-delimiter"># </span><span class="org-comment">fargene er funnet ved &#229; g&#229; til coolers.co, trykke litt rundt,</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">komme til https://coolors.co/ff220c-d33e43-9b7874-666370-1c1f33</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">merk #-tegnet foran tallene</span>
+<span class="org-variable-name">PT1_FARGE</span> = pygame.Color(<span class="org-string">"#003049"</span>)
+<span class="org-variable-name">PT2_FARGE</span> = pygame.Color(<span class="org-string">"#F77F00"</span>)
+
+pygame.init()
+<span class="org-variable-name">klokke</span> = pygame.time.Clock()
+<span class="org-variable-name">FLATE</span> = pygame.display.set_mode((BREDDE, H&#216;YDE))
+
+<span class="org-variable-name">dt_ms</span> = klokke.tick()  <span class="org-comment-delimiter"># </span><span class="org-comment">en tidsendring i millisekunder</span>
+<span class="org-variable-name">dt_s</span> = dt_ms / 1000    <span class="org-comment-delimiter"># </span><span class="org-comment">en tidsendring i sekunder</span>
+
+<span class="org-keyword">def</span> <span class="org-function-name">lag_partikkel</span>(p0, v0, farge, radius):
+    <span class="org-keyword">return</span> {<span class="org-string">"posisjon"</span>: np.array(p0),         <span class="org-comment-delimiter"># </span><span class="org-comment">Obs!</span>
+            <span class="org-string">"hastighet"</span>: np.array(v0),           <span class="org-comment-delimiter"># </span><span class="org-comment">Obs!</span>
+            <span class="org-string">"farge"</span>: farge,
+            <span class="org-string">"radius"</span>: radius}
+
+<span class="org-keyword">def</span> <span class="org-function-name">tegn_partikkel</span>(partikkel):
+    <span class="org-variable-name">posisjonsvektor</span> = partikkel[<span class="org-string">"posisjon"</span>]
+    <span class="org-variable-name">posisjon_x</span> = posisjonsvektor[0]
+    <span class="org-variable-name">posisjon_y</span> = posisjonsvektor[1]
+    <span class="org-variable-name">posisjon_x</span> = <span class="org-builtin">int</span>(posisjon_x)
+    <span class="org-variable-name">posisjon_y</span> = <span class="org-builtin">int</span>(posisjon_y)
+    <span class="org-variable-name">radius</span> = partikkel[<span class="org-string">"radius"</span>]
+    <span class="org-variable-name">farge</span> = partikkel[<span class="org-string">"farge"</span>]
+    pygame.gfxdraw.aacircle(FLATE, posisjon_x, posisjon_y,
+                            radius, farge)
+    pygame.gfxdraw.filled_circle(FLATE, posisjon_x, posisjon_y,
+                                 radius, farge)
+
+<span class="org-keyword">def</span> <span class="org-function-name">flytt_partikkel</span>(partikkel, dt):
+    <span class="org-variable-name">partikkel</span>[<span class="org-string">"posisjon"</span>] = partikkel[<span class="org-string">"posisjon"</span>] + dt * partikkel[<span class="org-string">"hastighet"</span>]
+
+<span class="org-variable-name">pt1</span> = lag_partikkel([2 * RADIUS, H&#216;YDE // 2], <span class="org-comment-delimiter"># </span><span class="org-comment">posisjon i "meter"</span>
+                    [FART, 0],                <span class="org-comment-delimiter"># </span><span class="org-comment">fart i "meter per sekund"</span>
+                    PT1_FARGE, RADIUS)
+<span class="org-variable-name">pt2</span> = lag_partikkel([BREDDE - 2 * RADIUS, H&#216;YDE // 2],
+                    [-FART, 0], 
+                    PT2_FARGE, RADIUS)
+
+<span class="org-variable-name">kjoerer</span> = <span class="org-constant">True</span>
+<span class="org-keyword">while</span> kjoerer:
+    <span class="org-keyword">for</span> event <span class="org-keyword">in</span> pygame.event.get():
+        <span class="org-keyword">if</span> event.<span class="org-builtin">type</span> == pygame.QUIT:
+            <span class="org-variable-name">kjoerer</span> = <span class="org-constant">False</span>
+
+    
+    flytt_partikkel(pt1, dt_s)
+    flytt_partikkel(pt2, dt_s)
+
+    FLATE.fill(BAKGRUNNSFARGE)
+    tegn_partikkel(pt1)
+    tegn_partikkel(pt2)
+    pygame.display.flip()
+
+    <span class="org-variable-name">dt_ms</span> = klokke.tick(60)
+    <span class="org-variable-name">dt_s</span> = dt_ms / 1000
+
+<span class="org-keyword">print</span>(<span class="org-string">"Simuleringen er ferdig"</span>)
+pygame.<span class="org-constant">quit</span>()
+</pre>
+</div>
+
+<p>
+Legg merke til at tidsintervallet nå settes fra klokka, at vi har flyttet flyttingen av partiklene til en egen funksjon og at vi har opprettet fargene på en litt annen måte.
+</p>
+
+<p>
+Når vi kjører denne koden, får vi følgende resultat:
+</p>
+
+
+<div id="org644999a" class="figure">
+<p><img src="figurer/kollisjon_anim1.gif" alt="kollisjon_anim1.gif" />
+</p>
+<p><span class="figure-number">Illustrasjon 20 </span>To kvantepartikler</p>
+</div>
+
+<p>
+Dette er ikke helt som vi ønsker oss.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8571dc6" class="outline-3">
+<h3 id="org8571dc6">Kollisjoner i 1D</h3>
+<div class="outline-text-3" id="text-org8571dc6">
+<p>
+Fra fysikken kjenner vi det som at «energien er bevart». Vi har også at «bevegelsesmengde er bevart», og sammen gjør dette at vi kan regne på kollisjoner.
+</p>
+
+<p>
+Med dette som utgangspunkt, kan vi ha et oppsett som vist under, med to partikler, <code>pt1</code> og <code>pt2</code>, med hver sine hastigheter, \(\vec{u}_1\) og \(\vec{u}_2\).
+</p>
+
+
+<div id="org12ab62c" class="figure">
+<p><object type="image/svg+xml" data="figurer/kollisjon1.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
+</p>
+<p><span class="figure-number">Illustrasjon 21 </span>To partikler på kollisjonskurs</p>
+</div>
+
+<p>
+Om vi lar <i>energi</i> i dette tilfellet begrense seg til <i>kinetisk</i> energi, har vi her en total kinetisk energi på \(E_k1 = \frac{1}{2}m_1 u_1^2 + \frac{1}{2}m_2 u_2^2\) (merk, her bruker vi at \(\vec{v}\cdot\vec{v} = v^2\), hvor \(|\vec{v}| = v\)). I tillegg har vi en vektorstørrelse, <i>bevegelsesmengde</i>, som er summen av massene til partiklene, ganget med partiklenes hastigheter. Om vi bruker symbolet \(L\) for bevegelsesmengde, har vi altså \(L = m_1 \vec{u}_1 + m_2 \vec{u}_2\).
+</p>
+
+
+<div id="orgf45a928" class="figure">
+<p><object type="image/svg+xml" data="figurer/kollisjon2.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
+</p>
+<p><span class="figure-number">Illustrasjon 22 </span>To partikler i kollisjon</p>
+</div>
+
+<p>
+Kollisjonen skjer når partiklenes overflate møter hverandre.
+</p>
+
+<div class="task" id="org88919cd">
+<p>
+Vi har to partikler, med radius \(r_1\) og \(r_2\) og posisjonsvektorer \(\vec{p}_1\) og \(\vec{p}_2\). Avstanden mellom partiklene, \(d\), kan da uttrykkes som absoluttverdien til differansen mellom posisjonsvektorene, altså \(d = |\vec{p}_1 - \vec{p}_2|\).
+</p>
+
+<p>
+Hva er en betingelse for \(d\) idet det skjer en kollisjon?
+</p>
+
+</div>
+
+<p>
+Dersom en kollisjon er <i>elastisk</i>, er den totale bevegelsesenergien før og etter kollisjonen den samme, den kinetiske energien er bevart. Om vi lar \(\vec{u}\) være hastigheten før kollisjonen og \(\vec{v}\) være hastigheten etter kollisjonen, har vi da at
+</p>
+
+\begin{align*}
+E_{\text{før}} &= E_{\text{etter}} \\
+\tfrac{1}{2}m_1 u_1^2 + \tfrac{1}{2}m_2 u_2^2 &=\tfrac{1}{2}m_1 v_1^2 + \tfrac{1}{2}m_2 v_2^2 \\
+m_1 u_1^2 + m_2 u_2^2 &= m_1 v_1^2 + m_2 v_2^2.
+\end{align*}
+
+<p>
+Sier vi i tillegg at <i>bevegelsesmengden</i> skal være bevart, får vi
+</p>
+
+\begin{align*}
+L_{\text{før}} &= L_{\text{etter}} \\
+m_1\vec{u}_1 + m_2\vec{u}_2 &= m_1\vec{v}_1 + m_2\vec{v}_2
+\end{align*}
+
+
+<div id="org8e75c20" class="figure">
+<p><object type="image/svg+xml" data="figurer/kollisjon3.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
+</p>
+<p><span class="figure-number">Illustrasjon 23 </span>To partikler etter kollisjon</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-org234cfcd" class="outline-3">
+<h3 id="org234cfcd">Utregning</h3>
+<div class="outline-text-3" id="text-org234cfcd">
+<p>
+<i>Arbeid pågår!</i>
+</p>
+
+<p>
+Fra <a href="https://en.wikipedia.org/wiki/Elastic_collision#Two-dimensional_collision_with_two_moving_objects">Wikipedia</a> finner vi følgende uttrykk for å regne ut \(\vec{v}_1\) og \(\vec{v}_2\):
+</p>
+
+\begin{align*}
+\vec{v}_1 &= \vec{u}_1 - \frac{2m_2}{m_1+m_2} \frac{\left(\vec{u}_1-\vec{u}_2\right)\cdot\left(\vec{p}_1-\vec{p}_2\right)}{\left|\vec{p}_1-\vec{p}_2\right|^2}\left(\vec{p}_1-\vec{p}_2\right) \\
+\vec{v}_1 &= \vec{u}_2 - \frac{2m_1}{m_1+m_2} \frac{\left(\vec{u}_2-\vec{u}_1\right)\cdot\left(\vec{p}_2-\vec{p}_1\right)}{\left|\vec{p}_2-\vec{p}_1\right|^2}\left(\vec{p}_2-\vec{p}_1\right)
+\end{align*}
+
+<p>
+Dette kan vi bruke programmet vårt. Vi lager oss en funksjon som tar inn to partikler, og oppdaterer hastighetene deres via formlene over.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">def</span> <span class="org-function-name">kollisjon_oppdater_hastigheter</span>(p1, p2):
+    <span class="org-variable-name">u1</span> = p1[<span class="org-string">"hastighet"</span>]
+    <span class="org-variable-name">u2</span> = p2[<span class="org-string">"hastighet"</span>]
+    <span class="org-variable-name">pos1</span> = p1[<span class="org-string">"posisjon"</span>]
+    <span class="org-variable-name">pos2</span> = p2[<span class="org-string">"posisjon"</span>]
+    <span class="org-variable-name">m1</span> = p1[<span class="org-string">"masse"</span>]
+    <span class="org-variable-name">m2</span> = p2[<span class="org-string">"masse"</span>]
+
+    <span class="org-variable-name">d_kvadrert</span> = <span class="org-builtin">abs</span>(np.dot(pos1 - pos2))
+    
+    <span class="org-variable-name">p1</span>[<span class="org-string">"hastighet"</span>] = u1 - (2*m1)/(m1 + m2) * (np.dot(u1 - u2, pos1 - pos2))/d_kvadrert * (pos1 - pos2)
+    <span class="org-variable-name">p2</span>[<span class="org-string">"hastighet"</span>] = u2 - (2*m1)/(m1 + m2) * (np.dot(u2 - u1, pos2 - pos1))/d_kvadrert * (pos2 - pos1)
+
+    <span class="org-keyword">return</span> <span class="org-constant">None</span>
+</pre>
+</div>
+
+<p>
+Legg merke til at vi nå må gi partiklene våre en masse i tillegg.
+</p>
+
+<p>
+Status på hele programmet vårt er nå som følger.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">import</span> pygame
+<span class="org-keyword">import</span> pygame.gfxdraw
+
+<span class="org-keyword">import</span> numpy <span class="org-keyword">as</span> np
+
+<span class="org-variable-name">BREDDE</span> = 800
+<span class="org-variable-name">H&#216;YDE</span> = 200
+<span class="org-variable-name">RADIUS</span> = 70
+<span class="org-variable-name">FART</span> = RADIUS
+
+<span class="org-variable-name">BAKGRUNNSFARGE</span> = pygame.Color(<span class="org-string">"#FFFFFF"</span>)
+<span class="org-variable-name">PT1_FARGE</span> = pygame.Color(<span class="org-string">"#003049"</span>)
+<span class="org-variable-name">PT2_FARGE</span> = pygame.Color(<span class="org-string">"#F77F00"</span>)
+
+pygame.init()
+<span class="org-variable-name">klokke</span> = pygame.time.Clock()
+<span class="org-variable-name">FLATE</span> = pygame.display.set_mode((BREDDE, H&#216;YDE))
+
+<span class="org-variable-name">dt_ms</span> = klokke.tick()  <span class="org-comment-delimiter"># </span><span class="org-comment">en tidsendring i millisekunder</span>
+<span class="org-variable-name">dt_s</span> = dt_ms / 1000    <span class="org-comment-delimiter"># </span><span class="org-comment">en tidsendring i sekunder</span>
+
+<span class="org-keyword">def</span> <span class="org-function-name">lag_partikkel</span>(p0, v0, farge, radius, masse):
+    <span class="org-keyword">return</span> {<span class="org-string">"posisjon"</span>: np.array(p0),         <span class="org-comment-delimiter"># </span><span class="org-comment">Obs!</span>
+            <span class="org-string">"hastighet"</span>: np.array(v0),           <span class="org-comment-delimiter"># </span><span class="org-comment">Obs!</span>
+            <span class="org-string">"farge"</span>: farge,
+            <span class="org-string">"radius"</span>: radius,
+            <span class="org-string">"masse"</span>: masse}
+
+<span class="org-keyword">def</span> <span class="org-function-name">tegn_partikkel</span>(partikkel):
+    <span class="org-variable-name">posisjonsvektor</span> = partikkel[<span class="org-string">"posisjon"</span>]
+    <span class="org-variable-name">posisjon_x</span> = posisjonsvektor[0]
+    <span class="org-variable-name">posisjon_y</span> = posisjonsvektor[1]
+    <span class="org-variable-name">posisjon_x</span> = <span class="org-builtin">int</span>(posisjon_x)
+    <span class="org-variable-name">posisjon_y</span> = <span class="org-builtin">int</span>(posisjon_y)
+    <span class="org-variable-name">radius</span> = partikkel[<span class="org-string">"radius"</span>]
+    <span class="org-variable-name">farge</span> = partikkel[<span class="org-string">"farge"</span>]
+    pygame.gfxdraw.aacircle(FLATE, posisjon_x, posisjon_y,
+                            radius, farge)
+    pygame.gfxdraw.filled_circle(FLATE, posisjon_x, posisjon_y,
+                                 radius, farge)
+
+<span class="org-keyword">def</span> <span class="org-function-name">avstand</span>(p1, p2):
+    <span class="org-variable-name">dx</span> = p1[<span class="org-string">"posisjon"</span>][0] - p2[<span class="org-string">"posisjon"</span>][0]
+    <span class="org-variable-name">dy</span> = p1[<span class="org-string">"posisjon"</span>][1] - p2[<span class="org-string">"posisjon"</span>][1]
+    <span class="org-keyword">return</span> np.sqrt(dx ** 2 + dy ** 2)
+
+<span class="org-keyword">def</span> <span class="org-function-name">flytt_partikkel</span>(partikkel, dt):
+    <span class="org-variable-name">partikkel</span>[<span class="org-string">"posisjon"</span>] = partikkel[<span class="org-string">"posisjon"</span>] + dt * partikkel[<span class="org-string">"hastighet"</span>]
+
+<span class="org-keyword">def</span> <span class="org-function-name">kollisjon_oppdater_hastigheter</span>(p1, p2):
+    <span class="org-variable-name">u1</span> = p1[<span class="org-string">"hastighet"</span>]
+    <span class="org-variable-name">u2</span> = p2[<span class="org-string">"hastighet"</span>]
+    <span class="org-variable-name">pos1</span> = p1[<span class="org-string">"posisjon"</span>]
+    <span class="org-variable-name">pos2</span> = p2[<span class="org-string">"posisjon"</span>]
+    <span class="org-variable-name">m1</span> = p1[<span class="org-string">"masse"</span>]
+    <span class="org-variable-name">m2</span> = p2[<span class="org-string">"masse"</span>]
+
+    <span class="org-variable-name">d_kvadrert</span> = avstand(p1, p2) ** 2
+    
+    <span class="org-variable-name">p1</span>[<span class="org-string">"hastighet"</span>] = u1 - (2*m1)/(m1 + m2) * (np.dot(u1 - u2, pos1 - pos2))/d_kvadrert * (pos1 - pos2)
+    <span class="org-variable-name">p2</span>[<span class="org-string">"hastighet"</span>] = u2 - (2*m2)/(m1 + m2) * (np.dot(u2 - u1, pos2 - pos1))/d_kvadrert * (pos2 - pos1)
+
+<span class="org-keyword">def</span> <span class="org-function-name">kolliderer</span>(p1, p2):
+    <span class="org-variable-name">d</span> = avstand(p1, p2)
+    <span class="org-variable-name">r1</span> = p1[<span class="org-string">"radius"</span>]
+    <span class="org-variable-name">r2</span> = p2[<span class="org-string">"radius"</span>]
+
+    <span class="org-keyword">return</span> d &lt;= r1 + r2
+
+<span class="org-variable-name">pt1</span> = lag_partikkel([2 * RADIUS, H&#216;YDE // 2], <span class="org-comment-delimiter"># </span><span class="org-comment">posisjon i "meter"</span>
+                    [FART, 0],                <span class="org-comment-delimiter"># </span><span class="org-comment">fart i "meter per sekund"</span>
+                    PT1_FARGE, RADIUS, 1)     <span class="org-comment-delimiter"># </span><span class="org-comment">her settes massen til &#229; v&#230;re 1</span>
+
+<span class="org-variable-name">pt2</span> = lag_partikkel([BREDDE - 2 * RADIUS, H&#216;YDE // 2],
+                    [-FART, 0], 
+                    PT2_FARGE, RADIUS, 1)
+
+<span class="org-variable-name">kjoerer</span> = <span class="org-constant">True</span>
+<span class="org-keyword">while</span> kjoerer:
+    <span class="org-keyword">for</span> event <span class="org-keyword">in</span> pygame.event.get():
+        <span class="org-keyword">if</span> event.<span class="org-builtin">type</span> == pygame.QUIT:
+            <span class="org-variable-name">kjoerer</span> = <span class="org-constant">False</span>
+
+    <span class="org-keyword">if</span> kolliderer(pt1, pt2):
+        kollisjon_oppdater_hastigheter(pt1, pt2)
+
+    flytt_partikkel(pt1, dt_s)
+    flytt_partikkel(pt2, dt_s)
+
+    FLATE.fill(BAKGRUNNSFARGE)
+    tegn_partikkel(pt1)
+    tegn_partikkel(pt2)
+    pygame.display.flip()
+
+    <span class="org-variable-name">dt_ms</span> = klokke.tick(60)
+    <span class="org-variable-name">dt_s</span> = dt_ms / 1000
+
+<span class="org-keyword">print</span>(<span class="org-string">"Simuleringen er ferdig"</span>)
+pygame.<span class="org-constant">quit</span>()
+</pre>
+</div>
+
+
+<div id="org33f5385" class="figure">
+<p><img src="figurer/kollisjon_anim2.gif" alt="kollisjon_anim2.gif" />
+</p>
+<p><span class="figure-number">Illustrasjon 24 </span>Litt mindre kvantefysikk</p>
+</div>
+
+<p>
+Legg spesielt merke til følgende:
+</p>
+<ul class="org-ul">
+<li><code>avstand</code> er en funksjon som regner ut avstanden mellom to partiklers sentrum</li>
+<li><code>kolliderer</code> sjekker om to partikler er inntil hverandre</li>
+<li><code>kollisjon_oppdater_hastighet</code> endrer hastigheten til partiklene som inngår i kollisjonen</li>
+</ul>
+
+<div class="task" id="orgdd85919">
+<p>
+Utforsk programmet slik det står nå. Hvordan oppfører det seg om du endrer massene? Hva skjer om du endrer posisjonene? Oppfører programmet seg «realistisk»?  
 </p>
 
 </div>
