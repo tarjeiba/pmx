@@ -3,13 +3,13 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="nb" xml:lang="nb">
 <head>
-<!-- 2020-12-10 Thu 15:19 -->
+<!-- 2021-01-18 Mon 13:59 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Fysikkmotor</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="Tarjei Bærland" />
-<link rel="stylesheet" type="text/css" href="./style.css" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
 <script type="text/javascript">
 // @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
 <!--/*--><![CDATA[/*><!--*/
@@ -64,8 +64,8 @@ Gjennom dette oppgavearket skal vi lage en fysikkmotor ved å bruke Python og Py
 <dl class="org-dl">
 <dt><a href="#vektorer">Vektorer</a></dt><dd>Hvordan kan vi representerere vektorer i et python-program?</dd>
 <dt><a href="#partikler">Partikler</a></dt><dd>Kan vi samle flere egenskaper enn bare tall til i én verdi?</dd>
-<dt><a href="#orgdeb0395">Simulering</a></dt><dd>Trinnvis framover i Pygame</dd>
-<dt><a href="#org6249f93">Kollisjoner</a></dt><dd>Kan partiklene våre kollidere med hverandre?</dd>
+<dt><a href="#org7a04d85">Simulering</a></dt><dd>Trinnvis framover i Pygame</dd>
+<dt><a href="#orga52b6ff">Kollisjoner</a></dt><dd>Kan partiklene våre kollidere med hverandre?</dd>
 <dt><a href="fysikkmotor.html#ID-fd134f56-3103-448a-ae32-4e7679b7e50e">Utforsking</a></dt><dd>Hvilke andre modeller kan vi bruke partiklene våre til?</dd>
 </dl>
 
@@ -81,15 +81,15 @@ Motoren kommer til å ta form av en virtuell kasse som det spretter partikler ru
 </p>
 </div>
 
-<div id="outline-container-orga24a1ca" class="outline-3">
-<h3 id="orga24a1ca">Introduksjon</h3>
-<div class="outline-text-3" id="text-orga24a1ca">
+<div id="outline-container-org924d4ea" class="outline-3">
+<h3 id="org924d4ea">Introduksjon</h3>
+<div class="outline-text-3" id="text-org924d4ea">
 <p>
 Fra matematikken kjenner vi en vektor som noe med størrelse og retning. Ofte illustrerer vi dette med en pil. Under vises vektoren \(\vec{v}\) tegnet som en pil i planet.
 </p>
 
 
-<div id="org3e36160" class="figure">
+<div id="org07895a5" class="figure">
 <p><object type="image/svg+xml" data="figurer/vektor1.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -101,7 +101,7 @@ En vektor avhenger ikke av hvor vi tegner den, kun av dens størrelse og retning
 </p>
 
 
-<div id="orge1fd5ee" class="figure">
+<div id="org37947dc" class="figure">
 <p><object type="image/svg+xml" data="figurer/vektor2.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -117,7 +117,7 @@ Før vi kan representere en vektor i et dataprogram, må vi bestemme oss for hvo
 </p>
 
 
-<div id="org90be5e9" class="figure">
+<div id="org2afcf02" class="figure">
 <p><object type="image/svg+xml" data="figurer/vektor3.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -137,7 +137,7 @@ Om vi så ønsker å representere dette i et python-program, kan vi for eksempel
 Dette byr på en serie problemer, blant annet at vi nå har to variabler for å holde styr på det som strengt tatt bare er én matematisk størrelse, vektoren \(\vec{v}\).
 </p>
 
-<div class="task" id="orgf6fc243">
+<div class="task" id="org5802605">
 <p>
 Om du allerede kjenner til vektorer, stopp opp her og tenk på hvordan du ville representert dem i kode.
 </p>
@@ -146,9 +146,9 @@ Om du allerede kjenner til vektorer, stopp opp her og tenk på hvordan du ville 
 </div>
 </div>
 
-<div id="outline-container-org854bce0" class="outline-3">
-<h3 id="org854bce0">Addisjon</h3>
-<div class="outline-text-3" id="text-org854bce0">
+<div id="outline-container-orgf153133" class="outline-3">
+<h3 id="orgf153133">Addisjon</h3>
+<div class="outline-text-3" id="text-orgf153133">
 <p>
 Vi er vant til at \(\text{tall} + \text{tall} = \text{tall}\) og at \(\text{tall} \cdot \text{tall} = \text{tall}\).
 </p>
@@ -158,7 +158,7 @@ For vektorer er addisjon som forventet, \(\text{vektor} + \text{vektor} = \text{
 </p>
 
 
-<div id="org3f6ffd6" class="figure">
+<div id="org47dd5be" class="figure">
 <p><object type="image/svg+xml" data="figurer/vektor4.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -170,7 +170,7 @@ For å legge disse sammen visuelt, kan vi sette de etter hverandre, slik at \(\v
 </p>
 
 
-<div id="org5532b64" class="figure">
+<div id="org80fe8f4" class="figure">
 <p><object type="image/svg+xml" data="figurer/vektor5.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -181,7 +181,7 @@ Sorry, your browser does not support SVG.</object>
 Essensen her er at summen av to vektorer er en ny vektor.
 </p>
 
-<div class="task" id="orge355d22">
+<div class="task" id="orgbc22c79">
 <p>
 Om vi har to vektorer representert som to lengder og to vinkler, à la det beskrevet tidligere. Hvordan kan vi gå fram for å finne vektorsummen av disse?
 </p>
@@ -190,15 +190,15 @@ Om vi har to vektorer representert som to lengder og to vinkler, à la det beskr
 </div>
 </div>
 
-<div id="outline-container-org46342ee" class="outline-3">
-<h3 id="org46342ee">Dekomponering</h3>
-<div class="outline-text-3" id="text-org46342ee">
+<div id="outline-container-orgf252baf" class="outline-3">
+<h3 id="orgf252baf">Dekomponering</h3>
+<div class="outline-text-3" id="text-orgf252baf">
 <p>
 Vi <i>dekomponerer</i> en vektor ved å skrive den som en sum av vektorer, vi finner dens <i>komponenter</i>. Det vanligste er å la hver av disse komponentene ligge langs en koordinatakse. Under har vi dekomponert \(\vec{v}\) til en vektor i \(x\)-retning, \(\vec{v}_x\) og en vektor i \(y\)-retning, \(\vec{v}_y\).
 </p>
 
 
-<div id="org50618bd" class="figure">
+<div id="org3512a7f" class="figure">
 <p><object type="image/svg+xml" data="figurer/vektor6.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -220,7 +220,7 @@ Vi sier at vi nå har skrevet \(\vec{v}\) på <i>koordinatform</i>. For eksempel
         &= \left[\tfrac{3\sqrt{3}}{2}, \tfrac{3}{2} \right].
 \end{aligned}
 
-<div class="task" id="org51cf6b2">
+<div class="task" id="orgf24a53a">
 <p>
 Hvordan kan vi representerer vektorer på koordinatform i et program?
 </p>
@@ -229,9 +229,9 @@ Hvordan kan vi representerer vektorer på koordinatform i et program?
 </div>
 </div>
 
-<div id="outline-container-org5a56b53" class="outline-3">
-<h3 id="org5a56b53">Omforming</h3>
-<div class="outline-text-3" id="text-org5a56b53">
+<div id="outline-container-org596e7c5" class="outline-3">
+<h3 id="org596e7c5">Omforming</h3>
+<div class="outline-text-3" id="text-org596e7c5">
 <p>
 Vektorer på koordinatform har en annen fin egenskap, summen av to vektorer er den komponentvise summen av leddene. Altså er
 </p>
@@ -255,7 +255,7 @@ Naivt kunne vi tenkt at vi skulle representert vektoren på en form à la
 </pre>
 </div>
 
-<div class="task" id="org92efa48">
+<div class="task" id="org10c8655">
 <p>
 Lag et program som tar inn en vektor med lengde og vinkel, og returnerer en vektor på koordinatform. Du kan for eksempel lage det som en funksjon på formen
 </p>
@@ -273,7 +273,7 @@ Legg merke til her at vi har valgt å representere vektoren på koordinatform so
 
 </div>
 
-<div class="task" id="orgf9ffb75">
+<div class="task" id="org4828026">
 <p>
 Skriv et program som regner ut summen av de to vektorene under. Kall svaret ditt <code>w</code>.
 </p>
@@ -286,7 +286,7 @@ Skriv et program som regner ut summen av de to vektorene under. Kall svaret ditt
 
 </div>
 
-<div class="task" id="org8cdcdef">
+<div class="task" id="orgd9ae699">
 <p>
 Skriv en funksjon som tar inn en vektor på koordinatform, da som en liste av to verdier, og returnerer en liste med vektorens <code>lengde</code> og <code>vinkel</code>. Du kan kalle funksjonen <code>koordinat_til_polar</code>.
 </p>
@@ -295,9 +295,9 @@ Skriv en funksjon som tar inn en vektor på koordinatform, da som en liste av to
 </div>
 </div>
 
-<div id="outline-container-org2056d2f" class="outline-3">
-<h3 id="org2056d2f">Representasjonsform</h3>
-<div class="outline-text-3" id="text-org2056d2f">
+<div id="outline-container-orgaac274b" class="outline-3">
+<h3 id="orgaac274b">Representasjonsform</h3>
+<div class="outline-text-3" id="text-orgaac274b">
 <p>
 Vi har nå sett at det matematisk finnes ulike ekvivalente måter å representere en vektor på, som et sett av lengde og vinkel, som \(x\)- og \(y\)-koordinater, og vi kunne tenkt oss mange flere (de fleste av dem uhensiktsmessige i de fleste tilfeller, som et sett av lengde og en \(x\)-koordinat).
 </p>
@@ -317,7 +317,7 @@ Under oppgaven med vektoraddisjon, så vi dog at listerepresentasjonen, om enn d
 </pre>
 </div>
 
-<div class="task" id="org3f21b44">
+<div class="task" id="org2b7bd08">
 <p>
 Forsøk å se hvordan addisjon av vektorer fungerer nå. Start med en vektor <code>u</code> og en vektor <code>v</code>, hver representert som et numpy-array, og test ut addisjon ved å bruke et vanlig <code>+</code>-tegn.
 </p>
@@ -338,9 +338,9 @@ Kommenter svarene dine.
 </div>
 </div>
 
-<div id="outline-container-orgcc0e669" class="outline-3">
-<h3 id="orgcc0e669">Skalarproduktet</h3>
-<div class="outline-text-3" id="text-orgcc0e669">
+<div id="outline-container-org3f00561" class="outline-3">
+<h3 id="org3f00561">Skalarproduktet</h3>
+<div class="outline-text-3" id="text-org3f00561">
 <p>
 Vi har sett at addisjon fungerer som vi forventer mellom vektorer, en sum av to vektorer er en ny vektor. Hva med multiplikasjon?
 </p>
@@ -362,7 +362,7 @@ På samme måte som at det finnes ulike måter å tenke på vektorer, finnes det
 </p>
 
 
-<div id="orgc04464c" class="figure">
+<div id="orgee86f0b" class="figure">
 <p><object type="image/svg+xml" data="figurer/vektor7a.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -374,7 +374,7 @@ Lengden av \(\vec{v}_u\) da skrives \(|\vec{v}|\cos\theta\), som enklere vises o
 </p>
 
 
-<div id="org573ba03" class="figure">
+<div id="org97e0221" class="figure">
 <p><object type="image/svg+xml" data="figurer/vektor7a1.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -393,7 +393,7 @@ Kan vi med dette få en intuisjon av hva \(\vec{u}\cdot\vec{v}\) er?
 Ja, \(\vec{u}\cdot\vec{v}\) er «lengden av \vec{u} ganget med lengden av \(\vec{v}_u\)». Altså har vi at \(\vec{u}\cdot\vec{v} = |\vec{u}||\vec{v}_u|\).
 </p>
 
-<div class="task" id="orgee7cfe6">
+<div class="task" id="orge383547">
 <p>
 Lag et program som tar inn to vektorer, \(u\) og \(v\) (du kan bruke de samme som i eksempelet over). Regn ut \(\vec{u}\cdot\vec{v}\) ved å bruke at \[\vec{u}\cdot\vec{v} = |\vec{u}||\vec{v}|\cos \theta,\] hvor \(\theta\) er vinkelen mellom \(\vec{u}\) og \(\vec{v}\).
 </p>
@@ -409,7 +409,7 @@ Om vi har vektorene representert på koordinatform, er det en enkel sak å regne
                     &= u_x v_x + u_y v_y
 \end{aligned}
 
-<div class="task" id="orgd9d03bd">
+<div class="task" id="orgf12b0e1">
 <p>
 Lag et program som tar inn to vektorer på koordinatform i lister. Regn ut vektorenes skalarprodukt ved å bruke definisjonen over.
 </p>
@@ -429,7 +429,7 @@ Du kan for eksempel ta utgangspunkt i følgende:
 Skalarproduktet oppstår i mange områder av matematikken. I <code>numpy</code> har vi det innebygd som <code>dot</code>-funksjonen. For eksempel vil <code>np.dot(a, b)</code> regne ut skalarproduktet (eller «prikkproduktet» eller «dotproduktet») til de to vektorene <code>a</code> og <code>b</code>.
 </p>
 
-<div class="task" id="orgb675c0c">
+<div class="task" id="org46056ed">
 <p>
 Lag et program som tar inn to vektorer på koordinatform i numpy-arrayer. Regn ut vektorenes skalarprodukt ved å bruke <code>np.dot</code>.
 </p>
@@ -447,9 +447,9 @@ Du kan for eksempel ta utgangspunkt i følgende:
 </div>
 </div>
 
-<div id="outline-container-orgf741de7" class="outline-3">
-<h3 id="orgf741de7">Skalering eller skalarmultiplikasjon</h3>
-<div class="outline-text-3" id="text-orgf741de7">
+<div id="outline-container-orga854132" class="outline-3">
+<h3 id="orga854132">Skalering eller skalarmultiplikasjon</h3>
+<div class="outline-text-3" id="text-orga854132">
 <p>
 Ordet «skalar» brukes ofte om tall i vektorsammenheng. Bakgrunnen for dette navnet er nettopp at et tall multiplisert med en vektor gir en <i>skalert</i> vektor. Vi kan bruke ordene «skalar» og «tall» om hverandre.
 </p>
@@ -459,7 +459,7 @@ En vektor \(\vec{v}\) skalert med et tall \(t\) er en ny vektor med samme retnin
 </p>
 
 
-<div id="org6392931" class="figure">
+<div id="org6fd6463" class="figure">
 <p><object type="image/svg+xml" data="figurer/vektor8.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -470,7 +470,7 @@ Sorry, your browser does not support SVG.</object>
 Her er \(0 < a < 1\), \(b > 1\) og \(c < 0\). Vi ser altså at en negativ skalering av en vektor gir en vektor med motsatt retning. For eksemplene i figuren over, er \(|b| = |c|\).
 </p>
 
-<div class="task" id="org0d4a459">
+<div class="task" id="orga9eabcf">
 <p>
 Undersøk om <code>np.dot(t, v)</code> fungerer som forventet dersom <code>t</code> er et tall og <code>v</code> er en vektor i form av et numpy-array.
 </p>
@@ -488,15 +488,15 @@ Undersøk om <code>np.dot(t, v)</code> fungerer som forventet dersom <code>t</co
 </p>
 </div>
 
-<div id="outline-container-org480d558" class="outline-3">
-<h3 id="org480d558">Introduksjon</h3>
-<div class="outline-text-3" id="text-org480d558">
+<div id="outline-container-orgf6c918f" class="outline-3">
+<h3 id="orgf6c918f">Introduksjon</h3>
+<div class="outline-text-3" id="text-orgf6c918f">
 <p>
 Vi skal ha partikler sprettende rundt på en skjerm. Vi bør da kunne ha en måte i programmet vårt for å si «dette er en bestemt partikkel». Ideelt sett kunne for eksempel <code>partikkel_1</code> vist til en partikkel med en posisjon, fart, størrelse, og <code>partikkel_2</code> det samme.
 </p>
 
 
-<div id="org2c97bbe" class="figure">
+<div id="org639c208" class="figure">
 <p><object type="image/svg+xml" data="figurer/partikkel1.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -521,7 +521,7 @@ La oss si vi velger å ha <i>posisjon</i> som en liste med \(x\)- og \(y\)-verdi
 Vi kan da fortelle de som skal bruke programmet at «en partikkel er en liste med tre verdier, den første verdien er en liste med koordinater, den andre en tekststreng som setter mønsteret, den tredje et tall for radiusen».
 </p>
 
-<div class="task" id="orgd5b1acd">
+<div class="task" id="org3a8a91a">
 <p>
 Lag en <code>partikkel_3</code>, med radius 15.3, senter i origo og rutete mønster.
 </p>
@@ -550,12 +550,12 @@ Vi skriver altså <code>{}</code> med en samling av <code>nøkkelord: verdi,</co
 </pre>
 </div>
 
-<pre class="example" id="orgac226e2">
+<pre class="example" id="org95a1e12">
 13.5
 {'posisjon': [38.6, 8.6], 'mønster': 'stripete', 'radius': 13.5, 'masse': 14}
 </pre>
 
-<div class="task" id="orgb4cc06d">
+<div class="task" id="org146293a">
 <p>
 Lag <code>partikkel_1</code> og <code>partikkel_2</code> som over, men gjør posisjonen til et numpy-array, istedenfor lista vi bruker over.
 </p>
@@ -564,9 +564,9 @@ Lag <code>partikkel_1</code> og <code>partikkel_2</code> som over, men gjør pos
 </div>
 </div>
 
-<div id="outline-container-org9a24dee" class="outline-3">
-<h3 id="org9a24dee">Tegne partikkel</h3>
-<div class="outline-text-3" id="text-org9a24dee">
+<div id="outline-container-orgc57a2f8" class="outline-3">
+<h3 id="orgc57a2f8">Tegne partikkel</h3>
+<div class="outline-text-3" id="text-orgc57a2f8">
 <p>
 Dette avsnittet forutsetter at du har lagt inn biblioteket <code>pygame</code>. Dette kan du gjøre ved å åpne programmet «Anaconda prompt» og kjøre kommandoen <code>pip install pygame</code>.
 </p>
@@ -589,7 +589,7 @@ Før dette må vi initialisere hele «spillet».
 </p>
 
 
-<div id="org1a78462" class="figure">
+<div id="org10f86e8" class="figure">
 <p><object type="image/svg+xml" data="figurer/flytskjema1.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -597,9 +597,9 @@ Sorry, your browser does not support SVG.</object>
 </div>
 </div>
 
-<div id="outline-container-org66fa0a5" class="outline-4">
-<h4 id="org66fa0a5">«Init» og oppsett</h4>
-<div class="outline-text-4" id="text-org66fa0a5">
+<div id="outline-container-orge54d00d" class="outline-4">
+<h4 id="orge54d00d">«Init» og oppsett</h4>
+<div class="outline-text-4" id="text-orge54d00d">
 <p>
 Her skal vi gjøre <code>pygame</code> klart.
 </p>
@@ -621,9 +621,9 @@ Vi har nå gjort pygame klart til å bruke et vindu som er 800 piksler bredt, og
 </div>
 </div>
 
-<div id="outline-container-org2d09331" class="outline-4">
-<h4 id="org2d09331">Hovedløkke og prosessere inndata</h4>
-<div class="outline-text-4" id="text-org2d09331">
+<div id="outline-container-org4bb8cbf" class="outline-4">
+<h4 id="org4bb8cbf">Hovedløkke og prosessere inndata</h4>
+<div class="outline-text-4" id="text-org4bb8cbf">
 <div class="org-src-container">
 <pre class="src src-python"><span class="org-variable-name">kjoerer</span> = <span class="org-constant">True</span>
 <span class="org-keyword">while</span> kjoerer:
@@ -660,9 +660,9 @@ Når vi da har kommet oss helt ut av hovedløkka vår (<code>while kjoerer</code
 </div>
 </div>
 
-<div id="outline-container-orgdcf98a3" class="outline-4">
-<h4 id="orgdcf98a3">Oppdatere spilldata</h4>
-<div class="outline-text-4" id="text-orgdcf98a3">
+<div id="outline-container-org74c4de2" class="outline-4">
+<h4 id="org74c4de2">Oppdatere spilldata</h4>
+<div class="outline-text-4" id="text-org74c4de2">
 <p>
 Det har ikke skjedd så mye med partiklene våre ennå.
 </p>
@@ -737,7 +737,7 @@ Vi kjører koden og får følgende:
 </p>
 
 
-<div id="org011b63f" class="figure">
+<div id="orgad6d62c" class="figure">
 <p><img src="figurer/partikkel_pygame.png" alt="partikkel_pygame.png" />
 </p>
 <p><span class="figure-number">Illustrasjon 12 </span>Vår første partikkel</p>
@@ -747,7 +747,7 @@ Vi kjører koden og får følgende:
 Vi merker oss at posisjonen var i et annet hjørne enn forventet, men lar det være med det inntil videre.
 </p>
 
-<div class="task" id="org0f3e68c">
+<div class="task" id="org28b5102">
 <p>
 Du har lagt merke til at vi har vært uelegente med hvordan vi henter ut data fra partikkelen vår. Når vi tegner den, skriver vi for eksempel <code>(0, 14, 200)</code> for fargen, istedenfor <code>partikkel["farge"]</code>.
 </p>
@@ -758,7 +758,7 @@ Fiks opp i dette slik at de ulike tallene kun står en gang i programmet.
 
 </div>
 
-<div class="task" id="orgdd6bd6d">
+<div class="task" id="orgeef7800">
 <p>
 For å sette farge på partikkelen, har vi gitt fargen som en samling av r(ød)-, g(rønn)-, og b(lå)-verdier.
 </p>
@@ -769,7 +769,7 @@ Du kan bruke <a href="https://htmlcolorcodes.com/color-picker/">denne</a> siden 
 
 </div>
 
-<div class="task" id="orgf6bba32">
+<div class="task" id="org107c6ed">
 <p>
 Bruk <code>randint</code>-funksjonen fra <code>random</code>-biblioteket til å gi partikkelen tilfeldig posisjon, farge og radius.
 </p>
@@ -784,17 +784,17 @@ Hvordan kan du forsikre deg om at <i>hele</i> partikkelen alltid vises?
 </div>
 </div>
 
-<div id="outline-container-orgdeb0395" class="outline-2">
-<h2 id="orgdeb0395">Simulering</h2>
-<div class="outline-text-2" id="text-orgdeb0395">
+<div id="outline-container-org7a04d85" class="outline-2">
+<h2 id="org7a04d85">Simulering</h2>
+<div class="outline-text-2" id="text-org7a04d85">
 <p>
 
 </p>
 </div>
 
-<div id="outline-container-org0b5106e" class="outline-3">
-<h3 id="org0b5106e">Introduksjon</h3>
-<div class="outline-text-3" id="text-org0b5106e">
+<div id="outline-container-org5de0d58" class="outline-3">
+<h3 id="org5de0d58">Introduksjon</h3>
+<div class="outline-text-3" id="text-org5de0d58">
 <p>
 Vi skal nå begynne å flytte rundt på partikkelen vår, samtidig som vi ønsker å se endringen på skjermen.
 </p>
@@ -804,7 +804,7 @@ Figuren under viser hvordan partikkelen <code>pt1</code> har flyttet seg fra en 
 </p>
 
 
-<div id="orgc71d9d2" class="figure">
+<div id="orge8d2473" class="figure">
 <p><object type="image/svg+xml" data="figurer/simulering1.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -813,9 +813,9 @@ Sorry, your browser does not support SVG.</object>
 </div>
 </div>
 
-<div id="outline-container-orgff25927" class="outline-3">
-<h3 id="orgff25927">Klokka</h3>
-<div class="outline-text-3" id="text-orgff25927">
+<div id="outline-container-orgefad581" class="outline-3">
+<h3 id="orgefad581">Klokka</h3>
+<div class="outline-text-3" id="text-orgefad581">
 <p>
 I Pygame løser vi dette med en klokke. Under initialiseringa, kan vi opprette en klokke ved å skrive for eksempel <code>klokke = pygame.time.Clock()</code>. Dette er altså en linje hvor vi går inn i <i>modulen</i> <code>time</code> og lager oss en <code>Clock</code>. I resten av programmet vårt har vi nå muligheten til å gjøre ting med variabelen <code>klokke</code>.
 </p>
@@ -832,7 +832,7 @@ Det viktigste vi kommer til å gjøre med klokka er å klikke den framover ved �
 </pre>
 </div>
 
-<pre class="example" id="orgbc12b24">
+<pre class="example" id="org93643b2">
 pygame 2.0.0 (SDL 2.0.12, python 3.8.6)
 Hello from the pygame community. https://www.pygame.org/contribute.html
 Help on built-in function tick:
@@ -846,7 +846,7 @@ tick(...) method of builtins.Clock instance
 <code>tick</code> er altså en funksjon som oppdaterer klokka vår og returnerer et antall millisekunder. Antallet millisekunder er hvor lang tid det er siden sist <code>tick</code> blei brukt.
 </p>
 
-<div class="task" id="orgcccd034">
+<div class="task" id="orga11606b">
 <p>
 Kjør følgende kode. Hvilken verdi har <code>dt</code> etter du har kjørt koden?
 </p>
@@ -865,7 +865,7 @@ klokke.tick()    <span class="org-comment-delimiter"># </span><span class="org-c
 
 </div>
 
-<div class="task" id="org7028b1b">
+<div class="task" id="orgedd75ac">
 <p>
 Funksjonen <code>sum(sekvens)</code> brukt over summerer en sekvens, og funksjonen <code>range(n)</code> gir en sekvens \((0, 1, \ldots, n)\).
 </p>
@@ -921,7 +921,7 @@ pygame.<span class="org-constant">quit</span>()
 Legg merke til at vi nå har gjort posisjonen om til et numpy-array og at vi bruker partikkelen <code>pt</code> direkte i tegningen av sirkelen vår.
 </p>
 
-<div class="task" id="org62a0dfc">
+<div class="task" id="orgdd49ad0">
 <p>
 Skriv av koden over og kontroller at du får samme figur som tidligere.
 </p>
@@ -930,9 +930,9 @@ Skriv av koden over og kontroller at du får samme figur som tidligere.
 </div>
 </div>
 
-<div id="outline-container-org9643659" class="outline-3">
-<h3 id="org9643659">Dynamikk</h3>
-<div class="outline-text-3" id="text-org9643659">
+<div id="outline-container-orgba14682" class="outline-3">
+<h3 id="orgba14682">Dynamikk</h3>
+<div class="outline-text-3" id="text-orgba14682">
 <p>
 I koden under har vi lagt til tre variabler for oppsettet vårt, som vi viser at vi ikke tenker å endre ved å skrive dem med bare store bokstaver, <code>BREDDE</code>, <code>HØYDE</code>, og <code>BAKGRUNNSFARGE</code>.
 </p>
@@ -979,7 +979,7 @@ Når vi kjører koden får vi et vindu som ser omtrent slik ut, om enn litt stø
 </p>
 
 
-<div id="orga034c90" class="figure">
+<div id="org7301e65" class="figure">
 <p><img src="figurer/simulering_anim1.gif" alt="simulering_anim1.gif" />
 </p>
 <p><span class="figure-number">Illustrasjon 14 </span>En partikkel som beveger seg</p>
@@ -989,14 +989,14 @@ Når vi kjører koden får vi et vindu som ser omtrent slik ut, om enn litt stø
 Her flytter vi altså partikkelen litt mellom hvert trykk på klokka. Vi gir partikkelen <code>pt</code> en ny posisjon, ved å bruke at vektorer kan legges sammen som numpy arrayer. Vi får da linja <code>pt["posisjon"] = pt["posisjon"] + np.array([1, 0])</code>. Vi øker altså partikkelens \(x\)-verdi med \(1\) hver gang gjennom hovedløkka.
 </p>
 
-<div class="task" id="org72b4374">
+<div class="task" id="orge89c6be">
 <p>
 Forsøk å bruke denne koden med andre verdier for endringen av posisjon, altså ikke <code>np.array([1, 0])</code>.
 </p>
 
 </div>
 
-<div class="task" id="org9c57f53">
+<div class="task" id="orgad51212">
 <p>
 Klarer du å bruke <code>BREDDE</code> og å snu posisjonsendringen dersom partikkelen er på vei ut av skjermen?
 </p>
@@ -1005,9 +1005,9 @@ Klarer du å bruke <code>BREDDE</code> og å snu posisjonsendringen dersom parti
 </div>
 </div>
 
-<div id="outline-container-orgb854a7a" class="outline-3">
-<h3 id="orgb854a7a">Fart</h3>
-<div class="outline-text-3" id="text-orgb854a7a">
+<div id="outline-container-orge6d5aab" class="outline-3">
+<h3 id="orge6d5aab">Fart</h3>
+<div class="outline-text-3" id="text-orge6d5aab">
 <p>
 Vi skal nå gi partiklene våre en ny egenskap, <code>"hastighet"</code>. I samme sleng lager vi også en funksjon som skal hjelpe oss på opprette nye partikler.
 </p>
@@ -1017,7 +1017,7 @@ Først, farten kommer til å være en ny vektor, som vi så skal skalere med en 
 </p>
 
 
-<div id="org264e7c2" class="figure">
+<div id="org184ca59" class="figure">
 <p><object type="image/svg+xml" data="figurer/simulering2.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -1029,7 +1029,7 @@ For enklere å kunne lage flere partikler, lager vi så en funksjon <code>lag_pa
 </p>
 
 
-<div id="org681556f" class="figure">
+<div id="orga58d84e" class="figure">
 <p><object type="image/svg+xml" data="figurer/simulering3.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -1041,21 +1041,21 @@ Dersom vi da skriver <code>pt = lag_partikkel(np.array(50, 50), np.array(10, -10
 </p>
 
 
-<div id="orge86fd2f" class="figure">
+<div id="org02aab6f" class="figure">
 <p><object type="image/svg+xml" data="figurer/simulering4.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
 <p><span class="figure-number">Illustrasjon 17 </span>En partikkel fra spesifikasjonen over</p>
 </div>
 
-<div class="task" id="orgd630318">
+<div class="task" id="org0f6aa3d">
 <p>
 Forsøk å skrive en funksjon som oppfyller spesifikasjonen over.
 </p>
 
 </div>
 
-<div class="task" id="orgc82878b">
+<div class="task" id="org678a657">
 <p>
 Undersøk hva som skjer om du oppdaterer denne nye partikkelens posisjon med farten, ikke <code>np.array([1, 0])</code>, som vi gjorde tidligere.
 </p>
@@ -1082,7 +1082,7 @@ For å bedre på dette, kan vi tenke på hva slags enheter vi ønsker at skjerme
 La oss sette inn en «hardkodet» tidsendring, \(\Delta t\), som vi gjør liten nok til at hvert skritt framover i simuleringa vår ikke er større enn at vi får en fin animasjon på skjermen.
 </p>
 
-<div class="task" id="orga4ac03f">
+<div class="task" id="orgc036537">
 <p>
 Ta utgangspunkt i koden under, og endre <code>dt</code> til du er fornøyd med hvordan det ser ut.
 </p>
@@ -1136,7 +1136,7 @@ Med utgangspunktet over, får vi noe omtrent som figuren under.
 </p>
 
 
-<div id="orge89447a" class="figure">
+<div id="orga9a2cbe" class="figure">
 <p><img src="figurer/simulering_anim2.gif" alt="simulering_anim2.gif" />
 </p>
 <p><span class="figure-number">Illustrasjon 18 </span>En treig partikkel</p>
@@ -1148,9 +1148,9 @@ Merk, linja med <code># &lt;- Obs!</code> bruker en <code>tegn_partikkel</code>-
 </div>
 </div>
 
-<div id="outline-container-org5002d54" class="outline-3">
-<h3 id="org5002d54">En forbedret tegning</h3>
-<div class="outline-text-3" id="text-org5002d54">
+<div id="outline-container-orgee2c3b6" class="outline-3">
+<h3 id="orgee2c3b6">En forbedret tegning</h3>
+<div class="outline-text-3" id="text-orgee2c3b6">
 <p>
 Akkurat nå ser partiklene våre litt grovkornede ut. Dette kommer av hvordan pygames <code>draw.circle</code>-funksjon fungerer. Vi kan tegne penere partikler ved å bruke undermodulen <code>pygame.gfxdraw</code>. Under <code>import pygame</code> kan du skrive <code>import pygame.gfxdraw</code>, så skal vi nå endre <code>tegn_partikkel</code>-funksjonen vår.
 </p>
@@ -1184,7 +1184,7 @@ Dette gir oss en partikkel med litt mindre ru overflate.
 </p>
 
 
-<div id="orgd9e6d3c" class="figure">
+<div id="orgd3ae246" class="figure">
 <p><img src="figurer/simulering_anim3.gif" alt="simulering_anim3.gif" />
 </p>
 </div>
@@ -1193,7 +1193,7 @@ Dette gir oss en partikkel med litt mindre ru overflate.
 Legg merke til at <code>gfxdraw.aacircle</code> og <code>filled_circle</code> brukes på en litt annen måte en <code>draw.circle</code>, ved at de tar inn heltallige \(x\)- og \(y\)-posisjoner. Den første delen av koden i funksjonen over kan du gjerne pynte en del på, for eksempel ved å hente ut \(x\)- og \(y\)-verdier samtidig som du bruker <code>int</code> for å gjøre dem til heltall.
 </p>
 
-<div class="task" id="orgf3c640f">
+<div class="task" id="orga5e742b">
 <p>
 Forsøk å gi partikkelen din en tilfeldig posisjon og fart ved å bruke <code>random.randint</code>.
 </p>
@@ -1206,9 +1206,9 @@ Vi kommer ikke til å endre mer på <code>tegn_partikkel</code> nå. Om du er fo
 </div>
 </div>
 
-<div id="outline-container-org3e13c39" class="outline-3">
-<h3 id="org3e13c39">Partikkel og partikler</h3>
-<div class="outline-text-3" id="text-org3e13c39">
+<div id="outline-container-orged37c04" class="outline-3">
+<h3 id="orged37c04">Partikkel og partikler</h3>
+<div class="outline-text-3" id="text-orged37c04">
 <p>
 Nå lager vi bare én partikkel, med linja <code>pt = lag_partikkel...</code>. Vi ønsker oss en kasse med mange partikler i. Her må vi igjen tenke på hvordan vi skal representere dette i programmet vårt. Det virker uhensiktsmessig å skulle skrive det linje for linje.
 </p>
@@ -1318,14 +1318,14 @@ pygame.<span class="org-constant">quit</span>()
 Merk deg at vi nå løper gjennom en liste med partikler både når vi vil tegne partiklene, og når vi vil oppdatere partiklenes posisjon.
 </p>
 
-<div class="task" id="org122f521">
+<div class="task" id="orgd56150a">
 <p>
 Fiks programmet slik at ikke alle partiklene beveger seg nedover mot høyre.
 </p>
 
 </div>
 
-<div class="task" id="orgee5032f">
+<div class="task" id="org6ac11e1">
 <p>
 Hvis vi ønsker oss at \(y\)-aksen skal være positiv <i>oppover</i>, istedenfor <i>nedover</i> som det er nå, kan vi, om vi ønsker, fikse det i <code>tegn_partikkel</code>-funksjonen vår.
 </p>
@@ -1339,16 +1339,16 @@ Har du et forslag til hvordan vi kan gjøre det?
 </div>
 </div>
 
-<div id="outline-container-org6249f93" class="outline-2">
-<h2 id="org6249f93">Kollisjoner</h2>
-<div class="outline-text-2" id="text-org6249f93">
+<div id="outline-container-orga52b6ff" class="outline-2">
+<h2 id="orga52b6ff">Kollisjoner</h2>
+<div class="outline-text-2" id="text-orga52b6ff">
 <p>
 
 </p>
 </div>
-<div id="outline-container-org6fd3f2a" class="outline-3">
-<h3 id="org6fd3f2a">Introduksjon</h3>
-<div class="outline-text-3" id="text-org6fd3f2a">
+<div id="outline-container-org41d2d30" class="outline-3">
+<h3 id="org41d2d30">Introduksjon</h3>
+<div class="outline-text-3" id="text-org41d2d30">
 <p>
 I koden under lages to partikler, <code>pt1</code> og <code>pt2</code>, med fart rett mot hverandre. (At farten her settes til <code>RADIUS</code> og <code>-RADIUS</code> betyr i praksis at farten er én radius per sekund.)
 </p>
@@ -1439,7 +1439,7 @@ Når vi kjører denne koden, får vi følgende resultat:
 </p>
 
 
-<div id="org644999a" class="figure">
+<div id="org5d50d6c" class="figure">
 <p><img src="figurer/kollisjon_anim1.gif" alt="kollisjon_anim1.gif" />
 </p>
 <p><span class="figure-number">Illustrasjon 20 </span>To kvantepartikler</p>
@@ -1451,9 +1451,12 @@ Dette er ikke helt som vi ønsker oss.
 </div>
 </div>
 
-<div id="outline-container-org8571dc6" class="outline-3">
-<h3 id="org8571dc6">Kollisjoner i 1D</h3>
-<div class="outline-text-3" id="text-org8571dc6">
+<div id="outline-container-org7133204" class="outline-3">
+<h3 id="org7133204">Refleksjon mot vegger</h3>
+</div>
+<div id="outline-container-org62ab671" class="outline-3">
+<h3 id="org62ab671">Kollisjoner i 1D</h3>
+<div class="outline-text-3" id="text-org62ab671">
 <p>
 Fra fysikken kjenner vi det som at «energien er bevart». Vi har også at «bevegelsesmengde er bevart», og sammen gjør dette at vi kan regne på kollisjoner.
 </p>
@@ -1463,7 +1466,7 @@ Med dette som utgangspunkt, kan vi ha et oppsett som vist under, med to partikle
 </p>
 
 
-<div id="org12ab62c" class="figure">
+<div id="org35bcf2f" class="figure">
 <p><object type="image/svg+xml" data="figurer/kollisjon1.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -1475,7 +1478,7 @@ Om vi lar <i>energi</i> i dette tilfellet begrense seg til <i>kinetisk</i> energ
 </p>
 
 
-<div id="orgf45a928" class="figure">
+<div id="org2fc8b71" class="figure">
 <p><object type="image/svg+xml" data="figurer/kollisjon2.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -1486,7 +1489,7 @@ Sorry, your browser does not support SVG.</object>
 Kollisjonen skjer når partiklenes overflate møter hverandre.
 </p>
 
-<div class="task" id="org88919cd">
+<div class="task" id="orga8898e3">
 <p>
 Vi har to partikler, med radius \(r_1\) og \(r_2\) og posisjonsvektorer \(\vec{p}_1\) og \(\vec{p}_2\). Avstanden mellom partiklene, \(d\), kan da uttrykkes som absoluttverdien til differansen mellom posisjonsvektorene, altså \(d = |\vec{p}_1 - \vec{p}_2|\).
 </p>
@@ -1517,7 +1520,7 @@ m_1\vec{u}_1 + m_2\vec{u}_2 &= m_1\vec{v}_1 + m_2\vec{v}_2
 \end{align*}
 
 
-<div id="org8e75c20" class="figure">
+<div id="org03ebf25" class="figure">
 <p><object type="image/svg+xml" data="figurer/kollisjon3.svg" class="org-svg">
 Sorry, your browser does not support SVG.</object>
 </p>
@@ -1526,9 +1529,9 @@ Sorry, your browser does not support SVG.</object>
 </div>
 </div>
 
-<div id="outline-container-org234cfcd" class="outline-3">
-<h3 id="org234cfcd">Utregning</h3>
-<div class="outline-text-3" id="text-org234cfcd">
+<div id="outline-container-org82d706e" class="outline-3">
+<h3 id="org82d706e">Utregning</h3>
+<div class="outline-text-3" id="text-org82d706e">
 <p>
 <i>Arbeid pågår!</i>
 </p>
@@ -1676,7 +1679,7 @@ pygame.<span class="org-constant">quit</span>()
 </div>
 
 
-<div id="org33f5385" class="figure">
+<div id="org660b135" class="figure">
 <p><img src="figurer/kollisjon_anim2.gif" alt="kollisjon_anim2.gif" />
 </p>
 <p><span class="figure-number">Illustrasjon 24 </span>Litt mindre kvantefysikk</p>
@@ -1691,7 +1694,7 @@ Legg spesielt merke til følgende:
 <li><code>kollisjon_oppdater_hastighet</code> endrer hastigheten til partiklene som inngår i kollisjonen</li>
 </ul>
 
-<div class="task" id="orgdd85919">
+<div class="task" id="org91bae35">
 <p>
 Utforsk programmet slik det står nå. Hvordan oppfører det seg om du endrer massene? Hva skjer om du endrer posisjonene? Oppfører programmet seg «realistisk»?  
 </p>
