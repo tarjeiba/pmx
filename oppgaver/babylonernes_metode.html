@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="nb" xml:lang="nb">
+<head>
+<!-- 2021-01-25 Mon 05:57 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Babylonernes metode</title>
+<meta name="generator" content="Org mode" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Babylonernes metode</h1>
+<p>
+Vi har et positivt, reelt tall \(S\), og ønsker å finne dets kvadratrot. La oss starte med \(S = 17\).
+</p>
+
+<div id="outline-container-org6650f45" class="outline-2">
+<h2 id="org6650f45">Oppgave 0</h2>
+<div class="outline-text-2" id="text-org6650f45">
+<p>
+Med \(S = 17\) og ved å bruke enkel regning (uten kvadratot), hva er ditt estimat for \(x = \sqrt{S}\)?
+</p>
+
+<p>
+Gjør rede for hvordan du kom fram til svaret.
+</p>
+
+<pre class="example" id="org78a69a2">
+# Tester x = 4
+4 * 4 = 16  &lt; 17
+# 4 er for lavt
+# Tester x = 5
+5 * 5 = 25  &gt; 17
+# 5 er for høyt
+# Tester x = 4.1
+# ...
+</pre>
+</div>
+</div>
+
+<div id="outline-container-org2eb52e5" class="outline-2">
+<h2 id="org2eb52e5">Oppgave 1</h2>
+<div class="outline-text-2" id="text-org2eb52e5">
+<p>
+Vi har tilgjengelig leirtavler med babylonsk matematikk som er flere tusen år gamle. Du kan lese mer om det på <a href="https://no.wikipedia.org/wiki/Babylonsk_matematikk">norsk</a> og <a href="https://en.wikipedia.org/wiki/Babylonian_mathematics">engelsk</a> Wikipedia.
+</p>
+
+<p>
+De regnet sannsynligvis ut kvadratrøtter ved å bruke en metode vi i dag kaller «Babylonernes metode» alternativt «Herons metode», etter atter en greker fra antikken.
+</p>
+
+<p>
+Metoden kan oppsummeres som følger:
+</p>
+
+<ol class="org-ol">
+<li>Start med en gjetning for \(x\), kall denne \(x_0\).</li>
+<li>La \(x_{n+1}\) være gjennomsnittet av \(x_{n}\) og \(\frac{S}{x_n}\).</li>
+<li>Gjenta steg 2 til ønsket nøyaktighet er oppnådd.</li>
+</ol>
+
+<p>
+Regn deg «for hånd» (bruk gjerne kalkulator) gjennom denne algoritmen fem «iterasjoner». (En <i>iterasjon</i> svarer her til en gjennomføring av steg 2.)
+</p>
+
+<p>
+Hvilken verdi av \(\sqrt{17}\) kommer du fram til?
+</p>
+</div>
+</div>
+
+<div id="outline-container-org825d2c5" class="outline-2">
+<h2 id="org825d2c5">Oppgave 2</h2>
+<div class="outline-text-2" id="text-org825d2c5">
+<p>
+Vi skal forsøke å implementere (altså å skrive som et dataprogram) denne algoritmen i Python. Vi ønsker at programmet vårt skal oppføre seg som følger:
+</p>
+
+<ol class="org-ol">
+<li>Be brukeren om input, for eksempel <code>Hvilket tall ønsker du å regne ut kvadratroten av?</code>.</li>
+<li>Skriv ut en feilmelding dersom brukeren har tastet et negativt tall, for eksempel <code>Jeg beklager, jeg kan ikke regne ut komplekse tall.</code>.</li>
+<li>Finne en tilnærming til kvadratroten av tallet brukeren har tastet inn ved å bruke Babylonernes metode.</li>
+<li>Skrive ut dette tallet.</li>
+</ol>
+
+<p>
+Skriv programmet over, men gjør det slik at programmet alltid kjører ti iterasjoner av algoritmen. (Altså trenger du ikke å sjekke hvor nære den faktiske løsningen du er.)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgb5fe286" class="outline-2">
+<h2 id="orgb5fe286">Oppgave 3</h2>
+<div class="outline-text-2" id="text-orgb5fe286">
+<p>
+Kjør algoritmen så lenge <code>abs(S ** 2 - x ** 2) &gt; epsilon</code>, hvor <code>epsilon</code> er en liten verdi du selv velger (for eksempel <code>1E-7</code>).
+</p>
+
+<p>
+Hvor mange iterasjoner bruker denne algoritmen om du lar \(S=17\) og \(x_0 = 1\)?
+</p>
+</div>
+</div>
+</div>
+</body>
+</html>
