@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="nb" xml:lang="nb">
+<head>
+<!-- 2021-01-29 Fri 21:40 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Tegning av grafer</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Tarjei Bærland" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Tegning av grafer</h1>
+<div id="outline-container-org1de2232" class="outline-2">
+<h2 id="org1de2232">Tegning av grafer</h2>
+<div class="outline-text-2" id="text-org1de2232">
+</div>
+<div id="outline-container-org36cd965" class="outline-3">
+<h3 id="org36cd965">Oppgave 0: Sjekk av installasjonen</h3>
+<div class="outline-text-3" id="text-org36cd965">
+<p>
+Vi kommer til å trenge både <code>matplotlib</code> og <code>numpy</code> for disse oppgavene.
+</p>
+
+<p>
+Sjekk at følgende kode kjører fint på din installasjon av Python.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">import</span> numpy <span class="org-keyword">as</span> np
+<span class="org-keyword">import</span> matplotlib.pyplot <span class="org-keyword">as</span> plt
+
+<span class="org-variable-name">x</span> = np.linspace(0, 2 * np.pi, 10)
+<span class="org-variable-name">y</span> = np.sin(x)
+
+plt.plot(x, y)
+</pre>
+</div>
+
+
+<div id="org8536ecc" class="figure">
+<p><img src="figurer/tegning_av_grafer_oppg0.png" alt="tegning_av_grafer_oppg0.png" />
+</p>
+</div>
+
+<p>
+Vi har altså tegnet funksjonen \(f(x) = \sin x\) for \(x\)-verdier fra \(0\) til \(2\pi\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org06b66af" class="outline-3">
+<h3 id="org06b66af">Oppgave 1: En finere oppløsning</h3>
+<div class="outline-text-3" id="text-org06b66af">
+<p>
+Vi ser at vi må angi både hvilke \(x\)- og hvilke \(y\)-verdier som skal tegnes.
+</p>
+
+<p>
+Undersøk nærmere hva slags verdier <code>x</code> har fra eksempelkoden i forrige oppgave.
+</p>
+
+<p>
+Hint: Dette kan du for eksempel gjøre ved å legge inn en <code>print(x)</code> i koden.
+</p>
+
+<p>
+Forsøk ulike verdier enn <code>10</code> som sisteargument til <code>linspace</code>. Tegn plottene dine med <code>plt.plot(x, y, 'bo')</code>. (Her betyr <code>'bo'</code> «/blue circles/», du kan se flere alternativer under <i>Notes</i> i <a href="https://matplotlib.org/3.3.1/api/_as_gen/matplotlib.pyplot.plot.html#matplotlib.pyplot.plot">dokumentasjonen</a>.)
+</p>
+</div>
+</div>
+
+<div id="outline-container-orgc64289b" class="outline-3">
+<h3 id="orgc64289b">Oppgave 2: Matematiske funksjoner</h3>
+<div class="outline-text-3" id="text-orgc64289b">
+<p>
+Numpy-arrayer har den kjekke egenskapen at flere vanlige matematiske operasjoner blir gjort element for element. For eksempel gir det ingen mening å opphøye en liste i andre, men det fungerer utmerket for et array.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-variable-name">x</span> = [1, 2]
+x ** 2
+</pre>
+</div>
+
+<pre class="example" id="org42bf291">
+
+TypeErrorTraceback (most recent call last)
+&lt;ipython-input-18-6d388756f2ce&gt; in &lt;module&gt;
+      1 x = [1, 2]
+----&gt; 2 x ** 2
+
+TypeError: unsupported operand type(s) for ** or pow(): 'list' and 'int'
+</pre>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">import</span> numpy <span class="org-keyword">as</span> np
+<span class="org-variable-name">x</span> = np.array([1, 2])
+x ** 2
+</pre>
+</div>
+
+<pre class="example">
+array([1, 4])
+</pre>
+
+
+<p>
+Dette fungerer også for å legge til eller trekke fra tall.
+</p>
+
+<p>
+Definer funksjonen \(f(x) = x^2 - 2\) i Python. (Her bruker du <code>def f(x):</code> osv.)
+</p>
+
+<p>
+Definer tre matematiske funksjoner på samme måte. Vis hvordan du kontrollerer at de fungerer som du forventer.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org8af460d" class="outline-3">
+<h3 id="org8af460d">Oppgave 3: Flere grafer</h3>
+<div class="outline-text-3" id="text-org8af460d">
+<p>
+Du kan tegne flere grafer i ett plott ved å skrive flere <code>plt.plot</code>-linjer etter hverandre.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">import</span> numpy <span class="org-keyword">as</span> np
+<span class="org-keyword">import</span> matplotlib.pyplot <span class="org-keyword">as</span> plt
+
+<span class="org-variable-name">x</span> = np.linspace(0, 10, 100)
+<span class="org-variable-name">y1</span> = np.sin(x)
+<span class="org-variable-name">y2</span> = np.cos(x)
+
+plt.plot(x, y1)
+plt.plot(x, y2)
+</pre>
+</div>
+
+
+<div id="orgf095b91" class="figure">
+<p><img src="figurer/tegning_av_grafer_oppg3.png" alt="tegning_av_grafer_oppg3.png" />
+</p>
+</div>
+
+<p>
+Tegn alle funksjonene dine fra oppgave 2 i samme plott.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org54e3bb2" class="outline-3">
+<h3 id="org54e3bb2">Oppgave 4: Grensesetting</h3>
+<div class="outline-text-3" id="text-org54e3bb2">
+<p>
+Du kan velge hvilke \(x\)- og \(y\)-verdier du ønsker at plottet ditt skal være for ved å bruke funksjonene <code>xlim</code> og <code>ylim</code>.
+</p>
+
+<p>
+For eksempel kan vi «zoome» inn på et område ved å gjøre som følger:
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">import</span> numpy <span class="org-keyword">as</span> np
+<span class="org-keyword">import</span> matplotlib.pyplot <span class="org-keyword">as</span> plt
+
+<span class="org-variable-name">x</span> = np.linspace(0, 10, 100)
+<span class="org-variable-name">y1</span> = np.sin(x)
+<span class="org-variable-name">y2</span> = np.cos(x)
+
+plt.plot(x, y1)
+plt.plot(x, y2)
+
+plt.xlim(2, 6)
+plt.ylim(-1, 0)
+</pre>
+</div>
+
+
+<div id="org56e13de" class="figure">
+<p><img src="figurer/tegning_av_grafer_oppg4.png" alt="tegning_av_grafer_oppg4.png" />
+</p>
+</div>
+
+<p>
+Legg merke til at vi ikke beregner noen verdier av <code>x</code> eller <code>y</code> på nytt her, altså vil eventuelle uklarheter i linjene bli forsterket når vi zoomer oss inn på dem.
+</p>
+
+<p>
+Lag to plot hvor du bruker andre grenseverdier enn det matplotlib gir deg som standard.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge4b83d2" class="outline-3">
+<h3 id="orge4b83d2">Oppgave 5: Navn på akser</h3>
+<div class="outline-text-3" id="text-orge4b83d2">
+<p>
+Vi setter navn på aksene ved å bruke <code>xlabel</code> og <code>ylabel</code>.
+</p>
+
+<p>
+Hjelpeteksten til <code>xlabel</code> ser ut som følger:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">import</span> matplotlib.pyplot <span class="org-keyword">as</span> plt
+<span class="org-builtin">help</span>(plt.xlabel)
+</pre>
+</div>
+
+<pre class="example" id="org738079b">
+Help on function xlabel in module matplotlib.pyplot:
+
+xlabel(xlabel, fontdict=None, labelpad=None, *, loc=None, **kwargs)
+    Set the label for the x-axis.
+    
+    Parameters
+    ----------
+    xlabel : str
+        The label text.
+    
+    labelpad : float, default: None
+        Spacing in points from the axes bounding box including ticks
+        and tick labels.
+    
+    loc : {'left', 'center', 'right'}, default: :rc:`xaxis.labellocation`
+        The label position. This is a high-level alternative for passing
+        parameters *x* and *horizontalalignment*.
+    
+    Other Parameters
+    ----------------
+    **kwargs : `.Text` properties
+        `.Text` properties control the appearance of the label.
+    
+    See Also
+    --------
+    text : Documents the properties supported by `.Text`.
+</pre>
+
+<p>
+Her ser du at <code>xlabel</code> er en funksjon som <code>Set the label for the x-axis</code>, altså setter navnet på \(x\)-aksen. Vi ser også at den er definert til å ta argumentene <code>xlabel</code>, <code>labelpad</code> og <code>loc</code>. Her har <code>labelpad</code> og <code>loc</code> verdier satt som «default», altså er ikke dette noe vi trenger å sette om vi ikke spesielt ønsker det. Vi må derimot gi en tekststreng (for eksempel <code>"x-verdier"</code>). Dersom vi ønsker å sette strengen <code>"x"</code> til å være navnet på \(x\)-aksen, skriver vi da <code>plt.xlabel("x")</code>.
+</p>
+
+<p>
+Sett navn på \(x\)- og \(y\)-aksen for et av plottene dine.
+</p>
+</div>
+</div>
+
+<div id="outline-container-org65e3a6b" class="outline-3">
+<h3 id="org65e3a6b">Oppgave 6: Navn på akser</h3>
+<div class="outline-text-3" id="text-org65e3a6b">
+<p>
+På «programmørsk» kalles teksten som viser hvilke grafer som viser hvilke data for plottets «legend». Vi kan sette på det ved å gi hvert <code>plot</code> en <code>label</code> og kalle <code>legend</code> i etterkant.
+</p>
+
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">import</span> numpy <span class="org-keyword">as</span> np
+<span class="org-keyword">import</span> matplotlib.pyplot <span class="org-keyword">as</span> plt
+
+<span class="org-variable-name">x</span> = np.linspace(0, 10, 100)
+<span class="org-variable-name">y1</span> = np.sin(x)
+<span class="org-variable-name">y2</span> = np.cos(x)
+
+plt.plot(x, y1, label=<span class="org-string">"sin(x)"</span>)
+plt.plot(x, y2, label=<span class="org-string">"cos(x)"</span>)
+plt.legend()
+</pre>
+</div>
+
+
+<div id="org250b988" class="figure">
+<p><img src="figurer/tegning_av_grafer_oppg6.png" alt="tegning_av_grafer_oppg6.png" />
+</p>
+</div>
+
+<p>
+Kjør dette eksempelet og se at det oppfører seg som forventet.
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge483377" class="outline-3">
+<h3 id="orge483377">Oppgave 7: Alt vi har lært til nå</h3>
+<div class="outline-text-3" id="text-orge483377">
+<p>
+Figuren under viser tre iterasjoner med halveringsmetoden for å finne et nullpunkt for funksjonen \(f(x) = x^3 + 2x^2 - 5\), hvor startverdiene er \(x = 0\) og \(x = 3\).
+</p>
+
+<p>
+Hver av gjetningene er tegnet med en linje à la <code>plt.plot(x_g, 0, 'o', label="x_g[2]")</code>, hvor da <code>x_g</code> er verdien til denne gjetningen.
+</p>
+
+
+<div id="org492ac35" class="figure">
+<p><img src="figurer/tegning_av_grafer_oppg7.png" alt="tegning_av_grafer_oppg7.png" />
+</p>
+</div>
+
+<p>
+Forsøk å reprodusere denne grafen.
+</p>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

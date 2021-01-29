@@ -1,0 +1,217 @@
+# -*- eval: (darkroom-tentative-mode); -*-
+#+language: nb
+#+options: <:nil ^:{}
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="../style.css" />
+#+TITLE: Tegning av grafer
+* Tegning av grafer
+** Oppgave 0: Sjekk av installasjonen
+Vi kommer til å trenge både =matplotlib= og =numpy= for disse oppgavene.
+
+Sjekk at følgende kode kjører fint på din installasjon av Python.
+
+#+begin_src python :file figurer/tegning_av_grafer_oppg0.png :results output file
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(0, 2 * np.pi, 10)
+y = np.sin(x)
+
+plt.plot(x, y)
+#+end_src
+
+#+RESULTS:
+[[file:figurer/tegning_av_grafer_oppg0.png]]
+
+Vi har altså tegnet funksjonen $f(x) = \sin x$ for \(x\)-verdier fra $0$ til $2\pi$.
+
+** Oppgave 1: En finere oppløsning
+Vi ser at vi må angi både hvilke \(x\)- og hvilke \(y\)-verdier som skal tegnes.
+
+Undersøk nærmere hva slags verdier =x= har fra eksempelkoden i forrige oppgave.
+
+Hint: Dette kan du for eksempel gjøre ved å legge inn en =print(x)= i koden.
+
+Forsøk ulike verdier enn =10= som sisteargument til =linspace=. Tegn plottene dine med =plt.plot(x, y, 'bo')=. (Her betyr ='bo'= «/blue circles/», du kan se flere alternativer under /Notes/ i [[https://matplotlib.org/3.3.1/api/_as_gen/matplotlib.pyplot.plot.html#matplotlib.pyplot.plot][dokumentasjonen]].)
+
+** Oppgave 2: Matematiske funksjoner
+Numpy-arrayer har den kjekke egenskapen at flere vanlige matematiske operasjoner blir gjort element for element. For eksempel gir det ingen mening å opphøye en liste i andre, men det fungerer utmerket for et array.
+
+#+begin_src python
+x = [1, 2]
+x ** 2
+#+end_src
+
+#+RESULTS:
+:RESULTS:
+# [goto error]
+#+begin_example
+
+TypeErrorTraceback (most recent call last)
+<ipython-input-18-6d388756f2ce> in <module>
+      1 x = [1, 2]
+----> 2 x ** 2
+
+TypeError: unsupported operand type(s) for ** or pow(): 'list' and 'int'
+#+end_example
+:END:
+
+#+begin_src python
+import numpy as np
+x = np.array([1, 2])
+x ** 2
+#+end_src
+
+#+RESULTS:
+: array([1, 4])
+
+Dette fungerer også for å legge til eller trekke fra tall.
+
+Definer funksjonen $f(x) = x^2 - 2$ i Python. (Her bruker du =def f(x):= osv.)
+
+Definer tre matematiske funksjoner på samme måte. Vis hvordan du kontrollerer at de fungerer som du forventer.
+
+** Oppgave 3: Flere grafer
+Du kan tegne flere grafer i ett plott ved å skrive flere =plt.plot=-linjer etter hverandre.
+
+#+begin_src python :results output file :file figurer/tegning_av_grafer_oppg3.png
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(0, 10, 100)
+y1 = np.sin(x)
+y2 = np.cos(x)
+
+plt.plot(x, y1)
+plt.plot(x, y2)
+#+end_src
+
+#+RESULTS:
+[[file:figurer/tegning_av_grafer_oppg3.png]]
+
+Tegn alle funksjonene dine fra oppgave 2 i samme plott.
+
+** Oppgave 4: Grensesetting
+Du kan velge hvilke \(x\)- og \(y\)-verdier du ønsker at plottet ditt skal være for ved å bruke funksjonene =xlim= og =ylim=.
+
+For eksempel kan vi «zoome» inn på et område ved å gjøre som følger:
+#+begin_src python :results output file :file figurer/tegning_av_grafer_oppg4.png
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(0, 10, 100)
+y1 = np.sin(x)
+y2 = np.cos(x)
+
+plt.plot(x, y1)
+plt.plot(x, y2)
+
+plt.xlim(2, 6)
+plt.ylim(-1, 0)
+#+end_src
+
+#+RESULTS:
+[[file:figurer/tegning_av_grafer_oppg4.png]]
+
+Legg merke til at vi ikke beregner noen verdier av =x= eller =y= på nytt her, altså vil eventuelle uklarheter i linjene bli forsterket når vi zoomer oss inn på dem.
+
+Lag to plot hvor du bruker andre grenseverdier enn det matplotlib gir deg som standard.
+
+** Oppgave 5: Navn på akser
+Vi setter navn på aksene ved å bruke =xlabel= og =ylabel=.
+
+Hjelpeteksten til =xlabel= ser ut som følger:
+
+#+begin_src python
+import matplotlib.pyplot as plt
+help(plt.xlabel)
+#+end_src
+
+#+RESULTS:
+#+begin_example
+Help on function xlabel in module matplotlib.pyplot:
+
+xlabel(xlabel, fontdict=None, labelpad=None, *, loc=None, **kwargs)
+    Set the label for the x-axis.
+    
+    Parameters
+    ----------
+    xlabel : str
+        The label text.
+    
+    labelpad : float, default: None
+        Spacing in points from the axes bounding box including ticks
+        and tick labels.
+    
+    loc : {'left', 'center', 'right'}, default: :rc:`xaxis.labellocation`
+        The label position. This is a high-level alternative for passing
+        parameters *x* and *horizontalalignment*.
+    
+    Other Parameters
+    ----------------
+    ,**kwargs : `.Text` properties
+        `.Text` properties control the appearance of the label.
+    
+    See Also
+    --------
+    text : Documents the properties supported by `.Text`.
+#+end_example
+
+Her ser du at =xlabel= er en funksjon som =Set the label for the x-axis=, altså setter navnet på \(x\)-aksen. Vi ser også at den er definert til å ta argumentene =xlabel=, =labelpad= og =loc=. Her har =labelpad= og =loc= verdier satt som «default», altså er ikke dette noe vi trenger å sette om vi ikke spesielt ønsker det. Vi må derimot gi en tekststreng (for eksempel ="x-verdier"=). Dersom vi ønsker å sette strengen ="x"= til å være navnet på \(x\)-aksen, skriver vi da =plt.xlabel("x")=.
+
+Sett navn på \(x\)- og \(y\)-aksen for et av plottene dine.
+
+** Oppgave 6: Navn på akser
+På «programmørsk» kalles teksten som viser hvilke grafer som viser hvilke data for plottets «legend». Vi kan sette på det ved å gi hvert =plot= en =label= og kalle =legend= i etterkant.
+
+
+#+begin_src python :results output file :file figurer/tegning_av_grafer_oppg6.png
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(0, 10, 100)
+y1 = np.sin(x)
+y2 = np.cos(x)
+
+plt.plot(x, y1, label="sin(x)")
+plt.plot(x, y2, label="cos(x)")
+plt.legend()
+#+end_src
+
+#+RESULTS:
+[[file:figurer/tegning_av_grafer_oppg6.png]]
+
+Kjør dette eksempelet og se at det oppfører seg som forventet.
+
+** Oppgave 7: Alt vi har lært til nå
+Figuren under viser tre iterasjoner med halveringsmetoden for å finne et nullpunkt for funksjonen \(f(x) = x^3 + 2x^2 - 5\), hvor startverdiene er \(x = 0\) og \(x = 3\).
+
+Hver av gjetningene er tegnet med en linje à la ~plt.plot(x_g, 0, 'o', label="x_g[2]")~, hvor da =x_g= er verdien til denne gjetningen.
+
+#+begin_src python :exports results :results output file :file figurer/tegning_av_grafer_oppg7.png
+import numpy as np
+import matplotlib.pyplot as plt
+
+def f(x):
+    return x ** 3 + 2 * x ** 2 -5
+
+x_start = 0
+x_stopp = 3
+x = np.linspace(x_start, x_stopp, 100)
+
+plt.plot(x, f(x), label="f(x)")
+
+for i in range(3):
+    x_g = (x_start + x_stopp) / 2
+    plt.plot(x_g, 0, 'o', label=f"x_g[{i}]")
+    if f(x_g) * f(x_start) > 0:
+        x_start = x_g
+    else:
+        x_stopp = x_g
+
+plt.legend()
+#+end_src
+
+#+RESULTS:
+[[file:figurer/tegning_av_grafer_oppg7.png]]
+
+Forsøk å reprodusere denne grafen.
