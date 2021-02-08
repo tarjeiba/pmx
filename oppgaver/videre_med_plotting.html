@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="nb" xml:lang="nb">
+<head>
+<!-- 2021-02-08 Mon 13:55 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Videre med plotting</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Tarjei Bærland" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Videre med plotting</h1>
+
+<div id="outline-container-orgceb0c5a" class="outline-2">
+<h2 id="orgceb0c5a">Oppgave 0: Oppsummering fra sist</h2>
+<div class="outline-text-2" id="text-orgceb0c5a">
+<p>
+I programmet under lager vi et plot for to funksjoner, \(\exp (x)\) (eller det vi er vant til å skrive som \(e^x\)) og \(\exp(x)\cdot\sin(2\pi x)\). Vi tegner begge for \(x\in\left[0,5\right]\).
+</p>
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">import</span> numpy <span class="org-keyword">as</span> np
+<span class="org-keyword">import</span> matplotlib.pyplot <span class="org-keyword">as</span> plt
+
+<span class="org-variable-name">xs</span> = np.linspace(0, 5, 100)
+<span class="org-variable-name">y1</span> = np.exp(xs)
+<span class="org-variable-name">y2</span> = np.exp(xs) * np.sin(2 * np.pi * xs)
+
+plt.plot(xs, y1, label=<span class="org-string">"exp(x)"</span>)
+plt.plot(xs, y2, label=<span class="org-string">"exp(x) * sin(2pi x)"</span>)
+plt.legend()
+</pre>
+</div>
+
+
+<div id="orge9ce63f" class="figure">
+<p><img src="figurer/videre_med_plotting_oppg1.png" alt="videre_med_plotting_oppg1.png" />
+</p>
+</div>
+
+<p>
+Legg til ytterligere en linje på dette plottet, tegn \(\exp(x)\cdot\sin(2\pi x^2)\).
+</p>
+</div>
+</div>
+
+<div id="outline-container-org417370a" class="outline-2">
+<h2 id="org417370a">Oppgave 1: Babylonernes metode</h2>
+<div class="outline-text-2" id="text-org417370a">
+<p>
+I denne oppgaven skal du lage to sammensatte plot. Du får spesifikasjonene til plottene som lister, og oppgaven din er å lage plot som oppfyller spesifikasjonene. Du rådes til å bygge opp plottet element for element, og sjekke at du er på rett vei før du går videre. Oppgaven sier ikke noe om hva som er en hensiktsmessig rekkefølge for deg å gjøre dette på.
+</p>
+
+<p>
+Du skal utforske Babylonernes metode for å finne kvadratroten av et tall. Be brukeren om dette tallet, kall det <code>S</code>. Du skal bruke tre startgjetninger for <code>x</code>, hvor <code>x**2 == S</code>, bruk <code>x = 1</code>, <code>x = S/2</code> og <code>x = S</code> som startgjetninger.
+</p>
+
+<ul class="org-ul">
+<li>Tegn et plott som viser utviklingen av <code>x_n</code> med en linje for hver av startgjetningene.</li>
+<li>For hver linje, marker den laveste verdien <code>x</code> tok med en blå sirkel.</li>
+<li>For hver linje, marker den høyeste verdien <code>x</code> tok med en rød sirkel.</li>
+<li>Tegn en horisontal linje som viser den faktiske verdien til \(\sqrt{S}\). (Her kan du bruke <code>plt.axhline(y)</code>, hvor <code>y</code> er \(y\)-verdien du ønsker linja ved.</li>
+<li>Av punktene over skal du lage to plott, ett hvor du tegner ti iterasjoner, og ett hvor du tegner fram til <code>abs(S - x**2) &lt; 0.0001</code>.</li>
+</ul>
+
+<p>
+Lykke til!
+</p>
+</div>
+</div>
+</div>
+</body>
+</html>
