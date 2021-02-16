@@ -51,6 +51,7 @@ body {
     background-color: #ffffff;
 }
 
+
 .figure {
     display: flex;
     justify-content: center;
@@ -63,12 +64,15 @@ span.figure-number {
 }
 
 h1 {
+    counter-reset: subsection;
     font-size: 1.6666666666666667em;
     line-height: 0.9em;
     margin-bottom: 0.9em;
 }
 
 h2 {
+    counter-reset: task;
+    counter-increment: subsection;
     font-size: 1.5em;
     line-height: 1em;
     margin-bottom: 1em;
@@ -99,12 +103,39 @@ p.small, #postamble {
     margin-bottom: 1.8em;
 }
 
+.task::before {
+    counter-increment:task;
+    content:"Oppgave " counter(subsection) "." counter(task);
+    font-weight: bold;
+}
+
 .task p {
     margin: 0;
 }
 
+.task {
+    border-left: 6px solid #aaa;
+    padding-left: 10pt;
+    padding-bottom: 0pt;
+    overflow: inherit;
+    text-align: left;
+    display: inline-block;
+    margin-top: 10pt;
+    margin-bottom: 10pt;
+}
 
+dt {
+    float: left;
+    clear: left;
+    width: 30px;
+    font-weight: bold;
+    vertical-align: middle;
+}
 
+dd {
+    margin: 0 0 0 50px;
+    padding: 0 0 0.3em 0;
+}
 
 table {
     border-collapse: collapse;
@@ -145,17 +176,6 @@ h1.title {
     margin-bottom: 0.2em;
 }
 
-.task {
-    border-left: 6px solid #aaa;
-    padding-left: 10pt;
-    padding-bottom: 0pt;
-    overflow: inherit;
-    text-align: left;
-    display: inline-block;
-    margin-top: 10pt;
-    margin-bottom: 10pt;
-}
-
 #table-of-contents h2 {
     letter-spacing: -0.1em;
 }
@@ -187,4 +207,3 @@ a {
 a:hover {
     border-bottom: 1px dotted #57d;
 }
-

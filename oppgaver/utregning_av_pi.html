@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="nb" xml:lang="nb">
+<head>
+<!-- 2021-02-16 Tue 10:04 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Utregning av π</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Tarjei Bærland" />
+<link rel="stylesheet" type="text/css" href="../style.css" />
+<script type="text/javascript">
+// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
+<!--/*--><![CDATA[/*><!--*/
+     function CodeHighlightOn(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.add("code-highlighted");
+         target.classList.add("code-highlighted");
+       }
+     }
+     function CodeHighlightOff(elem, id)
+     {
+       var target = document.getElementById(id);
+       if(null != target) {
+         elem.classList.remove("code-highlighted");
+         target.classList.remove("code-highlighted");
+       }
+     }
+    /*]]>*///-->
+// @license-end
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Utregning av π</h1>
+
+<div id="outline-container-orgdaf24a3" class="outline-2">
+<h2 id="orgdaf24a3">Introduksjon</h2>
+<div class="outline-text-2" id="text-orgdaf24a3">
+<p>
+Sirkelen under har omkrets \(p\) og diameter \(d\). Siden dette er to lengder knyttet til figuren, vil forholdet mellom disse være konstant for alle sirkler, siden alle sirkler er <i>formlike</i><sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>. Dette forholdet, et slags karakteristisk tall for sirkler har fått et eget navn, π, «pi». For en sirkel med omkrets \(p\) og diameter \(d\), blir da \(\pi\) \[\pi = \frac{p}{d}.\]
+</p>
+
+
+<div id="org029dc1c" class="figure">
+<p><object type="image/svg+xml" data="figurer/utregning_av_pi_sirkel.svg" class="org-svg">
+Sorry, your browser does not support SVG.</object>
+</p>
+<p><span class="figure-number">Illustrasjon 1 </span>En sirkel med omkrets og diameter</p>
+</div>
+
+<p>
+Tidligere har du lært om at \(\pi\) har en verdi på omtrent 3.14. I veldig mange tilfeller vil dette være godt nok. Men hvordan kan vi gå fram for å finne en mer nøyaktig verdi?
+</p>
+
+<p>
+Vi skal nå se på tre tilnærminger.
+</p>
+
+<p>
+Først, python har allerede en verdi innebygd, <code>math</code>-bibliotekets representasjon av π er som følger:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">import</span> math
+math.pi
+<span class="org-keyword">print</span>(f<span class="org-string">"&#960; = {math.pi:.14f}"</span>)
+</pre>
+</div>
+
+<pre class="example">
+π = 3.14159265358979
+</pre>
+
+
+<p>
+Jeg går gjennom alle metodene i denne <a href="https://www.youtube.com/watch?v=BWlR9YDb2I0">videoen</a><sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup>
+</p>
+</div>
+</div>
+
+<div id="outline-container-orge7d9513" class="outline-2">
+<h2 id="orge7d9513">Metode 1: Som en rekke</h2>
+<div class="outline-text-2" id="text-orge7d9513">
+<p>
+På 1600-tallet utviklet Isaac Newton og Gottfried Wilhelm Leibniz mer eller mindre uavhengig av hverandre en ny form for matematikk. Denne matematikken kunne brukes ikke bare til å se på funksjoner, men også å se på <i>endringen</i> av disse, det vi i dag kjenner som derivasjon og integrasjon.
+</p>
+
+<p>
+Dette åpnet et vell av nye teknikker. En av disse var at vi fikk langt flere uendelige rekker. En uendelig rekke er en sum hvor vi fortsetter å legge til ledd for ledd uten stopp. Et klassisk eksempel er den uendelige rekka \[\frac{1}{2} + \frac{1}{4} + \frac{1}{8} +\cdots = 1.\]
+</p>
+
+<div class="task" id="org4571f35">
+<p>
+Undersøk om den uendelige rekka over stemmer. Hva blir verdien om du legger sammen hundre ledd?
+</p>
+
+<p>
+Hint: Her kan du bruke en <code>for</code>-løkke hvor du lar <code>i</code> går fra 1 til 100. Du skal legge sammen alle <code>1 / 2**i</code>.
+</p>
+
+</div>
+
+<p>
+En av rekkene Leibniz så på, var en rekke for \(\arctan\) eller \(\tan^{-1}\). Det viste seg at en rekke for \(\arctan x\) kunne uttrykkes \[\arctan x = x - \frac{x^3}{3} + \frac{x^5}{5} - \frac{x^7}{7} + \cdots.\]
+</p>
+
+<p>
+Vi veit at \(\tan x = \frac{\sin x}{\cos x}\) og at \(\sin \frac{\pi}{4} = \cos \frac{\pi}{4} = \frac{\sqrt{2}}{2}\). Dette kan vi bruke til å vise at \[\tan \frac{\pi}{4} = 1.\]
+</p>
+
+<div class="task" id="org48ed881">
+<p>
+Bruk sammenhengene over til å vise at \(\tan \frac{\pi}{4} = 1\).
+</p>
+
+<p>
+Hint: Dersom du ikke er komfortabel med vinkler uttrykt som radianer, kan du bruke at \(\frac{\pi}{4} = 45^{\circ}\).
+</p>
+
+</div>
+
+<p>
+Vi har da både en måte å uttrykke \(\arctan x\) på, samt en sammenheng mellom \(\pi\) og \(\arctan 1\).
+</p>
+
+<div class="task" id="orge39b683">
+<p>
+Bruk <code>atan</code>-funksjonen fra <code>math</code>-biblioteket til å finne en tilnærming til \(\pi\) ved å regne ut <code>math.atan(1)</code>.
+</p>
+
+</div>
+
+<p>
+Dersom vi atter ser på rekkeutviklingen (den uendelige summen) for \(\arctan(x)\), sier vi at vi <i>evaluerer</i> rekka ved \(x=1\) dersom vi setter inn verdien \(1\) for \(x\) i summen, altså \[\arctan 1 = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \cdots,\] hvor vi har brukt at \(1^n = 1\).
+</p>
+
+<div class="task" id="org7a808ef">
+<p>
+Regn ut en tilnærming til \(\arctan 1\) ved å bruke rekka over, ta med leddene til og med \(\frac{1}{7}\). Hvilken verdi gir dette for π?
+</p>
+
+</div>
+
+<p>
+Om vi bruker <code>math.pi</code> som en slags fasit, kan vi finne avviket fra vår utregning av <code>pi</code> mot fasiten som følger:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-python"><span class="org-keyword">import</span> math
+
+<span class="org-variable-name">fasit</span> = math.pi
+
+<span class="org-comment-delimiter"># </span><span class="org-comment">Her gj&#248;r du utregninger, for eksempel ved &#229; bruke</span>
+<span class="org-comment-delimiter"># </span><span class="org-comment">rekkeutviklingen vist over</span>
+<span class="org-variable-name">pi</span> = 3     <span class="org-comment-delimiter"># </span><span class="org-comment">denne verdien skal da komme fra din utregning</span>
+
+<span class="org-variable-name">avvik</span> = <span class="org-builtin">abs</span>(pi - fasit)
+
+<span class="org-keyword">print</span>(f<span class="org-string">"Min tiln&#230;rming til pi er {pi}, dette har et avvik p&#229; {avvik} fra fasiten."</span>)
+</pre>
+</div>
+
+<pre class="example">
+Min tilnærming til pi er 3, dette har et avvik på 0.14159265358979312 fra fasiten.
+</pre>
+
+
+<div class="task" id="orgb7c9fed">
+<p>
+Hvor stort er avviket ditt når du bruker rekkeutviklingen fra forrige oppgave?
+</p>
+
+</div>
+
+<div class="task" id="org4474cc8">
+<p>
+Hvor mange ledd må du ta med i rekkeutviklingen for at avviket skal bli mindre enn <code>0.0001</code>?
+</p>
+
+</div>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes" hidden>Fotnoter</h2>
+<hr>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+<a href="https://matematikk.net/side/Formlikhet">https://matematikk.net/side/Formlikhet</a>
+</p></div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
+Ikke se på denne som noe mer enn inspirasjon
+</p></div></div>
+
+
+</div>
+</div></div>
+</body>
+</html>
